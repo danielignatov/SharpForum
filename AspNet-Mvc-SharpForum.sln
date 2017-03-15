@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Models", "SharpForum.Models\SharpForum.Models.csproj", "{2ACEE499-6FD9-42F6-A70C-8D409084EC0F}"
 EndProject
@@ -9,9 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Data", "SharpFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Services", "SharpForum.Services\SharpForum.Services.csproj", "{6A2821B4-9C0F-42FE-A4F9-93960B2ACA21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Application", "SharpForum.Application\SharpForum.Application.csproj", "{FEAE3979-876F-4399-86E7-2BBC47C8F55E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Application.Tests", "SharpForum.Application.Tests\SharpForum.Application.Tests.csproj", "{16FF49FD-A87E-4513-B737-E81ACB3E4D48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.App", "SharpForum.App\SharpForum.App.csproj", "{53AAF338-6D76-4050-95FF-81C056226BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +29,10 @@ Global
 		{6A2821B4-9C0F-42FE-A4F9-93960B2ACA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A2821B4-9C0F-42FE-A4F9-93960B2ACA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A2821B4-9C0F-42FE-A4F9-93960B2ACA21}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEAE3979-876F-4399-86E7-2BBC47C8F55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEAE3979-876F-4399-86E7-2BBC47C8F55E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEAE3979-876F-4399-86E7-2BBC47C8F55E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEAE3979-876F-4399-86E7-2BBC47C8F55E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16FF49FD-A87E-4513-B737-E81ACB3E4D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16FF49FD-A87E-4513-B737-E81ACB3E4D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16FF49FD-A87E-4513-B737-E81ACB3E4D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16FF49FD-A87E-4513-B737-E81ACB3E4D48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53AAF338-6D76-4050-95FF-81C056226BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53AAF338-6D76-4050-95FF-81C056226BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53AAF338-6D76-4050-95FF-81C056226BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53AAF338-6D76-4050-95FF-81C056226BCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

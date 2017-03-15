@@ -1,0 +1,17 @@
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Services.dll.config
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Services.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Services.pdb
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\AutoMapper.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\EntityFramework.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Data.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Models.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Data.pdb
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Data.dll.config
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Models.pdb
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\AutoMapper.xml
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\EntityFramework.xml
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\obj\Debug\SharpForum.Services.csprojResolveAssemblyReference.cache
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\obj\Debug\SharpForum.Services.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\obj\Debug\SharpForum.Services.pdb

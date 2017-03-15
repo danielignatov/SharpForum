@@ -1,4 +1,4 @@
-﻿namespace SharpForum.Models
+﻿namespace SharpForum.Models.EntityModels
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -19,6 +19,8 @@
         public string Title { get; set; }
 
         public string Content { get; set; }
+
+        public virtual User Author { get; set; }
 
         public virtual ICollection<Reply> Replies { get; set; }
         #endregion

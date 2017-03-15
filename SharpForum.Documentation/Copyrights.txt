@@ -1,0 +1,3 @@
+Background tile source: http://www.pixeden.com/graphic-web-backgrounds/subtle-light-tile-pattern-vol6
+
+Custom Bootstrap source: https://bootswatch.com/cosmo/

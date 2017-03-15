@@ -1,6 +1,7 @@
 namespace SharpForum.Data
 {
     using SharpForum.Models;
+    using SharpForum.Models.EntityModels;
     using System;
     using System.Data.Entity;
     using System.Linq;
@@ -24,6 +25,10 @@ namespace SharpForum.Data
         public virtual DbSet<Reply> Replies { get; set; }
 
         public virtual DbSet<Topic> Topics { get; set; }
+
+        public virtual DbSet<Category> Categories { get; set; }
+
+        public virtual DbSet<SubCategory> SubCategories { get; set; }
 
         public virtual DbSet<UserRole> UserRoles { get; set; }
 

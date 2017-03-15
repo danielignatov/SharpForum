@@ -1,4 +1,4 @@
-﻿namespace SharpForum.Models
+﻿namespace SharpForum.Models.EntityModels
 {
     using System;
     using System.Collections.Generic;
