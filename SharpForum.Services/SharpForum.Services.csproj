@@ -53,6 +53,7 @@
     <Compile Include="CategoriesService.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopicsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Data\SharpForum.Data.csproj">

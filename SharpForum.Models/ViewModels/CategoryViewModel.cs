@@ -11,5 +11,9 @@
         public string Description { get; set; }
 
         public int Priority { get; set; }
+
+        public bool IsSuperCategory { get; set; }
+
+        // TODO count topics replies
     }
 }

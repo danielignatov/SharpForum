@@ -27,7 +27,7 @@ namespace SharpForum.App
             Mapper.Initialize(expression =>
             {
                 expression.CreateMap<Category, CategoryViewModel>();
-                expression.CreateMap<SubCategory, SubCategoryViewModel>();
+                expression.CreateMap<Topic, TopicViewModel>();
             });
         }
     }

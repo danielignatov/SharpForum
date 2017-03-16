@@ -1,5 +1,7 @@
 ﻿namespace SharpForum.App.Controllers
 {
+    using SharpForum.Models.ViewModels;
+    using SharpForum.Services;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -8,13 +10,28 @@
 
     public class TopicsController : Controller
     {
+        #region Fields
+        private TopicsService topicsService;
+        #endregion
+
+        #region Constructors
+        public TopicsController()
+        {
+            this.topicsService = new TopicsService();
+        }
+        #endregion
+
+        #region Methods
         // GET: Topics
         [HttpGet]
         public ActionResult Topic(int id)
         {
-            // TODO
+            // TODO - Error handling?
 
-            return View();
+            TopicRepliesViewModel viewModel = this.topicsService.GetTopic(id);
+
+            return View(viewModel);
         }
+        #endregion
     }
 }

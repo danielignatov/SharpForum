@@ -8,7 +8,7 @@
         #region Constructors
         public Category()
         {
-            this.SubCategories = new HashSet<SubCategory>();
+            this.Topics = new HashSet<Topic>();
         }
         #endregion
 
@@ -22,7 +22,9 @@
 
         public int Priority { get; set; }
 
-        public virtual ICollection<SubCategory> SubCategories { get; set; }
+        public bool IsSuperCategory { get; set; }
+
+        public virtual ICollection<Topic> Topics { get; set; }
         #endregion
     }
 }

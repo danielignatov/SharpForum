@@ -2,10 +2,10 @@
 {
     using System.Collections.Generic;
 
-    public class CategorySubCategoriesViewModel
+    public class CategoryTopicsViewModel
     {
         public CategoryViewModel Category { get; set; }
 
-        public IEnumerable<SubCategoryViewModel> SubCategories { get; set; }
+        public IEnumerable<TopicViewModel> Topics { get; set; }
     }
 }

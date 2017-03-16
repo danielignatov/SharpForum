@@ -12,6 +12,8 @@
 
         public DateTime DateOfBirth { get; set; }
 
+        public DateTime DateOfRegistration { get; set; }
+
         public string AvatarUrl { get; set; }
 
         public string WebsiteUrl { get; set; }

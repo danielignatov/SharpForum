@@ -1,5 +1,6 @@
 ﻿namespace SharpForum.Models.EntityModels
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -20,8 +21,14 @@
 
         public string Content { get; set; }
 
-        public virtual User Author { get; set; }
+        public bool IsSticky { get; set; }
 
+        public bool IsLocked { get; set; }
+
+        public DateTime PublishDate { get; set; }
+
+        public virtual User Author { get; set; }
+        
         public virtual ICollection<Reply> Replies { get; set; }
         #endregion
     }

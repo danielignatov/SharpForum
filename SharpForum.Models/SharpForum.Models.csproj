@@ -48,14 +48,14 @@
     <Compile Include="BindingModels\RegisterUserBindingModel.cs" />
     <Compile Include="EntityModels\Category.cs" />
     <Compile Include="EntityModels\Reply.cs" />
-    <Compile Include="EntityModels\SubCategory.cs" />
     <Compile Include="EntityModels\Topic.cs" />
     <Compile Include="EntityModels\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityModels\UserRole.cs" />
-    <Compile Include="ViewModels\CategorySubCategoriesViewModel.cs" />
+    <Compile Include="ViewModels\CategoryTopicsViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\SubCategoryViewModel.cs" />
+    <Compile Include="ViewModels\ReplyViewModel.cs" />
+    <Compile Include="ViewModels\TopicRepliesViewModel.cs" />
     <Compile Include="ViewModels\TopicViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>

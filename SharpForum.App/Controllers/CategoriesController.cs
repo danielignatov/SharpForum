@@ -23,37 +23,24 @@
 
         #region Methods
         /// <summary>
-        /// Display all categories with their sub-categories.
+        /// Display all categories with info about their topics.
         /// </summary>
         [HttpGet]
         public ActionResult All()
         {
-            IEnumerable<CategorySubCategoriesViewModel> viewModel = this.categoriesService.GetAllCategories();
+            IEnumerable<CategoryTopicsViewModel> viewModel = this.categoriesService.GetAllCategories();
 
             return View(viewModel);
         }
 
         /// <summary>
-        /// Display specific category with it's sub-categories.
+        /// Display specific category with it's topics.
         /// </summary>
         [HttpGet]
         public ActionResult Category(int id)
         {
             // TOINSPECT - Error handling?
-            CategorySubCategoriesViewModel viewModel = this.categoriesService.GetCategory(id);
-
-            return View(viewModel);
-        }
-
-        /// <summary>
-        /// Display subcategory topics.
-        /// </summary>
-        [HttpGet]
-        public ActionResult SubCategory(int id)
-        {
-            // TOINSPECT - Error handling?
-            // TODO
-            SubCategoryTopicsViewModel viewModel = this.categoriesService.GetSubCategory(id);
+            CategoryTopicsViewModel viewModel = this.categoriesService.GetCategory(id);
 
             return View(viewModel);
         }
