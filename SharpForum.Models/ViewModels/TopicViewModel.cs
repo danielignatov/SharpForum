@@ -15,5 +15,13 @@
         public bool IsLocked { get; set; }
 
         public DateTime PublishDate { get; set; }
+
+        // Custom view properties
+
+        public int AuthorId { get; set; }
+
+        public string AuthorUsername { get; set; }
+
+        public int RepliesCount { get; set; }
     }
 }

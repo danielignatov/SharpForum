@@ -14,6 +14,10 @@
 
         public bool IsSuperCategory { get; set; }
 
-        // TODO count topics replies
+        // Custom view properties
+        
+        public int TopicsCount { get; set; }
+
+        public int RepliesCount { get; set; }
     }
 }

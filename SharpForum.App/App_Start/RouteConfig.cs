@@ -14,6 +14,13 @@
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Display Specific Topic",
+                url: "Topic/{id}",
+                defaults: new { controller = "Topics", action = "Topic" },
+                constraints: new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
                 name: "Display Specific Category",
                 url: "Category/{id}",
                 defaults: new { controller = "Categories", action = "Category" },
@@ -25,8 +32,7 @@
                 url: "{controller}/{action}",
                 defaults: new { controller = "Categories", action = "All" }
             );
-
-            // TODO - Topic/{id} route
+            
             // TODO - Topics/Latest route
             // TODO - Topics/Search route ?maybe in separate controller
             // TODO - Topic/New

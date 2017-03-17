@@ -11,27 +11,13 @@
 
     public class CategoriesService : Service
     {
-        public IEnumerable<CategoryTopicsViewModel> GetAllCategories()
+        public IEnumerable<CategoryViewModel> GetAllCategories()
         {
-            // TOINSPECT - Is this the best way?
             IEnumerable<Category> categories = this.Context.Categories.OrderBy(p => p.Priority);
 
-            List<CategoryTopicsViewModel> viewModelsList = new List<CategoryTopicsViewModel>();
+            IEnumerable<CategoryViewModel> viewModel = Mapper.Instance.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(categories);
 
-            foreach (var category in categories)
-            {
-                CategoryTopicsViewModel viewModel = new CategoryTopicsViewModel()
-                {
-                    Category = Mapper.Instance.Map<Category, CategoryViewModel>(category),
-                    Topics = Mapper.Instance.Map<IEnumerable<Topic>, IEnumerable<TopicViewModel>>(category.Topics)
-                };
-
-                viewModelsList.Add(viewModel);
-            }
-
-            IEnumerable<CategoryTopicsViewModel> viewModels = viewModelsList;
-
-            return viewModels;
+            return viewModel;
         }
 
         public CategoryTopicsViewModel GetCategory(int id)

@@ -26,8 +26,25 @@ namespace SharpForum.App
         {
             Mapper.Initialize(expression =>
             {
-                expression.CreateMap<Category, CategoryViewModel>();
-                expression.CreateMap<Topic, TopicViewModel>();
+                expression.CreateMap<Category, CategoryViewModel>()
+                    .ForMember(tc => tc.TopicsCount,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(t => t.Topics.Count))
+                    .ForMember(rc => rc.RepliesCount,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(r => r.Topics.Sum(re => re.Replies.Count)));
+                expression.CreateMap<Topic, TopicViewModel>()
+                    .ForMember(ai => ai.AuthorId,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(a => a.Author.Id))
+                    .ForMember(au => au.AuthorUsername,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(a => a.Author.Username))
+                    .ForMember(rc => rc.RepliesCount,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(r => r.Replies.Count));
+                expression.CreateMap<User, UserViewModel>();
+                expression.CreateMap<Reply, ReplyViewModel>();
             });
         }
     }

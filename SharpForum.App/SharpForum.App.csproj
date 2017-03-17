@@ -153,6 +153,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Extentions\HtmlHelperExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,10 +196,11 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Categories\All.cshtml" />
     <Content Include="Views\Categories\Category.cshtml" />
+    <Content Include="Views\Topics\New.cshtml" />
+    <Content Include="Views\Topics\Topic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Topics\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

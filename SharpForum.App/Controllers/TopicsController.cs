@@ -21,16 +21,30 @@
         }
         #endregion
 
+        // TODO: More accurate error handling
         #region Methods
-        // GET: Topics
+        /// <summary>
+        /// Display the topic with Id and all it's replies
+        /// </summary>
         [HttpGet]
+        [HandleError(ExceptionType = typeof(Exception), View = "Error")]
         public ActionResult Topic(int id)
         {
-            // TODO - Error handling?
-
-            TopicRepliesViewModel viewModel = this.topicsService.GetTopic(id);
+            TopicAuthorRepliesAuthorsViewModel viewModel = this.topicsService.GetTopic(id);
 
             return View(viewModel);
+        }
+
+        /// <summary>
+        /// Create new topic in the supplied category
+        /// </summary>
+        [HttpGet]
+        [HandleError(ExceptionType = typeof(Exception), View = "Error")]
+        public ActionResult New(int categoryId)
+        {
+            // TODO
+
+            return this.View();
         }
         #endregion
     }

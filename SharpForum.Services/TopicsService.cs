@@ -1,15 +1,45 @@
 ﻿namespace SharpForum.Services
 {
+    using AutoMapper;
+    using SharpForum.Models.EntityModels;
     using SharpForum.Models.ViewModels;
-    using System;
+    using System.Collections.Generic;
 
-    public class TopicsService
+    public class TopicsService : Service
     {
-        public TopicRepliesViewModel GetTopic(int id)
+        public TopicAuthorRepliesAuthorsViewModel GetTopic(int id)
         {
-            // TODO
+            Topic topic = this.Context.Topics.Find(id);
 
-            throw new NotImplementedException();
+            TopicViewModel topicViewModel = Mapper.Instance.Map<Topic, TopicViewModel>(topic);
+            UserViewModel topicAuthorUserViewModel = Mapper.Instance.Map<User, UserViewModel>(topic.Author);
+
+            List<ReplyAuthorViewModel> replyAuthorViewModelList = new List<ReplyAuthorViewModel>();
+
+            foreach (var reply in topic.Replies)
+            {
+                ReplyViewModel replyViewModel = Mapper.Instance.Map<Reply, ReplyViewModel>(reply);
+                UserViewModel replyAuthorUserViewModel = Mapper.Instance.Map<User, UserViewModel>(reply.Author);
+
+                ReplyAuthorViewModel replyAuthorViewModel = new ReplyAuthorViewModel()
+                {
+                    Reply = replyViewModel,
+                    Author = replyAuthorUserViewModel
+                };
+
+                replyAuthorViewModelList.Add(replyAuthorViewModel);
+            }
+
+            IEnumerable<ReplyAuthorViewModel> replyAuthorViewModels = replyAuthorViewModelList;
+
+            TopicAuthorRepliesAuthorsViewModel topicAuthorRepliesAuthorsViewModel = new TopicAuthorRepliesAuthorsViewModel()
+            {
+                Topic = topicViewModel,
+                Author = topicAuthorUserViewModel,
+                Replies = replyAuthorViewModels
+            };
+
+            return topicAuthorRepliesAuthorsViewModel;
         }
     }
 }

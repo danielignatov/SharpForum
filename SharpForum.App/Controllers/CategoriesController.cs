@@ -21,6 +21,7 @@
         }
         #endregion
 
+        // TODO: More accurate error handling
         #region Methods
         /// <summary>
         /// Display all categories with info about their topics.
@@ -28,7 +29,7 @@
         [HttpGet]
         public ActionResult All()
         {
-            IEnumerable<CategoryTopicsViewModel> viewModel = this.categoriesService.GetAllCategories();
+            IEnumerable<CategoryViewModel> viewModel = this.categoriesService.GetAllCategories();
 
             return View(viewModel);
         }
@@ -37,9 +38,9 @@
         /// Display specific category with it's topics.
         /// </summary>
         [HttpGet]
+        [HandleError(ExceptionType = typeof(Exception), View = "Error")]
         public ActionResult Category(int id)
         {
-            // TOINSPECT - Error handling?
             CategoryTopicsViewModel viewModel = this.categoriesService.GetCategory(id);
 
             return View(viewModel);

@@ -54,8 +54,9 @@
     <Compile Include="EntityModels\UserRole.cs" />
     <Compile Include="ViewModels\CategoryTopicsViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ReplyAuthorViewModel.cs" />
     <Compile Include="ViewModels\ReplyViewModel.cs" />
-    <Compile Include="ViewModels\TopicRepliesViewModel.cs" />
+    <Compile Include="ViewModels\TopicAuthorRepliesAuthorsViewModel.cs" />
     <Compile Include="ViewModels\TopicViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
