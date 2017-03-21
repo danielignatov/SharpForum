@@ -10,6 +10,7 @@
         public User()
         {
             this.Topics = new HashSet<Topic>();
+            this.Replies = new HashSet<Reply>();
         }
         #endregion
 
@@ -33,11 +34,15 @@
 
         public string Signature { get; set; }
 
+        public string AboutMe { get; set; }
+
         public string LivingLocation { get; set; }
 
         public virtual UserRole UserRole { get; set; }
 
         public virtual ICollection<Topic> Topics { get; set; }
+
+        public virtual ICollection<Reply> Replies { get; set; }
         #endregion
     }
 }

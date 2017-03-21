@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using SharpForum.Models.ViewModels;
+using SharpForum.Models.EntityModels;
 
 namespace SharpForum.Services
 {
@@ -11,7 +13,10 @@ namespace SharpForum.Services
     {
         public UserViewModel GetUser(int id)
         {
-            throw new NotImplementedException();
+            User user = this.Context.Users.Find(id);
+            UserViewModel viewModel = Mapper.Instance.Map<User, UserViewModel>(user);
+
+            return viewModel;
         }
     }
 }

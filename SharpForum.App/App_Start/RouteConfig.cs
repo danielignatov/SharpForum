@@ -1,17 +1,20 @@
-﻿namespace SharpForum.App
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
-    using System.Web.Mvc;
-    using System.Web.Routing;
+﻿using System.Web.Mvc;
+using System.Web.Routing;
 
+namespace IdentitySample
+{
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Display User Profile",
+                url: "UserProfile/{id}",
+                defaults: new { controller = "Users", action = "UserProfile" },
+                constraints: new { id = @"\d+" }
+            );
 
             routes.MapRoute(
                 name: "Display Specific Topic",
@@ -32,7 +35,7 @@
                 url: "{controller}/{action}",
                 defaults: new { controller = "Categories", action = "All" }
             );
-            
+
             // TODO - Topics/Latest route
             // TODO - Topics/Search route ?maybe in separate controller
             // TODO - Topic/New

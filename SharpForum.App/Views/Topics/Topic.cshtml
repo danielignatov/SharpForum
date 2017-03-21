@@ -4,6 +4,104 @@
     ViewBag.Title = "Topic";
 }
 
-<h2>Topic</h2>
+<!-- New Topic & New Reply buttons if user logged in TODO here -->
+<a href="/Topic/New" class="btn btn-success" role="button">New Topic</a>
+<a href="/Reply/New" class="btn btn-success" role="button">New Reply</a>
+<br />
+<br />
 
-@Model.Topic.Title
+<div class="list-group">
+    <!-- Topic Header -->
+    <div class="list-group-item list-group-item-info">
+        <strong>Topic</strong>
+    </div>
+    <!-- Topic -->
+    <div class="list-group-item">
+        <div class="row">
+            <!-- Author of topic info column -->
+            <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
+                <p class="text-center"><a href="/userprofile/@Model.Author.Id"><strong>@Model.Author.Username</strong></a><br><small>UserRole<!-- todo --></small></p>
+                <p class="text-center"><img src="@Model.Author.AvatarUrl" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
+                <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> 1<!-- todo --></p>
+                <p class="text-center">
+                    <a href="/userprofile/@Model.Author.Id" title="User profile"><span class="glyphicon glyphicon-user"></span></a>
+                    <a href="@Model.Author.WebsiteUrl" title="User website"><span class="glyphicon glyphicon-globe"></span></a>
+                </p>
+            </div>
+            <!-- Topic content -->
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="small text-left text-muted">
+                            <span class="glyphicon glyphicon-home gi-0p8x"></span> <a href="/categories/all">Home</a>
+                            <span class="glyphicon glyphicon-chevron-right gi-0p8x"></span> <a href="/category/1">CategoryName</a> <!-- todo-->
+                            <span class="glyphicon glyphicon-chevron-right gi-0p8x"></span> <a href="/topic/@Model.Topic.Id">@Model.Topic.Title</a>
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="small text-right text-muted">Created on @Model.Topic.PublishDate.ToShortDateString() by <a href="/userprofile/@Model.Author.Id">@Model.Author.Username</a>, @Model.Replies.Count() replies</p>
+                    </div>
+                </div>
+
+                <h2>@Model.Topic.Title</h2>
+                <hr>
+                <p>
+                    @Model.Topic.Content
+                </p>
+                <!-- User signature is here if he has one -->
+                <hr>
+                <p class="small">@Model.Author.Signature</p>
+            </div>
+        </div>
+    </div>
+    <!-- Replies Header -->
+    <div class="list-group-item list-group-item-info">
+        <strong>Replies</strong>
+    </div>
+    <!-- Replies start from here -->
+    <div class="list-group-item">
+        <div class="row">
+            <!-- Author of topic info column -->
+            <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
+                <p class="text-center"><a href="/userprofile/2"><strong>AuthorUsername</strong></a><br><small>UserRole</small></p>
+                <p class="text-center"><img src="img/avatar.jpg" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
+                <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> 1</p>
+                <p class="text-center">
+                    <a href="/userprofile/2" title="User profile"><span class="glyphicon glyphicon-user"></span></a>
+                    <a href="http://example.com/" title="User website"><span class="glyphicon glyphicon-globe"></span></a>
+                </p>
+            </div>
+            <!-- Topic content -->
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" id="replyid-1">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="small text-left text-muted">
+                            <span class="glyphicon glyphicon-link gi-0p8x"></span> <a href="#replyid-1">Anchor Link</a>
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="small text-right text-muted">Replied on 03/03/2017 by <a href="/userprofile/1">AuthorUsername</a></p>
+                    </div>
+                </div>
+                <br>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                    it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+                    PageMaker including versions of Lorem Ipsum.
+                </p>
+                <!-- User signature is here if he has one -->
+                <hr>
+                <p class="small">User signature text here</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Topic & New Reply buttons if user logged in TODO here -->
+<a href="/Topic/New" class="btn btn-success" role="button">New Topic</a>
+<a href="/Reply/New" class="btn btn-success" role="button">New Reply</a>
+<br />
+<br />

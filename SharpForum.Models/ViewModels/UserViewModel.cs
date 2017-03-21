@@ -20,6 +20,12 @@
 
         public string Signature { get; set; }
 
+        public string AboutMe { get; set; }
+
         public string LivingLocation { get; set; }
+
+        // Custom view properties
+
+        public int TotalMessagesCount { get; set; }
     }
 }

@@ -20,8 +20,7 @@
             this.categoriesService = new CategoriesService();
         }
         #endregion
-
-        // TODO: More accurate error handling
+        
         #region Methods
         /// <summary>
         /// Display all categories with info about their topics.
@@ -33,12 +32,11 @@
 
             return View(viewModel);
         }
-
+        
         /// <summary>
         /// Display specific category with it's topics.
         /// </summary>
         [HttpGet]
-        [HandleError(ExceptionType = typeof(Exception), View = "Error")]
         public ActionResult Category(int id)
         {
             CategoryTopicsViewModel viewModel = this.categoriesService.GetCategory(id);

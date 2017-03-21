@@ -6,8 +6,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class CategoriesService : Service
     {
@@ -22,9 +20,14 @@
 
         public CategoryTopicsViewModel GetCategory(int id)
         {
-            // TODO
-            // TOINSPECT - Where does error in case of bad id goes?
             Category category = this.Context.Categories.Find(id);
+
+            if ((category == null) || (category.IsSuperCategory))
+            {
+                // In controller check if it's null and throw error
+                return null;
+            }
+
             CategoryTopicsViewModel viewModel = new CategoryTopicsViewModel()
             {
                 Category = Mapper.Instance.Map<Category, CategoryViewModel>(category),
