@@ -12,14 +12,14 @@
             Topic topic = this.Context.Topics.Find(id);
 
             TopicViewModel topicViewModel = Mapper.Instance.Map<Topic, TopicViewModel>(topic);
-            UserViewModel topicAuthorUserViewModel = Mapper.Instance.Map<User, UserViewModel>(topic.Author);
+            UserViewModel topicAuthorUserViewModel = Mapper.Instance.Map<ForumUser, UserViewModel>(topic.Author);
 
             List<ReplyAuthorViewModel> replyAuthorViewModelList = new List<ReplyAuthorViewModel>();
 
             foreach (var reply in topic.Replies)
             {
                 ReplyViewModel replyViewModel = Mapper.Instance.Map<Reply, ReplyViewModel>(reply);
-                UserViewModel replyAuthorUserViewModel = Mapper.Instance.Map<User, UserViewModel>(reply.Author);
+                UserViewModel replyAuthorUserViewModel = Mapper.Instance.Map<ForumUser, UserViewModel>(reply.Author);
 
                 ReplyAuthorViewModel replyAuthorViewModel = new ReplyAuthorViewModel()
                 {

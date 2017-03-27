@@ -18,7 +18,7 @@
 
         // Custom view properties
 
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
 
         public string AuthorUsername { get; set; }
 

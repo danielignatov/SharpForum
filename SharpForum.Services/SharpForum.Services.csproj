@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6A2821B4-9C0F-42FE-A4F9-93960B2ACA21}</ProjectGuid>
+    <ProjectGuid>{B32730E2-DBFA-4A8F-AA57-37651720C0F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SharpForum.Services</RootNamespace>
@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -51,23 +51,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriesService.cs" />
-    <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="TopicsService.cs" />
-    <Compile Include="UsersService.cs" />
+    <Compile Include="ForumUsersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Data\SharpForum.Data.csproj">
-      <Project>{CBB1D140-7118-4C85-B93B-5D40264C31B9}</Project>
+      <Project>{aa58ead1-0e08-46e3-ab7c-e067d8095f93}</Project>
       <Name>SharpForum.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharpForum.Models\SharpForum.Models.csproj">
-      <Project>{2ACEE499-6FD9-42F6-A70C-8D409084EC0F}</Project>
+      <Project>{314d416f-292f-4fe8-bffa-35fabef67393}</Project>
       <Name>SharpForum.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

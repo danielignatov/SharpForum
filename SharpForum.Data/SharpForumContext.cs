@@ -1,36 +1,29 @@
 namespace SharpForum.Data
 {
-    using SharpForum.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using SharpForum.Models.EntityModels;
     using System;
     using System.Data.Entity;
     using System.Linq;
 
-    public class SharpForumContext : DbContext
+    public class SharpForumContext : IdentityDbContext<ApplicationUser>
     {
-        #region Constructors
-        // Your context has been configured to use a 'SharpForumContext' connection string from your application's 
-        // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'SharpForum.Data.SharpForumContext' database on your LocalDb instance. 
-        // 
-        // If you wish to target a different database and/or database provider, modify the 'SharpForumContext' 
-        // connection string in the application configuration file.
         public SharpForumContext()
-            : base("name=SharpForumContext")
+            : base("name=SharpForumContext", throwIfV1Schema: false)
         {
         }
-        #endregion
 
-        #region Properties
+        public static SharpForumContext Create()
+        {
+            return new SharpForumContext();
+        }
+
+        public virtual DbSet<ForumUser> ForumUsers { get; set; }
+
         public virtual DbSet<Reply> Replies { get; set; }
 
         public virtual DbSet<Topic> Topics { get; set; }
 
         public virtual DbSet<Category> Categories { get; set; }
-
-        public virtual DbSet<UserRole> UserRoles { get; set; }
-
-        public virtual DbSet<User> Users { get; set; }
-        #endregion
     }
 }

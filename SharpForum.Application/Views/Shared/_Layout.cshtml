@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharpForum - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">SharpForum</a> <!-- TODO -->
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "All", "Categories")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topics<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Search</a></li>
+                            <li><a href="#">Latest</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Search</a></li>
+                            <li><a href="#">All</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Profile<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">View Profile</a></li>
+                            <li><a href="#">Edit Profile</a></li>
+                            <li><a href="#">My Topics</a></li>
+                            <li><a href="#">My Replies</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </nav>
+    </div>
+
+    <!-- Content Goes Here -->
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer>
+            <p class="text-muted">Sharp<strong>Forum</strong> @DateTime.Now.Year<br /><small>Made by: Daniel<strong>Ignatov</strong></small></p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
