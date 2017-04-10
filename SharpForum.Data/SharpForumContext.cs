@@ -6,7 +6,7 @@ namespace SharpForum.Data
     using System.Data.Entity;
     using System.Linq;
 
-    public class SharpForumContext : IdentityDbContext<ApplicationUser>
+    public class SharpForumContext : IdentityDbContext<User>
     {
         public SharpForumContext()
             : base("name=SharpForumContext", throwIfV1Schema: false)
@@ -17,8 +17,6 @@ namespace SharpForum.Data
         {
             return new SharpForumContext();
         }
-
-        public virtual DbSet<ForumUser> ForumUsers { get; set; }
 
         public virtual DbSet<Reply> Replies { get; set; }
 

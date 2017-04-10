@@ -20,8 +20,8 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topics<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Search</a></li>
-                            <li><a href="#">Latest</a></li>
+                            <li>@Html.ActionLink("Search", "Topics", "Search")</li>
+                            <li>@Html.ActionLink("Latest", "Topics", "Latest")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -31,15 +31,7 @@
                             <li><a href="#">All</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Profile<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">View Profile</a></li>
-                            <li><a href="#">Edit Profile</a></li>
-                            <li><a href="#">My Topics</a></li>
-                            <li><a href="#">My Replies</a></li>
-                        </ul>
-                    </li>
+                    @Html.Partial("_ForumUserMenuPartial")
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -14,7 +14,7 @@
         <div class="row">
             <!-- Profile info column -->
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <p class="text-center"><a href="/userprofile/@Model.Id"><strong>@Model.Username</strong></a><br><small>UserRole <!--todo--></small></p>
+                <p class="text-center"><a href="/userprofile/@Model.UserId"><strong>@Model.UserName</strong></a><br><small>UserRole <!--todo--></small></p>
                 <p class="text-center"><img src="@Model.AvatarUrl" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
                 <p class="small text-center"><span class="glyphicon glyphicon-calendar gi-0p8x"></span> Registration date: @Model.DateOfRegistration.ToShortDateString()</p>
                 <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> Forum messages: @Model.TotalMessagesCount</p> <!--toinspect if work-->
@@ -31,7 +31,7 @@
                 <!-- User signature is here if he has one -->
                 <h2>Forum signature</h2>
                 <hr>
-                <p class="small">@Model.Signature</p>
+                <p class="small">@Model.ForumSignature</p>
             </div>
         </div>
     </div>

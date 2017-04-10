@@ -1,0 +1,1 @@
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Application.Tests\obj\Debug\SharpForum.Application.Tests.csprojResolveAssemblyReference.cache

@@ -98,9 +98,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityModels\ApplicationUser.cs" />
+    <Compile Include="EntityModels\User.cs" />
     <Compile Include="EntityModels\Category.cs" />
-    <Compile Include="EntityModels\ForumUser.cs" />
     <Compile Include="EntityModels\Reply.cs" />
     <Compile Include="EntityModels\Topic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

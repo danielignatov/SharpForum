@@ -27,7 +27,7 @@
 
         public DateTime PublishDate { get; set; }
 
-        public virtual ForumUser Author { get; set; }
+        public virtual User Author { get; set; }
         
         public virtual ICollection<Reply> Replies { get; set; }
         #endregion

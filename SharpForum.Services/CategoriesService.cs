@@ -36,5 +36,15 @@
         
             return viewModel;
         }
+
+        public bool IsCategoryValid(int id)
+        {
+            if (this.Context.Categories.Any(cid => cid.Id == id))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

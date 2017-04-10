@@ -41,14 +41,14 @@ namespace SharpForum.Application
                     configurationExpression.MapFrom(a => a.Author.Id))
                     .ForMember(au => au.AuthorUsername,
                     configurationExpression =>
-                    configurationExpression.MapFrom(a => a.Author.ApplicationUser.UserName))
+                    configurationExpression.MapFrom(a => a.Author.UserName))
                     .ForMember(rc => rc.RepliesCount,
                     configurationExpression =>
                     configurationExpression.MapFrom(r => r.Replies.Count));
-                expression.CreateMap<ForumUser, UserViewModel>()
+                expression.CreateMap<User, UserViewModel>()
                     .ForMember(tmc => tmc.TotalMessagesCount,
                     configurationExpression =>
-                    configurationExpression.MapFrom(u => u.Topics.Count + u.Replies.Count));
+                    configurationExpression.MapFrom(u => u.Topics.Count() + u.Replies.Count()));
                 expression.CreateMap<Reply, ReplyViewModel>();
             });
         }

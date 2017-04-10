@@ -13,10 +13,13 @@ namespace SharpForum.Application
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Using Attribute Routes
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
-                name: "Default",
+                name: "Default with Id",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Categories", action = "All", id = UrlParameter.Optional }
             );
         }
     }

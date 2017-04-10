@@ -4,6 +4,8 @@
     using SharpForum.Models.EntityModels;
     using SharpForum.Models.ViewModels;
     using System.Collections.Generic;
+    using System;
+    using System.Linq;
 
     public class TopicsService : Service
     {
@@ -12,14 +14,14 @@
             Topic topic = this.Context.Topics.Find(id);
 
             TopicViewModel topicViewModel = Mapper.Instance.Map<Topic, TopicViewModel>(topic);
-            UserViewModel topicAuthorUserViewModel = Mapper.Instance.Map<ForumUser, UserViewModel>(topic.Author);
+            UserViewModel topicAuthorUserViewModel = Mapper.Instance.Map<User, UserViewModel>(topic.Author);
 
             List<ReplyAuthorViewModel> replyAuthorViewModelList = new List<ReplyAuthorViewModel>();
 
             foreach (var reply in topic.Replies)
             {
                 ReplyViewModel replyViewModel = Mapper.Instance.Map<Reply, ReplyViewModel>(reply);
-                UserViewModel replyAuthorUserViewModel = Mapper.Instance.Map<ForumUser, UserViewModel>(reply.Author);
+                UserViewModel replyAuthorUserViewModel = Mapper.Instance.Map<User, UserViewModel>(reply.Author);
 
                 ReplyAuthorViewModel replyAuthorViewModel = new ReplyAuthorViewModel()
                 {
@@ -40,6 +42,11 @@
             };
 
             return topicAuthorRepliesAuthorsViewModel;
+        }
+
+        public bool DoesTopicExist(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

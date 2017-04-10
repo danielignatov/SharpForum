@@ -29,5 +29,3 @@ C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Data\bin
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Data\obj\Debug\SharpForum.Data.csprojResolveAssemblyReference.cache
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Data\obj\Debug\SharpForum.Data.dll
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Data\obj\Debug\SharpForum.Data.pdb
-C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Data\obj\Debug\SharpForum.Data.Migrations.InitialCreate.resources
-C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Data\obj\Debug\SharpForum.Data.csproj.GenerateResource.Cache

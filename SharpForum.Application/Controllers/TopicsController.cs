@@ -30,6 +30,11 @@
         [HandleError(ExceptionType = typeof(Exception), View = "Error")]
         public ActionResult Topic(int id)
         {
+            if (!this.topicsService.DoesTopicExist(id))
+            {
+                return HttpNotFound();
+            }
+
             TopicAuthorRepliesAuthorsViewModel viewModel = this.topicsService.GetTopic(id);
 
             return View(viewModel);
@@ -41,6 +46,30 @@
         [HttpGet]
         [HandleError(ExceptionType = typeof(Exception), View = "Error")]
         public ActionResult New(int categoryId)
+        {
+            // TODO
+
+            return this.View();
+        }
+
+        /// <summary>
+        /// Search topics
+        /// </summary>
+        [HttpGet]
+        [HandleError(ExceptionType = typeof(Exception), View = "Error")]
+        public ActionResult Search()
+        {
+            // TODO
+
+            return this.View();
+        }
+
+        /// <summary>
+        /// Show latest topics
+        /// </summary>
+        [HttpGet]
+        [HandleError(ExceptionType = typeof(Exception), View = "Error")]
+        public ActionResult Latest()
         {
             // TODO
 

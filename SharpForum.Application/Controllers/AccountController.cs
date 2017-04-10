@@ -12,18 +12,25 @@
     using Microsoft.Owin.Security;
     using SharpForum.Models.ViewModels.Account;
     using SharpForum.Models.EntityModels;
+    using SharpForum.Services;
+    using SharpForum.Data;
+    using System.Data.Entity.Validation;
+    using System.Diagnostics;
 
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private UserManager _userManager;
+        private UsersService usersService;
 
         public AccountController()
         {
+            this.usersService = new UsersService();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(UserManager userManager, ApplicationSignInManager signInManager )
+            : base()
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -41,11 +48,11 @@
             }
         }
 
-        public ApplicationUserManager UserManager
+        public UserManager UserManager
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<UserManager>();
             }
             private set
             {
@@ -76,7 +83,7 @@
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -152,20 +159,34 @@
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                int uid = this.usersService.GenerateNewUserId();
+
+                var user = new User {
+                    Email = model.Email,
+                    UserName = model.UserName,
+                    AboutMe = model.AboutMe,
+                    WebsiteUrl = model.WebsiteUrl,
+                    AvatarUrl = model.AvatarUrl,
+                    DateOfRegistration = DateTime.Now,
+                    UserId = uid
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    this.UserManager.AddToRole(user.Id, "User");
                     
+                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    
+                    return RedirectToAction("All", "Categories");
                 }
+
                 AddErrors(result);
             }
 
@@ -368,7 +389,7 @@
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -393,7 +414,7 @@
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All", "Categories");
         }
 
         //
@@ -450,7 +471,7 @@
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All", "Categories");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

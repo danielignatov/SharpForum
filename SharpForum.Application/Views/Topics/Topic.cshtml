@@ -20,7 +20,7 @@
         <div class="row">
             <!-- Author of topic info column -->
             <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
-                <p class="text-center"><a href="/userprofile/@Model.Author.Id"><strong>@Model.Author.Username</strong></a><br><small>UserRole<!-- todo --></small></p>
+                <p class="text-center"><a href="/userprofile/@Model.Author.Id"><strong>@Model.Author.UserName</strong></a><br><small>UserRole<!-- todo --></small></p>
                 <p class="text-center"><img src="@Model.Author.AvatarUrl" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
                 <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> 1<!-- todo --></p>
                 <p class="text-center">
@@ -39,7 +39,7 @@
                         </p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <p class="small text-right text-muted">Created on @Model.Topic.PublishDate.ToShortDateString() by <a href="/userprofile/@Model.Author.Id">@Model.Author.Username</a>, @Model.Replies.Count() replies</p>
+                        <p class="small text-right text-muted">Created on @Model.Topic.PublishDate.ToShortDateString() by <a href="/userprofile/@Model.Author.Id">@Model.Author.UserName</a>, @Model.Replies.Count() replies</p>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                 </p>
                 <!-- User signature is here if he has one -->
                 <hr>
-                <p class="small">@Model.Author.Signature</p>
+                <p class="small">@Model.Author.ForumSignature</p>
             </div>
         </div>
     </div>

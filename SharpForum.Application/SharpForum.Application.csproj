@@ -201,9 +201,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\MyAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -244,7 +244,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -282,8 +284,11 @@
     <Content Include="Views\Categories\Category.cshtml" />
     <Content Include="Views\Topics\New.cshtml" />
     <Content Include="Views\Topics\Topic.cshtml" />
-    <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Users\UserProfile.cshtml" />
+    <Content Include="Views\Shared\AuthorizationError.cshtml" />
+    <Content Include="Views\Shared\_ForumUserMenuPartial.cshtml" />
+    <Content Include="Views\Shared\Error404.cshtml" />
+    <Content Include="Views\Shared\_NewTopicButtonPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Data\SharpForum.Data.csproj">

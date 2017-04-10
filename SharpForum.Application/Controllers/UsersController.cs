@@ -9,13 +9,13 @@
     public class UsersController : Controller
     {
         #region Fields
-        private ForumUsersService usersService;
+        private UsersService usersService;
         #endregion
 
         #region Constructors
         public UsersController()
         {
-            this.usersService = new ForumUsersService();
+            this.usersService = new UsersService();
         }
         #endregion
 
@@ -31,50 +31,18 @@
 
         [HttpGet]
         [HandleError(ExceptionType = typeof(Exception), View = "Error")]
-        public ActionResult UserProfile(int id)
+        [Route("Userprofile/{uid:regex([0-9]+)}")]
+        public ActionResult UserProfile(int uid)
         {
-            UserViewModel viewModel = null;
+            if (!this.usersService.DoesUserExist(uid))
+            {
+                return HttpNotFound();
+            }
+
+            UserViewModel viewModel = this.usersService.GetUserViewModel(uid);
 
             return View(viewModel);
         }
-
-        //[HttpGet]
-        //// GET: Users/Login
-        //public ActionResult Login()
-        //{
-        //    // TODO
-        //
-        //    return View();
-        //}
-        //
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //// POST: Users/Login
-        //public ActionResult Login([Bind(Include = "")] LoginUserBindingModel loginUserBindingModel)
-        //{
-        //    // TODO
-        //
-        //    return View();
-        //}
-        //
-        //[HttpGet]
-        //// GET: Users/Register
-        //public ActionResult Register()
-        //{
-        //    // TODO
-        //
-        //    return View();
-        //}
-        //
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //// POST: Users/Register
-        //public ActionResult Register([Bind(Include = "")] RegisterUserBindingModel registerUserBindingModel)
-        //{
-        //    // TODO
-        //
-        //    return View();
-        //}
         #endregion
     }
 }
