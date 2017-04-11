@@ -21,10 +21,13 @@ namespace SharpForum.Services
         {
             return this.Context.Users.Any(uid => uid.UserId == userId);
         }
-
-        public int GenerateNewUserId()
+        
+        /// <summary>
+        /// Get user string id and return his int userId
+        /// </summary>
+        public int GetMyUserProfileId(string id)
         {
-            return this.Context.Users.Count() + 1;
+            return this.Context.Users.Where(i => i.Id == id).Select(uid => uid.UserId).Single();
         }
     }
 }

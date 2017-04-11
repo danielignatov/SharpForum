@@ -1,0 +1,10 @@
+Username - 2min 14max
+User loc - 24max
+User sig - 128max
+User about - 2048max
+
+Category name - 1min 60max
+Category desc - 1min 200max
+
+Topic name - 4min 60max
+Topic content - 4min 3000max

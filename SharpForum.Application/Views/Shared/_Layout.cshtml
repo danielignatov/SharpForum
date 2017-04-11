@@ -13,25 +13,25 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">SharpForum</a> <!-- TODO -->
+                    @Html.ActionLink("SharpForum", "All", "Categories", null, new { @class = "navbar-brand" })
                 </div>
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "All", "Categories")</li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topics<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Search", "Topics", "Search")</li>
-                            <li>@Html.ActionLink("Latest", "Topics", "Latest")</li>
+                            <li>@Html.ActionLink("Search", "Search", "Topics")</li>
+                            <li>@Html.ActionLink("Latest", "Latest", "Topics")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Search</a></li>
-                            <li><a href="#">All</a></li>
+                            <li>@Html.ActionLink("Search", "Search", "Users")</li>
+                            <li>@Html.ActionLink("All", "All", "Users")</li>
                         </ul>
                     </li>
-                    @Html.Partial("_ForumUserMenuPartial")
+                    @Html.Partial("_UserMenuPartial")
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

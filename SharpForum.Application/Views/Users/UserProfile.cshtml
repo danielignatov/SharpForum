@@ -14,12 +14,18 @@
         <div class="row">
             <!-- Profile info column -->
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <p class="text-center"><a href="/userprofile/@Model.UserId"><strong>@Model.UserName</strong></a><br><small>UserRole <!--todo--></small></p>
+                <p class="text-center"><a href="/userprofile/@Model.UserId"><strong>@Model.UserName</strong></a><br><small>@Model.RoleTitle</small></p>
                 <p class="text-center"><img src="@Model.AvatarUrl" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
                 <p class="small text-center"><span class="glyphicon glyphicon-calendar gi-0p8x"></span> Registration date: @Model.DateOfRegistration.ToShortDateString()</p>
-                <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> Forum messages: @Model.TotalMessagesCount</p> <!--toinspect if work-->
-                <p class="small text-center"><span class="glyphicon glyphicon-map-marker gi-0p8x"></span> From: @Model.LivingLocation</p>
-                <p class="small text-center"><span class="glyphicon glyphicon-globe gi-0p8x"></span> User website: <a href="@Model.WebsiteUrl" title="User website">Link</a></p>
+                <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> Forum messages: @Model.TotalMessagesCount</p>
+                @if (Model.LivingLocation != null)
+                {
+                    <p class="small text-center"><span class="glyphicon glyphicon-map-marker gi-0p8x"></span> From: @Model.LivingLocation</p>
+                }
+                @if (Model.WebsiteUrl != null)
+                {
+                    <p class="small text-center"><span class="glyphicon glyphicon-globe gi-0p8x"></span> User website: <a href="@Model.WebsiteUrl" title="User website">Link</a></p>
+                }
             </div>
             <!-- Topic content -->
             <div class="col-xs-8 col-sm-7 col-md-7 col-lg-7">

@@ -9,18 +9,23 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using SharpForum.Models.ViewModels.Manage;
+    using SharpForum.Services;
 
     [Authorize]
-    public class ManageController : Controller
+    [HandleError(ExceptionType = typeof(Exception), View = "Error")]
+    public class EditController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private UserManager _userManager;
+        private UsersService usersService;
 
-        public ManageController()
+        public EditController()
         {
+            this.usersService = new UsersService();
         }
 
-        public ManageController(UserManager userManager, ApplicationSignInManager signInManager)
+        public EditController(UserManager userManager, ApplicationSignInManager signInManager)
+            : base()
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -32,9 +37,9 @@
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -51,7 +56,7 @@
         }
 
         //
-        // GET: /Manage/Index
+        // GET: /Edit/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -76,7 +81,7 @@
         }
 
         //
-        // POST: /Manage/RemoveLogin
+        // POST: /Edit/RemoveLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
@@ -100,14 +105,14 @@
         }
 
         //
-        // GET: /Manage/AddPhoneNumber
+        // GET: /Edit/AddPhoneNumber
         public ActionResult AddPhoneNumber()
         {
             return View();
         }
 
         //
-        // POST: /Manage/AddPhoneNumber
+        // POST: /Edit/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
@@ -131,7 +136,7 @@
         }
 
         //
-        // POST: /Manage/EnableTwoFactorAuthentication
+        // POST: /Edit/EnableTwoFactorAuthentication
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
@@ -142,11 +147,11 @@
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
-            return RedirectToAction("Index", "Manage");
+            return RedirectToAction("Index", "Edit");
         }
 
         //
-        // POST: /Manage/DisableTwoFactorAuthentication
+        // POST: /Edit/DisableTwoFactorAuthentication
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
@@ -157,11 +162,11 @@
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
-            return RedirectToAction("Index", "Manage");
+            return RedirectToAction("Index", "Edit");
         }
 
         //
-        // GET: /Manage/VerifyPhoneNumber
+        // GET: /Edit/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
@@ -170,7 +175,7 @@
         }
 
         //
-        // POST: /Manage/VerifyPhoneNumber
+        // POST: /Edit/VerifyPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
@@ -195,7 +200,7 @@
         }
 
         //
-        // POST: /Manage/RemovePhoneNumber
+        // POST: /Edit/RemovePhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
@@ -214,14 +219,14 @@
         }
 
         //
-        // GET: /Manage/ChangePassword
+        // GET: /Edit/ChangePassword
         public ActionResult ChangePassword()
         {
             return View();
         }
 
         //
-        // POST: /Manage/ChangePassword
+        // POST: /Edit/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -245,14 +250,14 @@
         }
 
         //
-        // GET: /Manage/SetPassword
+        // GET: /Edit/SetPassword
         public ActionResult SetPassword()
         {
             return View();
         }
 
         //
-        // POST: /Manage/SetPassword
+        // POST: /Edit/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
@@ -277,7 +282,7 @@
         }
 
         //
-        // GET: /Manage/ManageLogins
+        // GET: /Edit/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -306,11 +311,11 @@
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
-            return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
+            return new UsersController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Edit"), User.Identity.GetUserId());
         }
 
         //
-        // GET: /Manage/LinkLoginCallback
+        // GET: /Edit/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
@@ -320,6 +325,18 @@
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        // GET: /Edit/MyProfile
+        [HttpGet]
+        [Authorize]
+        [Route("Edit/MyProfile")]
+        public ActionResult MyProfile()
+        {
+            string currentUserStringId = User.Identity.GetUserId();
+            int uid = this.usersService.GetMyUserProfileId(currentUserStringId);
+
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
@@ -333,7 +350,7 @@
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +401,6 @@
             Error
         }
 
-#endregion
+        #endregion
     }
 }
