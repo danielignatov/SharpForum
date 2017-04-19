@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using SharpForum.Models.EntityModels;
 using SharpForum.Models.ViewModels;
+using SharpForum.Models.ViewModels.Reply;
+using SharpForum.Models.ViewModels.Topic;
+using SharpForum.Models.ViewModels.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +39,12 @@ namespace SharpForum.Application
                     configurationExpression =>
                     configurationExpression.MapFrom(r => r.Topics.Sum(re => re.Replies.Count)));
                 expression.CreateMap<Topic, TopicViewModel>()
+                    .ForMember(cid => cid.CategoryId,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(c => c.Category.Id))
+                    .ForMember(ct => ct.CategoryName,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(c => c.Category.Name))
                     .ForMember(ai => ai.AuthorId,
                     configurationExpression =>
                     configurationExpression.MapFrom(a => a.Author.Id))
@@ -45,11 +54,13 @@ namespace SharpForum.Application
                     .ForMember(rc => rc.RepliesCount,
                     configurationExpression =>
                     configurationExpression.MapFrom(r => r.Replies.Count));
+                expression.CreateMap<TopicViewModel, Topic>();
                 expression.CreateMap<User, UserViewModel>()
                     .ForMember(tmc => tmc.TotalMessagesCount,
                     configurationExpression =>
                     configurationExpression.MapFrom(u => u.Topics.Count() + u.Replies.Count()));
                 expression.CreateMap<Reply, ReplyViewModel>();
+                expression.CreateMap<ReplyViewModel, Reply>();
             });
         }
     }

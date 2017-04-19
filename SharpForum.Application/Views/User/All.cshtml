@@ -1,0 +1,59 @@
+﻿@model SharpForum.Models.ViewModels.User.ShowUsersViewModel
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="list-group">
+    <div class="list-group-item list-group-item-info"><strong>Users</strong></div>
+    @{ foreach (var user in Model.Users)
+        {
+            <a href="/userprofile/@user.UserId" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <strong>@user.UserName</strong>
+                        <br>
+                        <small>@user.RoleTitle</small>
+                    </div>
+                    <div class="hidden-xs col-sm-6">
+                        <small>Messages count: @user.TotalMessagesCount</small>
+                        <br>
+                        <small>Registrated on @user.DateOfRegistration.ToShortDateString()</small>
+                    </div>
+                </div>
+            </a>
+        }
+    }
+
+    @* Pagination *@
+    @if (Model.Pagination.EndPage > 1)
+    {
+        <ul class="pagination">
+            @if (Model.Pagination.CurrentPage > 1)
+            {
+                <li>
+                    <a href="~/Users/All">First</a>
+                </li>
+                            <li>
+                                <a href="~/Users/All?pageId=@(Model.Pagination.CurrentPage - 1)">Previous</a>
+                            </li>
+            }
+
+            @for (var page = Model.Pagination.StartPage; page <= Model.Pagination.EndPage; page++)
+            {
+                <li class="@(page == Model.Pagination.CurrentPage ? "active" : "")">
+                    <a href="~/Users/All?pageId=@page">@page</a>
+                </li>}
+
+            @if (Model.Pagination.CurrentPage < Model.Pagination.TotalPages)
+            {
+                <li>
+                    <a href="~/Users/All?pageId=@(Model.Pagination.CurrentPage + 1)">Next</a>
+                </li>
+                            <li>
+                                <a href="~/Users/All?pageId=@(Model.Pagination.TotalPages)">Last</a>
+                            </li>
+            }
+        </ul>
+    }
+</div>

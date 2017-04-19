@@ -37,9 +37,9 @@
 
         public string ForumSignature { get; set; }
 
-        public virtual IEnumerable<Topic> Topics { get; set; }
+        public virtual ICollection<Topic> Topics { get; set; }
 
-        public virtual IEnumerable<Reply> Replies { get; set; }
+        public virtual ICollection<Reply> Replies { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

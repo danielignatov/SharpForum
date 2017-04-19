@@ -1,6 +1,7 @@
 ﻿namespace SharpForum.App.Extentions
 {
     using System.Web.Mvc;
+    using System.Web.Mvc.Html;
 
     public static class HtmlHelperExtentions
     {
@@ -27,6 +28,13 @@
             builder.MergeAttribute("alt", alt);
 
             return new MvcHtmlString(builder.ToString(TagRenderMode.SelfClosing));
+        }
+
+        public static MvcHtmlString CheckBoxSimple(this HtmlHelper htmlHelper, string name, object htmlAttributes)
+        {
+            string checkBoxWithHidden = htmlHelper.CheckBox(name, htmlAttributes).ToHtmlString().Trim();
+            string pureCheckBox = checkBoxWithHidden.Substring(0, checkBoxWithHidden.IndexOf("<input", 1));
+            return new MvcHtmlString(pureCheckBox);
         }
     }
 }

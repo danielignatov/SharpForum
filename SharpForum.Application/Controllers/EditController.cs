@@ -17,11 +17,11 @@
     {
         private ApplicationSignInManager _signInManager;
         private UserManager _userManager;
-        private UsersService usersService;
+        private UserService usersService;
 
         public EditController()
         {
-            this.usersService = new UsersService();
+            this.usersService = new UserService();
         }
 
         public EditController(UserManager userManager, ApplicationSignInManager signInManager)
@@ -311,7 +311,7 @@
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
-            return new UsersController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Edit"), User.Identity.GetUserId());
+            return new UserController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Edit"), User.Identity.GetUserId());
         }
 
         //

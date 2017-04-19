@@ -201,11 +201,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Attributes\MyAuthorizeAttribute.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ReplyController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\EditController.cs" />
-    <Compile Include="Controllers\TopicsController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Extentions\HtmlHelperExtentions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,6 +222,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\img\bg.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -232,6 +235,10 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -256,18 +263,18 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Users\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Users\ConfirmEmail.cshtml" />
-    <Content Include="Views\Users\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Users\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Users\ForgotPassword.cshtml" />
-    <Content Include="Views\Users\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Users\Login.cshtml" />
-    <Content Include="Views\Users\Register.cshtml" />
-    <Content Include="Views\Users\ResetPassword.cshtml" />
-    <Content Include="Views\Users\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Users\SendCode.cshtml" />
-    <Content Include="Views\Users\VerifyCode.cshtml" />
+    <Content Include="Views\User\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\User\ConfirmEmail.cshtml" />
+    <Content Include="Views\User\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\User\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\User\ForgotPassword.cshtml" />
+    <Content Include="Views\User\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\User\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\User\SendCode.cshtml" />
+    <Content Include="Views\User\VerifyCode.cshtml" />
     <Content Include="Views\Edit\AddPhoneNumber.cshtml" />
     <Content Include="Views\Edit\ChangePassword.cshtml" />
     <Content Include="Views\Edit\Index.cshtml" />
@@ -276,15 +283,23 @@
     <Content Include="Views\Edit\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Categories\All.cshtml" />
-    <Content Include="Views\Categories\Category.cshtml" />
-    <Content Include="Views\Topics\New.cshtml" />
-    <Content Include="Views\Topics\Topic.cshtml" />
-    <Content Include="Views\Users\UserProfile.cshtml" />
+    <Content Include="Views\Category\All.cshtml" />
+    <Content Include="Views\Category\Category.cshtml" />
+    <Content Include="Views\Topic\New.cshtml" />
+    <Content Include="Views\Topic\Topic.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Shared\AuthorizationError.cshtml" />
     <Content Include="Views\Shared\_UserMenuPartial.cshtml" />
     <Content Include="Views\Shared\Error404.cshtml" />
     <Content Include="Views\Shared\_NewTopicButtonPartial.cshtml" />
+    <Content Include="Views\Reply\New.cshtml" />
+    <Content Include="Views\Shared\_NewTopicNewReplyButtonsPartial.cshtml" />
+    <Content Include="Views\User\All.cshtml" />
+    <Content Include="Views\User\Search.cshtml" />
+    <Content Include="Views\Topic\Search.cshtml" />
+    <Content Include="Views\Topic\Latest.cshtml" />
+    <Content Include="Views\Topic\MyTopics.cshtml" />
+    <Content Include="Views\Topic\MyReplies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Data\SharpForum.Data.csproj">
@@ -314,6 +329,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

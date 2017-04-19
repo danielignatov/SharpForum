@@ -98,22 +98,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\Pagination.cs" />
     <Compile Include="EntityModels\User.cs" />
     <Compile Include="EntityModels\Category.cs" />
     <Compile Include="EntityModels\Reply.cs" />
     <Compile Include="EntityModels\Topic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Users\ExternalLoginConfirmationViewModel.cs" />
-    <Compile Include="ViewModels\Users\ExternalLoginListViewModel.cs" />
-    <Compile Include="ViewModels\Users\ForgotPasswordViewModel.cs" />
-    <Compile Include="ViewModels\Users\ForgotViewModel.cs" />
-    <Compile Include="ViewModels\Users\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Users\RegisterViewModel.cs" />
-    <Compile Include="ViewModels\Users\ResetPasswordViewModel.cs" />
-    <Compile Include="ViewModels\Users\SendCodeViewModel.cs" />
-    <Compile Include="ViewModels\Users\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\Categories\CategoryTopicsViewModel.cs" />
-    <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Topic\ShowTopicsAuthorsRepliesAuthorsViewModel.cs" />
+    <Compile Include="ViewModels\User\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\User\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModels\User\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\User\ForgotViewModel.cs" />
+    <Compile Include="ViewModels\User\LoginViewModel.cs" />
+    <Compile Include="ViewModels\User\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\User\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\User\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\User\ShowUsersViewModel.cs" />
+    <Compile Include="ViewModels\User\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Category\CategoryTopicsViewModel.cs" />
+    <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Edit\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Edit\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Edit\ConfigureTwoFactorViewModel.cs" />
@@ -122,14 +125,13 @@
     <Compile Include="ViewModels\Edit\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\Edit\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Edit\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\Topics\ReplyAuthorViewModel.cs" />
-    <Compile Include="ViewModels\Topics\ReplyViewModel.cs" />
-    <Compile Include="ViewModels\Topics\TopicAuthorRepliesAuthorsViewModel.cs" />
-    <Compile Include="ViewModels\Topics\TopicViewModel.cs" />
-    <Compile Include="ViewModels\Users\UserViewModel.cs" />
+    <Compile Include="ViewModels\Reply\ReplyAuthorViewModel.cs" />
+    <Compile Include="ViewModels\Reply\ReplyViewModel.cs" />
+    <Compile Include="ViewModels\Topic\TopicAuthorRepliesAuthorsViewModel.cs" />
+    <Compile Include="ViewModels\Topic\TopicViewModel.cs" />
+    <Compile Include="ViewModels\User\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Attributes\" />
     <Folder Include="BindingModels\" />
   </ItemGroup>
   <ItemGroup>

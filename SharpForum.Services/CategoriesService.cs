@@ -3,6 +3,7 @@
     using AutoMapper;
     using SharpForum.Models.EntityModels;
     using SharpForum.Models.ViewModels;
+    using SharpForum.Models.ViewModels.Topic;
     using System;
     using System.Collections.Generic;
     using System.Linq;
