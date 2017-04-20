@@ -19,7 +19,8 @@ namespace SharpForum.Application
             routes.MapRoute(
                 name: "Default with Id",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Categories", action = "All", id = UrlParameter.Optional }
+                defaults: new { controller = "Categories", action = "All", id = UrlParameter.Optional },
+                namespaces: new string[] { "SharpForum.Application.Controllers" }
             );
         }
     }

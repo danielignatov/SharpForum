@@ -19,11 +19,11 @@ namespace SharpForum.Application
     {
         protected void Application_Start()
         {
-            this.RegisterMaps();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
+            this.RegisterMaps();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
@@ -59,8 +59,12 @@ namespace SharpForum.Application
                     .ForMember(tmc => tmc.TotalMessagesCount,
                     configurationExpression =>
                     configurationExpression.MapFrom(u => u.Topics.Count() + u.Replies.Count()));
-                expression.CreateMap<Reply, ReplyViewModel>();
+                expression.CreateMap<Reply, ReplyViewModel>()
+                    .ForMember(tid => tid.TopicId,
+                    configurationExpression =>
+                    configurationExpression.MapFrom(u => u.Topic.Id));
                 expression.CreateMap<ReplyViewModel, Reply>();
+                    
             });
         }
     }

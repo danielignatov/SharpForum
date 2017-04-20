@@ -1,4 +1,4 @@
-﻿namespace SharpForum.App.Controllers
+﻿namespace SharpForum.Application.Controllers
 {
     using SharpForum.Models.ViewModels;
     using SharpForum.Services;

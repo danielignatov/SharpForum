@@ -202,6 +202,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Moderator\Controllers\ReplyModerationController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\TopicModerationController.cs" />
+    <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Attributes\MyAuthorizeAttribute.cs" />
     <Compile Include="Controllers\ReplyController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -239,6 +242,10 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Moderator\Views\web.config" />
+    <Content Include="Areas\Moderator\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Moderator\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Moderator\Views\ReplyModeration\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -300,6 +307,9 @@
     <Content Include="Views\Topic\Latest.cshtml" />
     <Content Include="Views\Topic\MyTopics.cshtml" />
     <Content Include="Views\Topic\MyReplies.cshtml" />
+    <Content Include="Views\Shared\_ModeratorTopicMenu.cshtml" />
+    <Content Include="Views\Shared\_ModeratorReplyMenu.cshtml" />
+    <Content Include="Views\ReplyModeration\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Data\SharpForum.Data.csproj">
@@ -333,6 +343,8 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Moderator\Models\" />
+    <Folder Include="Areas\Moderator\Views\TopicModeration\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <PropertyGroup>

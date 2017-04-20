@@ -1,4 +1,5 @@
-﻿@model SharpForum.Models.ViewModels.Topic.TopicAuthorRepliesAuthorsViewModel
+﻿@using Microsoft.AspNet.Identity
+@model SharpForum.Models.ViewModels.Topic.TopicAuthorRepliesAuthorsViewModel
 
 @{
     ViewBag.Title = "Topic";
@@ -59,7 +60,13 @@
                     <hr>
                     <p class="small">@Model.Author.ForumSignature</p>
                 }
-                <!-- Moderator buttons here todo-->
+                <!-- Moderator buttons -->
+                @if (User.IsInRole("Moderator") || User.IsInRole("Admin"))
+                {
+                    <p class="text-right">
+                        @Html.Partial("_ModeratorTopicMenu")
+                    </p>
+                }
             </div>
         </div>
     </div>
@@ -125,7 +132,13 @@
                             <hr>
                             <p class="small">@reply.Author.ForumSignature</p>
                         }
-                        <!-- Moderator buttons here todo-->
+                        <!-- Moderator buttons -->
+                        @if (User.IsInRole("Moderator") || User.IsInRole("Admin"))
+                        {
+                            <p class="text-right">
+                                @Html.Partial("_ModeratorReplyMenu", reply.Reply.Id)
+                            </p>
+                        }
                     </div>
                 </div>
             </div>

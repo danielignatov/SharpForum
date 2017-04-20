@@ -23,5 +23,22 @@
             currentTopic.Replies.Add(newReply);
             this.Context.SaveChanges();
         }
+
+        public ReplyViewModel GetReplyViewModel(int? replyId)
+        {
+            Reply reply = this.Context.Replies.Find(replyId);
+            ReplyViewModel rvm = Mapper.Instance.Map<Reply, ReplyViewModel>(reply);
+            rvm.TopicId = reply.Topic.Id;
+
+            return rvm;
+        }
+
+        public void EditReply(ReplyViewModel model)
+        {
+            Reply reply = this.Context.Replies.Find(model.Id);
+            reply.Content = model.Content;
+
+            this.Context.SaveChanges();
+        }
     }
 }
