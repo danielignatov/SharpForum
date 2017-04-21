@@ -8,7 +8,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class CategoriesService : Service
+    public class CategoryService : Service
     {
         public IEnumerable<CategoryViewModel> GetAllCategories()
         {
@@ -38,6 +38,16 @@
             return viewModel;
         }
 
+        public void AddCategory(CategoryViewModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CategoryViewModel GetCategoryViewModel(int? categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool IsCategoryValid(int id)
         {
             if (this.Context.Categories.Any(cid => cid.Id == id))
@@ -46,6 +56,11 @@
             }
 
             return false;
+        }
+
+        public void DeleteCategory(int? categoryId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

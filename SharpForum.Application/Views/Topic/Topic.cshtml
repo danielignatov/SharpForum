@@ -136,7 +136,7 @@
                         @if (User.IsInRole("Moderator") || User.IsInRole("Admin"))
                         {
                             <p class="text-right">
-                                @Html.Partial("_ModeratorReplyMenu", reply.Reply.Id)
+                                @Html.Partial("_ModeratorReplyMenu", new object[] { reply.Reply.Id, Model.Topic.Id })
                             </p>
                         }
                     </div>

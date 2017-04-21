@@ -40,5 +40,11 @@
 
             this.Context.SaveChanges();
         }
+
+        public void DeleteReply(int? replyId)
+        {
+            this.Context.Replies.Remove(this.Context.Replies.Find(replyId));
+            this.Context.SaveChanges();
+        }
     }
 }

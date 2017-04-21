@@ -1,35 +1,40 @@
-﻿@model SharpForum.Models.ViewModels.Reply.ReplyViewModel
+﻿@model SharpForum.Models.ViewModels.Topic.TopicViewModel
 
 @{
-    ViewBag.Title = "Edit Reply";
+    ViewBag.Title = "Edit Topic";
 }
 
 <div class="list-group">
-    <!-- Edit Reply Header -->
+    <!-- Edit Topic Header -->
     <div class="list-group-item list-group-item-info">
-        <strong>Edit Reply</strong>
+        <strong>Edit Topic</strong>
     </div>
     <!-- Edit Reply Form -->
     <div class="list-group-item">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                @using (Html.BeginForm("Edit", "ReplyModeration", new { area = "Moderator" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm("Edit", "TopicModeration", new { area = "Moderator" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h4>Edit reply.</h4>
+                    <h4>Edit topic.</h4>
                     <hr />
                     @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+                        @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Content, new { @class = "form-control", @value = Model.Content })
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                         </div>
                     </div>
-                    @Html.HiddenFor(m => m.TopicId, new { @value = Model.TopicId })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Content, new { @class = "form-control" })
+                        </div>
+                    </div>
                     @Html.HiddenFor(m => m.Id, new { @value = ViewContext.RouteData.Values.FirstOrDefault() })
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" class="btn btn-default" value="Edit" />
+                            <input type="submit" class="btn btn-default" value="Post" />
                         </div>
                     </div>
                 }

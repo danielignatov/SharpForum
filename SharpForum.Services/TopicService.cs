@@ -48,11 +48,67 @@
             return topicAuthorRepliesAuthorsViewModel;
         }
 
+        public void DeleteTopic(int? topicId)
+        {
+            this.Context.Topics.Remove(this.Context.Topics.Find(topicId));
+
+            this.Context.SaveChanges();
+        }
+
+        public void LockTopic(int? topicId)
+        {
+            Topic topic = this.Context.Topics.Find(topicId);
+            topic.IsLocked = true;
+
+            this.Context.SaveChanges();
+        }
+
+        public void EditTopic(TopicViewModel model)
+        {
+            Topic topic = this.Context.Topics.Find(model.Id);
+            topic.Content = model.Content;
+            topic.Title = model.Title;
+
+            this.Context.SaveChanges();
+        }
+
+        public void UnlockTopic(int? topicId)
+        {
+            Topic topic = this.Context.Topics.Find(topicId);
+            topic.IsLocked = false;
+
+            this.Context.SaveChanges();
+        }
+
+        public TopicViewModel GetTopicViewModel(int? topicId)
+        {
+            Topic topic = this.Context.Topics.Find(topicId);
+            TopicViewModel tvm = Mapper.Map<Topic, TopicViewModel>(topic);
+
+            return tvm;
+        }
+
+        public void StickTopic(int? topicId)
+        {
+            Topic topic = this.Context.Topics.Find(topicId);
+            topic.IsSticky = true;
+
+            this.Context.SaveChanges();
+        }
+
         public int GetTopicId(string topicTitle, string topicContent)
         {
             int topicId = this.Context.Topics.Where(t => t.Title == topicTitle && t.Content == topicContent).Select(x => x.Id).FirstOrDefault();
 
             return topicId;
+        }
+
+        public void UnstickTopic(int? topicId)
+        {
+            Topic topic = this.Context.Topics.Find(topicId);
+            topic.IsSticky = false;
+
+            this.Context.SaveChanges();
         }
 
         public bool DoesTopicExist(int id)

@@ -46,5 +46,16 @@ namespace SharpForum.Application.Areas.Moderator.Controllers
 
             return View(model);
         }
+
+        // GET: Moderator/ReplyModeration/Delete/{replyId}
+        [HttpGet]
+        [Authorize(Roles = "Moderator, Admin")]
+        [Route("Delete/{topicId:regex([0-9]+)}/{replyId:regex([0-9]+)}")]
+        public ActionResult Delete(int? topicId, int? replyId)
+        {
+            this.replyService.DeleteReply(replyId);
+
+            return RedirectToAction($"{topicId}", "Topic", new { area = "" });
+        }
     }
 }

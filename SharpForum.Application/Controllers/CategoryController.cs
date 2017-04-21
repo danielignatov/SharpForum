@@ -12,13 +12,13 @@
     public class CategoryController : Controller
     {
         #region Fields
-        private CategoriesService categoriesService;
+        private CategoryService categoriesService;
         #endregion
 
         #region Constructors
         public CategoryController()
         {
-            this.categoriesService = new CategoriesService();
+            this.categoriesService = new CategoryService();
         }
         #endregion
         
