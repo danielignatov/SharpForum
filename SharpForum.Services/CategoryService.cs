@@ -40,12 +40,18 @@
 
         public void AddCategory(CategoryViewModel model)
         {
-            throw new NotImplementedException();
+            Category category = Mapper.Map<CategoryViewModel, Category>(model);
+
+            this.Context.Categories.Add(category);
+            this.Context.SaveChanges();
         }
 
         public CategoryViewModel GetCategoryViewModel(int? categoryId)
         {
-            throw new NotImplementedException();
+            Category category = this.Context.Categories.Find(categoryId);
+            CategoryViewModel model = Mapper.Map<Category, CategoryViewModel>(category);
+
+            return model;
         }
 
         public bool IsCategoryValid(int id)
@@ -60,7 +66,19 @@
 
         public void DeleteCategory(int? categoryId)
         {
-            throw new NotImplementedException();
+            this.Context.Categories.Remove(this.Context.Categories.Find(categoryId));
+            this.Context.SaveChanges();
+        }
+
+        public void EditCategory(CategoryViewModel model)
+        {
+            Category category = this.Context.Categories.Find(model.Id);
+            category.Name = model.Name;
+            category.Priority = model.Priority;
+            category.IsSuperCategory = model.IsSuperCategory;
+            category.Description = model.Description;
+
+            this.Context.SaveChanges();
         }
     }
 }

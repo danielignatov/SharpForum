@@ -10,6 +10,7 @@ namespace SharpForum.Services
     using SharpForum.Models.ViewModels.User;
     using System.Collections.Generic;
     using SharpForum.Models.Attributes;
+    using SharpForum.Models.BindingModels;
 
     public class UserService : Service
     {
@@ -62,6 +63,54 @@ namespace SharpForum.Services
             return usvm;
         }
 
+        public UserRolesViewModel GetUserRolesViewModel()
+        {
+            UserRolesViewModel model = new UserRolesViewModel();
+            List<string> roles = new List<string>();
+
+            foreach (var role in this.Context.Roles)
+            {
+                roles.Add(role.Name);
+            }
+
+            model.UserRoleNames = roles;
+
+            return model;
+        }
+
+        public void DeleteUser(int? userId)
+        {
+            this.Context.Users.Remove(this.Context.Users.Where(uid => uid.UserId == userId).FirstOrDefault());
+            this.Context.SaveChanges();
+        }
+
+        public string GetUserName(string id)
+        {
+            return this.Context.Users.Where(i => i.Id == id).Select(un => un.UserName).FirstOrDefault();
+        }
+
+        public string GetUserRoleName(int userId)
+        {
+            var role = this.Context.Users.Where(uid => uid.UserId == userId).Select(r => r.Roles.FirstOrDefault()).FirstOrDefault();
+            var roleName = this.Context.Roles.Where(rid => rid.Id == role.RoleId).Select(n => n.Name).FirstOrDefault();
+
+            return roleName;
+        }
+
+        public void ChangeUserRoleTitle(int userId, string roleTitle)
+        {
+            User user = this.Context.Users.Where(uid => uid.UserId == userId).FirstOrDefault();
+
+            user.RoleTitle = roleTitle;
+
+            this.Context.SaveChanges();
+        }
+
+        public string GetUserStringId(int userId)
+        {
+            return this.Context.Users.Where(uid => uid.UserId == userId).Select(id => id.Id).FirstOrDefault();
+        }
+
         public ShowUsersViewModel GetSearchedUsersViewModel(string searchTerm, int? pageId)
         {
             ShowUsersViewModel suvm = new ShowUsersViewModel();
@@ -96,6 +145,18 @@ namespace SharpForum.Services
 
                 return suvm;
             }
+        }
+
+        public void EditUserProfile(UserViewModel model)
+        {
+            User user = this.Context.Users.Where(uid => uid.UserId == model.UserId).FirstOrDefault();
+
+            user.AboutMe = model.AboutMe;
+            user.AvatarUrl = model.AvatarUrl;
+            user.ForumSignature = model.ForumSignature;
+            user.LivingLocation = model.LivingLocation;
+
+            this.Context.SaveChanges();
         }
     }
 }

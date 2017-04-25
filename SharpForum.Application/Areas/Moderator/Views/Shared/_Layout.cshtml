@@ -13,27 +13,27 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    @Html.ActionLink("SharpForum", "All", "Category", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("SharpForum", "All", "Category", new { Area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "All", "Category")</li>
+                    <li>@Html.ActionLink("Home", "All", "Category", new { Area = "" }, new { })</li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topics<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Search", "Search", "Topic")</li>
-                            <li>@Html.ActionLink("Latest", "Latest", "Topic")</li>
+                            <li>@Html.ActionLink("Search", "Search", "Topic", new { Area = "" }, new { })</li>
+                            <li>@Html.ActionLink("Latest", "Latest", "Topic", new { Area = "" }, new { })</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Search", "Search", "User")</li>
-                            <li>@Html.ActionLink("All", "All", "User")</li>
+                            <li>@Html.ActionLink("Search", "Search", "User", new { Area = "" }, new { })</li>
+                            <li>@Html.ActionLink("All", "All", "User", new { Area = "" }, new { })</li>
                         </ul>
                     </li>
                     @Html.Partial("_UserMenuPartial")
+                    @Html.Partial("_AdminMenuPartial")
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </nav>
     </div>

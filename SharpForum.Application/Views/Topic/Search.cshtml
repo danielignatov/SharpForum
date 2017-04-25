@@ -40,65 +40,68 @@
     </div>
 </div>
 
-@if (Model.Topics.Count() != 0)
+@if (Model.Topics != null)
 {
-    <div class="list-group">
-        <div class="list-group-item list-group-item-info"><strong>Topics</strong></div>
-        @{ foreach (var topic in Model.Topics)
+    if (Model.Topics.Any())
+    {
+        <div class="list-group">
+            <div class="list-group-item list-group-item-info"><strong>Topics</strong></div>
+            @{ foreach (var topic in Model.Topics)
                 {
-                <a href="/topic/@topic.Topic.Id" class="list-group-item">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <strong>@topic.Topic.Title</strong>
-                            <br>
-                            <small>Created by @topic.Author.UserName</small>
+                    <a href="/topic/@topic.Topic.Id" class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <strong>@topic.Topic.Title</strong>
+                                <br>
+                                <small>Created by @topic.Author.UserName</small>
+                            </div>
+                            <div class="hidden-xs col-sm-6">
+                                <small>Replies count: @topic.Topic.RepliesCount</small>
+                                <br>
+                                <small>Published on @topic.Topic.PublishDate.ToShortDateString()</small>
+                            </div>
                         </div>
-                        <div class="hidden-xs col-sm-6">
-                            <small>Replies count: @topic.Topic.RepliesCount</small>
-                            <br>
-                            <small>Published on @topic.Topic.PublishDate.ToShortDateString()</small>
-                        </div>
-                    </div>
-                </a>
-            }
-        }
-
-        @* Pagination *@
-        @if (Model.Pagination.EndPage > 1)
-        {
-            <ul class="pagination">
-                @if (Model.Pagination.CurrentPage > 1)
-                {
-                    <li>
-                        <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]">First</a>
-                    </li>
-                    <li>
-                        <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@(Model.Pagination.CurrentPage - 1)">Previous</a>
-                    </li>
+                    </a>
                 }
-
-                @for (var page = Model.Pagination.StartPage; page <= Model.Pagination.EndPage; page++)
-                {
-                    <li class="@(page == Model.Pagination.CurrentPage ? "active" : "")">
-                        <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@page">@page</a>
-                    </li>}
-
-                @if (Model.Pagination.CurrentPage < Model.Pagination.TotalPages)
-                {
-                    <li>
-                        <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@(Model.Pagination.CurrentPage + 1)">Next</a>
-                    </li>
-                    <li>
-                        <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@(Model.Pagination.TotalPages)">Last</a>
-                    </li>
-                }
-            </ul>
-        }
-    </div>
             }
-            else
+
+            @* Pagination *@
+            @if (Model.Pagination.EndPage > 1)
             {
-                <div class="list-group">
-                    <div class="list-group-item list-group-item-danger"><strong>No results</strong></div>
-                </div>
+                <ul class="pagination">
+                    @if (Model.Pagination.CurrentPage > 1)
+                    {
+                        <li>
+                            <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]">First</a>
+                        </li>
+                        <li>
+                            <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@(Model.Pagination.CurrentPage - 1)">Previous</a>
+                        </li>
+                    }
+
+                    @for (var page = Model.Pagination.StartPage; page <= Model.Pagination.EndPage; page++)
+                    {
+                        <li class="@(page == Model.Pagination.CurrentPage ? "active" : "")">
+                            <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@page">@page</a>
+                        </li>}
+
+                    @if (Model.Pagination.CurrentPage < Model.Pagination.TotalPages)
+                    {
+                        <li>
+                            <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@(Model.Pagination.CurrentPage + 1)">Next</a>
+                        </li>
+                        <li>
+                            <a href="~/Topics/Search?searchTerm=@Request.QueryString["searchTerm"]&pageId=@(Model.Pagination.TotalPages)">Last</a>
+                        </li>
+                    }
+                </ul>
             }
+        </div>
+                }
+                else
+                {
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-danger"><strong>No results</strong></div>
+                    </div>
+                }
+                }

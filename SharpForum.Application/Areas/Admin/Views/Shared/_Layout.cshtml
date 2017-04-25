@@ -3,33 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>SharpForum - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    @Html.ActionLink("SharpForum", "All", "Category", new { Area = "" }, new { @class = "navbar-brand" })
+                </div>
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "All", "Category", new { Area = "" }, new { })</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topics<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Search", "Search", "Topic", new { Area = "" }, new { })</li>
+                            <li>@Html.ActionLink("Latest", "Latest", "Topic", new { Area = "" }, new { })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Search", "Search", "User", new { Area = "" }, new { })</li>
+                            <li>@Html.ActionLink("All", "All", "User", new { Area = "" }, new { })</li>
+                        </ul>
+                    </li>
+                    @Html.Partial("_UserMenuPartial")
+                    @Html.Partial("_AdminMenuPartial")
                 </ul>
             </div>
-        </div>
+        </nav>
     </div>
 
+    <!-- Content Goes Here -->
     <div class="container body-content">
         @RenderBody()
-        <hr />
+
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p class="text-muted">Sharp<strong>Forum</strong> @DateTime.Now.Year<br /><small>Made by: Daniel<strong>Ignatov</strong></small></p>
         </footer>
     </div>
 

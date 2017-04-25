@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNet.Identity
+@if (User.IsInRole("Admin"))
+{
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Category Administration", "Index", "CategoryAdministration", new { Area = "Admin" }, new { })</li>
+        </ul>
+    </li>
+}

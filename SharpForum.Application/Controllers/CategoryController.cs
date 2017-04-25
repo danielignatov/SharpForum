@@ -7,7 +7,7 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-
+    
     [HandleError(ExceptionType = typeof(Exception), View = "Error")]
     public class CategoryController : Controller
     {

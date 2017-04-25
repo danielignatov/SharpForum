@@ -2,33 +2,61 @@
 @model IEnumerable<CategoryViewModel>
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Edit Categories";
 }
 
-<div class="list-group">
-    @{ foreach (var category in Model)
-        {
-            if (category.IsSuperCategory == false)
+@if (Model.Any())
+{
+    <div class="list-group">
+        @{ foreach (var category in Model)
             {
-                <a href="/Category/@category.Id" class="list-group-item">
+                <div class="list-group-item">
                     <div class="row">
                         <div class="col-sm-6">
-                            <strong>@category.Name</strong>
+                            @if (category.IsSuperCategory)
+                            {
+                                <strong>Supercategory </strong>
+                            }
+                            <strong class="text-info">
+                            @category.Name
+                            </strong>
                             <br>
-                            <small>@category.Description</small>
+                            @if (@category.Description != null)
+                            {
+                                <small class="text-info">@category.Description (Category prority: @category.Priority)</small>
+                            }
+                            else
+                            {
+                                <small class="text-info"><em>No Description</em> (Category prority: @category.Priority)</small>
+                            }
                         </div>
                         <div class="hidden-xs col-sm-6">
-                            <small>@category.TopicsCount topics</small>
+                            <small class="text-info">@category.TopicsCount topics, @category.RepliesCount replies</small>
                             <br>
-                            <small>@category.RepliesCount replies</small>
+                            <small>@Html.Partial("_AdminCategoryMenu", category.Id)</small>
                         </div>
                     </div>
-                </a>
-            }
-            else
-            {
-                <div class="list-group-item list-group-item-info"><strong>@category.Name</strong></div>
+                </div>
+
             }
         }
-    }
-</div>
+        <div class="list-group-item">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3">
+                    @Html.ActionLink("Home", "All", "Category", new { Area = "" }, new { @class = "btn btn-primary btn-block" })
+                </div>
+                <div class="col-md-3">
+                    @Html.ActionLink("Add Category", "New", "CategoryAdministration", new { area = "Admin" }, new { @class = "btn btn-primary btn-block" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="list-group">
+        <div class="list-group-item">
+            <p class="text-center">There are no categories, @Html.ActionLink("add", "New", "CategoryAdministration", new { area = "Admin" }) one?</p>
+        </div>
+    </div>
+}

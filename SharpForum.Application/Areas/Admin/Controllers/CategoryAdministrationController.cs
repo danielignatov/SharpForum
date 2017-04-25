@@ -41,6 +41,7 @@ namespace SharpForum.Application.Areas.Admin.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
         [Route("New")]
         public ActionResult New(CategoryViewModel model)
         {
@@ -74,7 +75,7 @@ namespace SharpForum.Application.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.categoryService.AddCategory(model);
+                this.categoryService.EditCategory(model);
 
                 return RedirectToAction($"Index", "CategoryAdministration", new { area = "Admin" });
             }

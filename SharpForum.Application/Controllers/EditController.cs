@@ -10,6 +10,7 @@
     using Microsoft.Owin.Security;
     using SharpForum.Models.ViewModels.Manage;
     using SharpForum.Services;
+    using SharpForum.Models.ViewModels.User;
 
     [Authorize]
     [HandleError(ExceptionType = typeof(Exception), View = "Error")]
@@ -17,11 +18,11 @@
     {
         private ApplicationSignInManager _signInManager;
         private UserManager _userManager;
-        private UserService usersService;
+        private UserService userService;
 
         public EditController()
         {
-            this.usersService = new UserService();
+            this.userService = new UserService();
         }
 
         public EditController(UserManager userManager, ApplicationSignInManager signInManager)
@@ -79,7 +80,7 @@
             };
             return View(model);
         }
-
+        
         //
         // POST: /Edit/RemoveLogin
         [HttpPost]
@@ -334,9 +335,28 @@
         public ActionResult MyProfile()
         {
             string currentUserStringId = User.Identity.GetUserId();
-            int uid = this.usersService.GetMyUserProfileId(currentUserStringId);
+            int uid = this.userService.GetMyUserProfileId(currentUserStringId);
 
-            return RedirectToAction("Index");
+            UserViewModel model = this.userService.GetUserViewModel(uid);
+
+            return View(model);
+        }
+
+        // POST: /Edit/MyProfile
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        [Route("Edit/MyProfile")]
+        public ActionResult MyProfile(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.userService.EditUserProfile(model);
+
+                return RedirectToAction("MyProfile", "User", new { area = "" });
+            }
+
+            return View(model);
         }
 
         protected override void Dispose(bool disposing)

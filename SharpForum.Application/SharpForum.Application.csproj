@@ -203,6 +203,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryAdministrationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserAdministrationController.cs" />
     <Compile Include="Areas\Moderator\Controllers\ReplyModerationController.cs" />
     <Compile Include="Areas\Moderator\Controllers\TopicModerationController.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
@@ -242,7 +243,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Moderator\Views\web.config" />
     <Content Include="Areas\Moderator\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Moderator\Views\Shared\_Layout.cshtml" />
@@ -251,6 +251,9 @@
     <Content Include="Areas\Admin\Views\CategoryAdministration\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryAdministration\New.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryAdministration\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminCategoryMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\UserAdministration\EditProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\UserAdministration\SetRole.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -315,6 +318,9 @@
     <Content Include="Views\Shared\_ModeratorTopicMenu.cshtml" />
     <Content Include="Views\Shared\_ModeratorReplyMenu.cshtml" />
     <Content Include="Views\ReplyModeration\Edit.cshtml" />
+    <Content Include="Views\Edit\MyProfile.cshtml" />
+    <Content Include="Views\Shared\_AdminMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_AdminUserMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Data\SharpForum.Data.csproj">
@@ -345,11 +351,7 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Moderator\Models\" />
-    <Folder Include="Views\Admin\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

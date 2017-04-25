@@ -38,6 +38,7 @@ namespace SharpForum.Application
                     .ForMember(rc => rc.RepliesCount,
                     configurationExpression =>
                     configurationExpression.MapFrom(r => r.Topics.Sum(re => re.Replies.Count)));
+                expression.CreateMap<CategoryViewModel, Category>();
                 expression.CreateMap<Topic, TopicViewModel>()
                     .ForMember(cid => cid.CategoryId,
                     configurationExpression =>
@@ -64,7 +65,7 @@ namespace SharpForum.Application
                     configurationExpression =>
                     configurationExpression.MapFrom(u => u.Topic.Id));
                 expression.CreateMap<ReplyViewModel, Reply>();
-                    
+                
             });
         }
     }

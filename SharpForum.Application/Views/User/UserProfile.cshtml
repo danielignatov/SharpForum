@@ -38,6 +38,13 @@
                 <h2>Forum signature</h2>
                 <hr>
                 <p class="small">@Model.ForumSignature</p>
+                <!-- Admin buttons -->
+                @if (User.IsInRole("Admin"))
+                {
+                    <p class="text-right">
+                        @Html.Partial("_AdminUserMenu", Model.UserId)
+                    </p>
+                }
             </div>
         </div>
     </div>

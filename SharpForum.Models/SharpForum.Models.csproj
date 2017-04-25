@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\Pagination.cs" />
+    <Compile Include="BindingModels\UserRoleBindingModel.cs" />
     <Compile Include="EntityModels\User.cs" />
     <Compile Include="EntityModels\Category.cs" />
     <Compile Include="EntityModels\Reply.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="ViewModels\User\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\User\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\User\ShowUsersViewModel.cs" />
+    <Compile Include="ViewModels\User\UserRolesViewModel.cs" />
     <Compile Include="ViewModels\User\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryTopicsViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
@@ -131,9 +133,7 @@
     <Compile Include="ViewModels\Topic\TopicViewModel.cs" />
     <Compile Include="ViewModels\User\UserViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BindingModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
