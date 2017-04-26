@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using SharpForum.Models.EntityModels;
 using SharpForum.Data;
+using System.IO;
 
 namespace SharpForum.Application
 {
@@ -55,9 +56,9 @@ namespace SharpForum.Application
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1595035863842427",
+               appSecret: File.ReadAllText("C:\\Users\\Даниел\\Documents\\GitHub\\FacebookAuthentication.txt"));
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

@@ -426,13 +426,21 @@
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    DateOfRegistration = DateTime.Now,
+                    RoleTitle = "User",
+                    AvatarUrl = "../content/img/defaultavatar.jpg"
+            };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        this.UserManager.AddToRole(user.Id, "User");
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
