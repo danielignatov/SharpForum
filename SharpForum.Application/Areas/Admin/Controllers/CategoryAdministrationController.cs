@@ -1,13 +1,10 @@
-﻿using SharpForum.Models.ViewModels;
-using SharpForum.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace SharpForum.Application.Areas.Admin.Controllers
+﻿namespace SharpForum.Application.Areas.Admin.Controllers
 {
+    using SharpForum.Models.ViewModels;
+    using SharpForum.Services;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+
     [RouteArea("Admin")]
     [RoutePrefix("CategoryAdministration")]
     public class CategoryAdministrationController : Controller

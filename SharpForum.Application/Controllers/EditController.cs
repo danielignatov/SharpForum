@@ -420,7 +420,6 @@
             RemovePhoneSuccess,
             Error
         }
-
         #endregion
     }
 }

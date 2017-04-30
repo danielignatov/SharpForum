@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNet.Identity
+@model SharpForum.Models.ViewModels.CategoryTopicsViewModel
+@if (Request.IsAuthenticated)
+{
+<a href="/Topic/New/@Model.Category.Id" class="btn btn-success" role="button">New Topic</a>
+<br />
+<br />
+}

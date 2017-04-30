@@ -1,9 +1,7 @@
 ﻿namespace SharpForum.Application.Controllers
 {
     using System;
-    using System.Globalization;
     using System.Linq;
-    using System.Security.Claims;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
@@ -13,10 +11,6 @@
     using SharpForum.Models.ViewModels.User;
     using SharpForum.Models.EntityModels;
     using SharpForum.Services;
-    using SharpForum.Data;
-    using System.Data.Entity.Validation;
-    using System.Diagnostics;
-    using SharpForum.Models.ViewModels;
 
     [Authorize]
     [HandleError(ExceptionType = typeof(Exception), View = "Error")]
@@ -69,7 +63,6 @@
         [Route("Users/All/{pageId:regex([0-9]+)?}")]
         public ActionResult All(int? pageId)
         {
-            // todo validate pageid
             var model = this.userService.GetAllUsersViewModel(pageId);
 
             return this.View(model);
@@ -82,7 +75,6 @@
         [Route("Users/Search/{searchTerm:regex([A-z]+[0-9]?)?}/{pageId:regex([0-9]+)?}")]
         public ActionResult Search(string searchTerm, int? pageId)
         {
-            // todo validate seachterm and pageid
             var viewModel = this.userService.GetSearchedUsersViewModel(searchTerm, pageId);
 
             return this.View(viewModel);

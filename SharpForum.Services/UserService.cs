@@ -1,16 +1,12 @@
-﻿
-
-namespace SharpForum.Services
+﻿namespace SharpForum.Services
 {
     using System;
-    using SharpForum.Models.ViewModels;
     using SharpForum.Models.EntityModels;
     using AutoMapper;
     using System.Linq;
     using SharpForum.Models.ViewModels.User;
     using System.Collections.Generic;
     using SharpForum.Models.Attributes;
-    using SharpForum.Models.BindingModels;
 
     public class UserService : Service
     {
@@ -152,7 +148,21 @@ namespace SharpForum.Services
             User user = this.Context.Users.Where(uid => uid.UserId == model.UserId).FirstOrDefault();
 
             user.AboutMe = model.AboutMe;
-            user.AvatarUrl = model.AvatarUrl;
+
+            if (!String.IsNullOrWhiteSpace(model.AvatarUrl))
+            {
+                if (model.AvatarUrl.Substring(0, 3) != "http")
+                {
+                    user.AvatarUrl = "http://" + model.AvatarUrl;
+                }
+
+                user.AvatarUrl = model.AvatarUrl;
+            }
+            else
+            {
+                user.AvatarUrl = "../content/img/defaultavatar.jpg";
+            }
+            
             user.ForumSignature = model.ForumSignature;
             user.LivingLocation = model.LivingLocation;
 

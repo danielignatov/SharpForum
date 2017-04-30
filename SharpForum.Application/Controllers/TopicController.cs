@@ -3,12 +3,9 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using SharpForum.Application;
-    using SharpForum.Models.ViewModels;
     using SharpForum.Models.ViewModels.Topic;
     using SharpForum.Services;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Web;
     using System.Web.Mvc;
 

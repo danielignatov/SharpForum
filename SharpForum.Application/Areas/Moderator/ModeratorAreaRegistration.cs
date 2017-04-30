@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace SharpForum.Application.Areas.Moderator
+﻿namespace SharpForum.Application.Areas.Moderator
 {
+    using System.Web.Mvc;
+
     public class ModeratorAreaRegistration : AreaRegistration 
     {
         public override string AreaName 

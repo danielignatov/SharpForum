@@ -50,7 +50,6 @@
         [HttpGet]
         [Authorize]
         [HandleError(ExceptionType = typeof(Exception), View = "Error")]
-        //[ValidateAntiForgeryToken]
         [Route("Reply/New/{topicId:regex([0-9]+)}")]
         public ActionResult New(int topicId)
         {

@@ -4,21 +4,19 @@
     using SharpForum.Services;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
     
     [HandleError(ExceptionType = typeof(Exception), View = "Error")]
     public class CategoryController : Controller
     {
         #region Fields
-        private CategoryService categoriesService;
+        private CategoryService categoryService;
         #endregion
 
         #region Constructors
         public CategoryController()
         {
-            this.categoriesService = new CategoryService();
+            this.categoryService = new CategoryService();
         }
         #endregion
         
@@ -31,7 +29,7 @@
         [Route("Categories/All")]
         public ActionResult All()
         {
-            IEnumerable<CategoryViewModel> viewModel = this.categoriesService.GetAllCategories();
+            IEnumerable<CategoryViewModel> viewModel = this.categoryService.GetAllCategories();
 
             return View(viewModel);
         }
@@ -43,12 +41,12 @@
         [Route("Category/{id:regex([0-9]+)}")]
         public ActionResult Category(int id)
         {
-            if (!this.categoriesService.IsCategoryValid(id))
+            if (!this.categoryService.IsCategoryValid(id))
             {
                 return HttpNotFound();
             }
 
-            CategoryTopicsViewModel viewModel = this.categoriesService.GetCategory(id);
+            CategoryTopicsViewModel viewModel = this.categoryService.GetCategory(id);
 
             return View(viewModel);
         }

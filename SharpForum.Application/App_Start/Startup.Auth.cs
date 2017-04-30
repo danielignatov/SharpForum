@@ -58,7 +58,7 @@ namespace SharpForum.Application
 
             app.UseFacebookAuthentication(
                appId: "1595035863842427",
-               appSecret: File.ReadAllText("C:\\Users\\Даниел\\Documents\\GitHub\\FacebookAuthentication.txt"));
+               appSecret: "secret1");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

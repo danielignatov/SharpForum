@@ -1,0 +1,24 @@
+﻿@model SharpForum.Models.ViewModels.Topic.TopicAuthorRepliesAuthorsViewModel
+
+<!-- Edit Topic Button -->
+<a href="/moderator/TopicModeration/edit/@Model.Topic.Id"><span class="glyphicon glyphicon-pencil gi-0p8x"></span></a>
+<!-- Lock Topic Button -->
+@if (Model.Topic.IsLocked)
+{
+    <a href="/moderator/TopicModeration/unlock/@Model.Topic.Id" title="Unlock"><span class="glyphicon glyphicon-lock gi-0p8x"></span></a>
+}
+else
+{
+    <a href="/moderator/TopicModeration/lock/@Model.Topic.Id" title="Lock"><span class="glyphicon glyphicon-lock gi-0p8x"></span></a>
+}
+<!-- Stick Topic Button -->
+@if (Model.Topic.IsSticky)
+{
+    <a href="/moderator/TopicModeration/unstick/@Model.Topic.Id" title="Unstick"><span class="glyphicon glyphicon-fire gi-0p8x"></span></a>
+}
+else
+{
+    <a href="/moderator/TopicModeration/stick/@Model.Topic.Id" title="Stick"><span class="glyphicon glyphicon-fire gi-0p8x"></span></a>
+}
+<!-- Delete Topic Button -->
+<a href="/moderator/TopicModeration/delete/@Model.Topic.CategoryId/@Model.Topic.Id"><span class="glyphicon glyphicon-trash gi-0p8x"></span></a>

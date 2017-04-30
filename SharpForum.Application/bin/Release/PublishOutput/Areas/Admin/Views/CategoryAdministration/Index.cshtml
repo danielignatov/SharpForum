@@ -1,0 +1,62 @@
+﻿@using SharpForum.Models.ViewModels
+@model IEnumerable<CategoryViewModel>
+
+@{
+    ViewBag.Title = "Edit Categories";
+}
+
+@if (Model.Any())
+{
+    <div class="list-group">
+        @{ foreach (var category in Model)
+            {
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @if (category.IsSuperCategory)
+                            {
+                                <strong>Supercategory </strong>
+                            }
+                            <strong class="text-info">
+                            @category.Name
+                            </strong>
+                            <br>
+                            @if (@category.Description != null)
+                            {
+                                <small class="text-info">@category.Description (Category prority: @category.Priority)</small>
+                            }
+                            else
+                            {
+                                <small class="text-info"><em>No Description</em> (Category prority: @category.Priority)</small>
+                            }
+                        </div>
+                        <div class="hidden-xs col-sm-6">
+                            <small class="text-info">@category.TopicsCount topics, @category.RepliesCount replies</small>
+                            <br>
+                            <small>@Html.Partial("_AdminCategoryMenu", category.Id)</small>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+        <div class="list-group-item">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3">
+                    @Html.ActionLink("Home", "All", "Category", new { Area = "" }, new { @class = "btn btn-primary btn-block" })
+                </div>
+                <div class="col-md-3">
+                    @Html.ActionLink("Add Category", "New", "CategoryAdministration", new { area = "Admin" }, new { @class = "btn btn-primary btn-block" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="list-group">
+        <div class="list-group-item">
+            <p class="text-center">There are no categories, @Html.ActionLink("add", "New", "CategoryAdministration", new { area = "Admin" }) one?</p>
+        </div>
+    </div>
+}

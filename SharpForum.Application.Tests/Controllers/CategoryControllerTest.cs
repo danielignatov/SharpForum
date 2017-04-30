@@ -1,22 +1,15 @@
-﻿using AutoMapper;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpForum.Application.Controllers;
-using System.Net;
-using System.Threading;
-using SharpForum.Data;
-using SharpForum.Models.EntityModels;
-using SharpForum.Models.ViewModels;
-using SharpForum.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using TestStack.FluentMVCTesting;
-
-namespace SharpForum.Application.Tests.Controllers
+﻿namespace SharpForum.Application.Tests.Controllers
 {
+    using AutoMapper;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using SharpForum.Application.Controllers;
+    using System.Net;
+    using SharpForum.Models.EntityModels;
+    using SharpForum.Models.ViewModels;
+    using SharpForum.Services;
+    using System.Collections.Generic;
+    using TestStack.FluentMVCTesting;
+
     [TestClass]
     public class CategoryControllerTest
     {

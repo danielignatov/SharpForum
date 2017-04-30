@@ -1,13 +1,9 @@
-﻿using SharpForum.Models.ViewModels.Reply;
-using SharpForum.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace SharpForum.Application.Areas.Moderator.Controllers
+﻿namespace SharpForum.Application.Areas.Moderator.Controllers
 {
+    using SharpForum.Models.ViewModels.Reply;
+    using SharpForum.Services;
+    using System.Web.Mvc;
+
     [RouteArea("Moderator")]
     [RoutePrefix("ReplyModeration")]
     public class ReplyModerationController : Controller

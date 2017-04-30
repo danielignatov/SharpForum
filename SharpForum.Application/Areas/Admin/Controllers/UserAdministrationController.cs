@@ -1,19 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using SharpForum.Data;
-using SharpForum.Models.BindingModels;
-using SharpForum.Models.ViewModels.User;
-using SharpForum.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-
-namespace SharpForum.Application.Areas.Admin.Controllers
+﻿namespace SharpForum.Application.Areas.Admin.Controllers
 {
+    using Microsoft.AspNet.Identity.Owin;
+    using SharpForum.Models.BindingModels;
+    using SharpForum.Models.ViewModels.User;
+    using SharpForum.Services;
+    using System.Web;
+    using System.Web.Mvc;
+
     [RouteArea("Admin")]
     [RoutePrefix("UserAdministration")]
     public class UserAdministrationController : Controller

@@ -1,8 +1,8 @@
-﻿using System.Web;
-using System.Web.Optimization;
-
-namespace SharpForum.Application
+﻿namespace SharpForum.Application
 {
+    using System.Web;
+    using System.Web.Optimization;
+
     public class BundleConfig
     {
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
@@ -23,9 +23,9 @@ namespace SharpForum.Application
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/css/style.css"));
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
+                      "~/Content/style/bootstrap.css",
+                      "~/Content/style/style.css"));
         }
     }
 }

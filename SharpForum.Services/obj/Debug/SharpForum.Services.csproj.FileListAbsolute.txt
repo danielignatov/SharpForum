@@ -6,8 +6,8 @@ C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Data.dll
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\SharpForum.Models.dll
-C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.Mvc.dll
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.Mvc.dll
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\Microsoft.Owin.dll
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.Razor.dll
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.WebPages.Razor.dll
@@ -23,8 +23,8 @@ C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\EntityFramework.xml
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.Mvc.xml
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.Mvc.xml
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\Microsoft.Owin.xml
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.Razor.xml
 C:\Users\Даниел\Documents\GitHub\AspNet-Mvc-SharpForum\SharpForum.Services\bin\Debug\System.Web.WebPages.Razor.xml

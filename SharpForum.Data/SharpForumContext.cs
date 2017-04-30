@@ -2,9 +2,7 @@ namespace SharpForum.Data
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     using SharpForum.Models.EntityModels;
-    using System;
     using System.Data.Entity;
-    using System.Linq;
 
     public class SharpForumContext : IdentityDbContext<User>
     {

@@ -2,7 +2,6 @@
 {
     using AutoMapper;
     using SharpForum.Models.EntityModels;
-    using SharpForum.Models.ViewModels;
     using System.Collections.Generic;
     using System;
     using System.Linq;
