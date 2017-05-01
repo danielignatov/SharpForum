@@ -38,15 +38,15 @@
         /// Display specific category with it's topics.
         /// </summary>
         [HttpGet]
-        [Route("Category/{id:regex([0-9]+)}")]
-        public ActionResult Category(int id)
+        [Route("Category/{id:regex([0-9]+)}/{pageId:regex([0-9]+)?}")]
+        public ActionResult Category(int id, int? pageId)
         {
             if (!this.categoryService.IsCategoryValid(id))
             {
                 return HttpNotFound();
             }
 
-            CategoryTopicsViewModel viewModel = this.categoryService.GetCategory(id);
+            CategoryTopicsViewModel viewModel = this.categoryService.GetCategory(id, pageId);
 
             return View(viewModel);
         }

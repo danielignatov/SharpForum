@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@model SharpForum.Models.ViewModels.Topic.TopicAuthorRepliesAuthorsViewModel
+<div class="list-group-item">
+    <div class="row">
+        @if (Request.IsAuthenticated)
+        {
+            if (!Model.Topic.IsLocked)
+            {
+                <p class="text-center">No replies on this topic. Be the first to reply.</p>
+                <div class="col-md-2 col-md-offset-5">
+                    <a href="/Reply/New/@Model.Topic.Id" class="btn btn-primary btn-block" role="button">New Reply</a>
+                </div>
+            }
+            else
+            {
+                <p class="text-center">This topic is locked.</p>
+                <div class="col-md-2 col-md-offset-5">
+                    <button type="button" class="btn btn-primary btn-block disabled"><span class="glyphicon glyphicon-lock gi-0p8x"></span> New Reply</button>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-center">You must be logged in to post reply.</p>
+            <div class="col-md-2 col-md-offset-5">
+                <a href="/User/Login" class="btn btn-primary btn-block" role="button">Log in</a>
+            </div>
+        }
+    </div>
+</div>

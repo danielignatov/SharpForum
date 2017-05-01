@@ -2,12 +2,8 @@
 @model SharpForum.Models.ViewModels.CategoryTopicsViewModel
 
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = Model.Category.Name + " Category";
 }
-
-<!-- <h2>Category</h2> -->
-
-<!-- TODO -->
 
 <!-- start - if authorised - show new topic button -->
 
@@ -24,6 +20,20 @@
             <a href="/Topic/@topic.Id" class="list-group-item">
                 <div class="row">
                     <div class="col-sm-6">
+                        <!-- If the topic is sticky and locked -->
+                        @if (topic.IsSticky && topic.IsLocked)
+                        {
+                            <span class="glyphicon glyphicon-pushpin gi-0p8x"></span> 
+                            <span class="glyphicon glyphicon-lock gi-0p8x"></span>
+                        }
+                        else if (topic.IsSticky)
+                        {
+                            <span class="glyphicon glyphicon-pushpin gi-0p8x"></span>
+                        }
+                        else if (topic.IsLocked)
+                        {
+                            <span class="glyphicon glyphicon-lock gi-0p8x"></span>
+                        }
                         <strong>@topic.Title</strong>
                         <br>
                         <small>Created by <strong>@topic.AuthorUsername</strong></small>
@@ -36,5 +46,37 @@
                 </div>
             </a>
         }
+    }
+
+    @* Pagination *@
+    @if (Model.Pagination.EndPage > 1)
+    {
+        <ul class="pagination">
+            @if (Model.Pagination.CurrentPage > 1)
+            {
+                <li>
+                    <a href="~/Category/@Model.Category.Id">First</a>
+                </li>
+                <li>
+                    <a href="~/Category/@{@Model.Category.Id}?pageId=@(Model.Pagination.CurrentPage - 1)">Previous</a>
+                </li>
+            }
+
+            @for (var page = Model.Pagination.StartPage; page <= Model.Pagination.EndPage; page++)
+            {
+                <li class="@(page == Model.Pagination.CurrentPage ? "active" : "")">
+                    <a href="~/Category/@{@Model.Category.Id}?pageId=@page">@page</a>
+                </li>}
+
+            @if (Model.Pagination.CurrentPage < Model.Pagination.TotalPages)
+            {
+                <li>
+                    <a href="~/Category/@{@Model.Category.Id}?pageId=@(Model.Pagination.CurrentPage + 1)">Next</a>
+                </li>
+                <li>
+                    <a href="~/Category/@{@Model.Category.Id}?pageId=@(Model.Pagination.TotalPages)">Last</a>
+                </li>
+            }
+        </ul>
     }
 </div>

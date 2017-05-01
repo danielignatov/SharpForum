@@ -1,6 +1,7 @@
 ﻿namespace SharpForum.Services
 {
     using AutoMapper;
+    using SharpForum.Models.Attributes;
     using SharpForum.Models.EntityModels;
     using SharpForum.Models.ViewModels;
     using SharpForum.Models.ViewModels.Topic;
@@ -19,10 +20,11 @@
             return viewModel;
         }
         
-        public CategoryTopicsViewModel GetCategory(int id)
+        public CategoryTopicsViewModel GetCategory(int id, int? pageId)
         {
             Category category = this.Context.Categories.Find(id);
-        
+            List<Topic> allTopicsOrdered = category.Topics.OrderByDescending(st => st.IsSticky == true).ThenByDescending(pd => pd.PublishDate).ToList();
+            
             if ((category == null) || (category.IsSuperCategory))
             {
                 // In controller check if it's null and throw error
@@ -31,10 +33,25 @@
         
             CategoryTopicsViewModel viewModel = new CategoryTopicsViewModel()
             {
-                Category = Mapper.Instance.Map<Category, CategoryViewModel>(category),
-                Topics = Mapper.Instance.Map<IEnumerable<Topic>, IEnumerable<TopicViewModel>>(category.Topics)
+                Category = Mapper.Instance.Map<Category, CategoryViewModel>(category)
             };
-        
+
+            if (pageId == null)
+            {
+                viewModel.Pagination = new Pagination(allTopicsOrdered.Count(), 1);
+                
+                viewModel.Topics = Mapper.Instance.Map<IEnumerable<Topic>, IEnumerable<TopicViewModel>>(allTopicsOrdered.Take(10));
+            }
+            else
+            {
+                viewModel.Pagination = new Pagination(allTopicsOrdered.Count(), (int)pageId);
+
+                viewModel.Topics = Mapper.Instance.Map<IEnumerable<Topic>, IEnumerable<TopicViewModel>>(
+                    allTopicsOrdered.Skip((viewModel.Pagination.CurrentPage - 1) * 
+                    viewModel.Pagination.PageSize).Take(viewModel.Pagination.PageSize)
+                    );
+            }
+
             return viewModel;
         }
 

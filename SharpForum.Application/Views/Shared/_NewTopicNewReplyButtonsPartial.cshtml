@@ -3,7 +3,14 @@
 @if (Request.IsAuthenticated)
 {
     <a href="/Topic/New/@Model.Topic.CategoryId" class="btn btn-success" role="button">New Topic</a>
-    <a href="/Reply/New/@Model.Topic.Id" class="btn btn-success" role="button">New Reply</a>
+    if (!Model.Topic.IsLocked)
+    {
+        <a href="/Reply/New/@Model.Topic.Id" class="btn btn-success" role="button">New Reply</a>
+    }
+    else
+    {
+        <button type="button" class="btn btn-success disabled"><span class="glyphicon glyphicon-lock gi-0p8x"></span> New Reply</button>
+    }
     <br />
     <br />
 }

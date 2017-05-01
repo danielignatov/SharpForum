@@ -120,15 +120,19 @@
         public void AddNewTopic(TopicViewModel model, int categoryId, string userId)
         {
             Topic topic = Mapper.Instance.Map<TopicViewModel, Topic>(model);
-            Category currentCategory = this.Context.Categories.Find(categoryId);
-            User currentAuthor = this.Context.Users.Find(userId);
-            
-            topic.PublishDate = DateTime.Now;
-            topic.Author = currentAuthor;
-            topic.Category = currentCategory;
 
-            this.Context.Topics.Add(topic);
-            this.Context.SaveChanges();
+            if (!topic.IsLocked)
+            {
+                Category currentCategory = this.Context.Categories.Find(categoryId);
+                User currentAuthor = this.Context.Users.Find(userId);
+
+                topic.PublishDate = DateTime.Now;
+                topic.Author = currentAuthor;
+                topic.Category = currentCategory;
+
+                this.Context.Topics.Add(topic);
+                this.Context.SaveChanges();
+            }
         }
 
         public ShowTopicsAuthorsRepliesAuthorsViewModel GetSearchedTopicsViewModel(string searchTerm, bool? includeContent, bool? includeReplies, int? pageId)

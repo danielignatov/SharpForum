@@ -77,15 +77,7 @@
     <!-- Replies start from here -->
     @if (Model.Replies.Count() == 0)
     {
-        <div class="list-group-item">
-            <div class="row">
-                    <p class="text-center">No replies on this topic. Be the first to reply.</p>
-                <!-- IF LOGGED IN, MAKE PARTIAL, send model - todo-->
-                <div class="col-md-2 col-md-offset-5">
-                    <a href="/Reply/New/@Model.Topic.Id" class="btn btn-primary btn-block" role="button">New Reply</a>
-                </div>
-            </div>
-        </div>
+        @Html.Partial("_NoTopicRepliesBoxPartial", Model)
     }
     else
     {

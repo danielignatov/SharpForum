@@ -227,7 +227,7 @@
     <Content Include="Content\img\bg.png" />
     <Content Include="Content\img\defaultavatar.jpg" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -246,10 +246,10 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminCategoryMenu.cshtml" />
     <Content Include="Areas\Admin\Views\UserAdministration\EditProfile.cshtml" />
     <Content Include="Areas\Admin\Views\UserAdministration\SetRole.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\style\bootstrap.min.css.map" />
     <Content Include="Content\style\bootstrap.css.map" />
     <Content Include="Content\style\bootstrap-theme.min.css.map" />
@@ -330,6 +330,7 @@
     <Content Include="Views\Shared\_AdminUserMenu.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Shared\_NoTopicRepliesBoxPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Data\SharpForum.Data.csproj">

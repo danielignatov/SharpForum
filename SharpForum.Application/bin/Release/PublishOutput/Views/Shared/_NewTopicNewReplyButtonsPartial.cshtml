@@ -1,9 +1,0 @@
-﻿@using Microsoft.AspNet.Identity
-@model SharpForum.Models.ViewModels.Topic.TopicAuthorRepliesAuthorsViewModel
-@if (Request.IsAuthenticated)
-{
-    <a href="/Topic/New/@Model.Topic.CategoryId" class="btn btn-success" role="button">New Topic</a>
-    <a href="/Reply/New/@Model.Topic.Id" class="btn btn-success" role="button">New Reply</a>
-    <br />
-    <br />
-}

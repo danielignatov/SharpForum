@@ -284,7 +284,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/13/2017 15:47:48</publishTime>
     </File>
     <File Include="bin/SharpForum.Application.dll">
-      <publishTime>04/30/2017 16:04:02</publishTime>
+      <publishTime>01/05/2017 20:13:31</publishTime>
     </File>
     <File Include="bin/SharpForum.Data.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -299,7 +299,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/30/2017 15:12:49</publishTime>
     </File>
     <File Include="bin/SharpForum.Services.dll">
-      <publishTime>04/30/2017 15:36:01</publishTime>
+      <publishTime>01/05/2017 15:32:30</publishTime>
     </File>
     <File Include="bin/SharpForum.Services.dll.config">
       <publishTime>04/30/2017 15:12:50</publishTime>
@@ -370,6 +370,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/css/style.css">
       <publishTime>03/27/2017 19:02:55</publishTime>
     </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>04/30/2017 15:29:47</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>04/30/2017 15:29:47</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>04/30/2017 15:29:47</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/30/2017 15:29:47</publishTime>
+    </File>
+    <File Include="Content/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>04/30/2017 15:29:47</publishTime>
+    </File>
     <File Include="Content/img/bg.png">
       <publishTime>03/27/2017 19:02:55</publishTime>
     </File>
@@ -379,11 +394,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/Site.css">
       <publishTime>04/15/2017 15:48:04</publishTime>
     </File>
+    <File Include="Content/style/bootstrap-theme.css">
+      <publishTime>04/30/2017 15:29:53</publishTime>
+    </File>
+    <File Include="Content/style/bootstrap-theme.css.map">
+      <publishTime>04/30/2017 15:29:53</publishTime>
+    </File>
+    <File Include="Content/style/bootstrap-theme.min.css">
+      <publishTime>04/30/2017 15:29:53</publishTime>
+    </File>
+    <File Include="Content/style/bootstrap-theme.min.css.map">
+      <publishTime>04/30/2017 15:29:53</publishTime>
+    </File>
     <File Include="Content/style/bootstrap.css">
       <publishTime>04/30/2017 15:44:36</publishTime>
     </File>
+    <File Include="Content/style/bootstrap.css.map">
+      <publishTime>04/30/2017 15:29:53</publishTime>
+    </File>
     <File Include="Content/style/bootstrap.min.css">
       <publishTime>04/30/2017 15:44:36</publishTime>
+    </File>
+    <File Include="Content/style/bootstrap.min.css.map">
+      <publishTime>04/30/2017 15:29:47</publishTime>
     </File>
     <File Include="Content/style/style.css">
       <publishTime>03/27/2017 19:02:55</publishTime>
@@ -479,7 +512,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 10:49:22</publishTime>
     </File>
     <File Include="Views/Category/Category.cshtml">
-      <publishTime>04/30/2017 14:48:48</publishTime>
+      <publishTime>05/01/2017 20:36:15</publishTime>
     </File>
     <File Include="Views/Edit/AddPhoneNumber.cshtml">
       <publishTime>04/11/2017 10:41:22</publishTime>
@@ -542,7 +575,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/11/2017 13:46:17</publishTime>
     </File>
     <File Include="Views/Shared/_NewTopicNewReplyButtonsPartial.cshtml">
-      <publishTime>04/15/2017 17:24:45</publishTime>
+      <publishTime>01/05/2017 13:51:22</publishTime>
+    </File>
+    <File Include="Views/Shared/_NoTopicRepliesBoxPartial.cshtml">
+      <publishTime>01/05/2017 15:13:54</publishTime>
     </File>
     <File Include="Views/Shared/_UserMenuPartial.cshtml">
       <publishTime>04/22/2017 13:27:17</publishTime>
@@ -563,7 +599,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/22/2017 11:50:18</publishTime>
     </File>
     <File Include="Views/Topic/Topic.cshtml">
-      <publishTime>04/30/2017 14:46:49</publishTime>
+      <publishTime>01/05/2017 15:11:49</publishTime>
     </File>
     <File Include="Views/User/All.cshtml">
       <publishTime>04/30/2017 15:07:58</publishTime>
@@ -617,7 +653,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/27/2017 15:31:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/30/2017 15:36:03</publishTime>
+      <publishTime>05/01/2017 20:38:31</publishTime>
     </File>
   </ItemGroup>
 </Project>
