@@ -58,7 +58,7 @@ namespace SharpForum.Application
 
             app.UseFacebookAuthentication(
                appId: "1595035863842427",
-               appSecret: "secret1");
+               appSecret: "secret");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
