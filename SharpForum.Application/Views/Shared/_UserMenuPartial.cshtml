@@ -1,13 +1,13 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Profile<span class="caret"></span></a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">My Profile<span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li>@Html.ActionLink("View Profile", "MyProfile", "User", new { Area = "" }, new { })</li>
-            <li>@Html.ActionLink("Edit Profile", "MyProfile", "Edit", new { Area = "" }, new { })</li>
-            <li>@Html.ActionLink("My Topics", "MyTopics", "Topic", new { Area = "" }, new { })</li>
-            <li>@Html.ActionLink("My Replies", "MyReplies", "Topic", new { Area = "" }, new { })</li>
+            <li>@Html.ActionLink("View Profile", "MyProfile", "User", new { Area = "" }, new { @class = "dropdown-item" })</li>
+            <li>@Html.ActionLink("Edit Profile", "MyProfile", "Edit", new { Area = "" }, new { @class = "dropdown-item" })</li>
+            <li>@Html.ActionLink("My Topics", "MyTopics", "Topic", new { Area = "" }, new { @class = "dropdown-item" })</li>
+            <li>@Html.ActionLink("My Replies", "MyReplies", "Topic", new { Area = "" }, new { @class = "dropdown-item" })</li>
         </ul>
     </li>
 }

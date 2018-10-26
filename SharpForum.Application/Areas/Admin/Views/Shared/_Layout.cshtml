@@ -12,25 +12,26 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    @Html.ActionLink("SharpForum", "All", "Category", new { Area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "All", "Category", new { Area = "" }, new { })</li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topics<span class="caret"></span></a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+            @Html.ActionLink("SharpForum", "All", "Category", new { Area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav mr-auto">
+                    <li>@Html.ActionLink("Home", "All", "Category", new { Area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Topics<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Search", "Search", "Topic", new { Area = "" }, new { })</li>
-                            <li>@Html.ActionLink("Latest", "Latest", "Topic", new { Area = "" }, new { })</li>
+                            <li>@Html.ActionLink("Search", "Search", "Topic", new { Area = "" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Latest", "Latest", "Topic", new { Area = "" }, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Search", "Search", "User", new { Area = "" }, new { })</li>
-                            <li>@Html.ActionLink("All", "All", "User", new { Area = "" }, new { })</li>
+                            <li>@Html.ActionLink("Search", "Search", "User", new { Area = "" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("All", "All", "User", new { Area = "" }, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
                     @Html.Partial("_UserMenuPartial")

@@ -21,16 +21,16 @@
             <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
                 <p class="text-center"><a href="/userprofile/@Model.Author.UserId"><strong>@Model.Author.UserName</strong></a><br><small>@Model.Author.RoleTitle</small></p>
                 <p class="text-center"><img src="@Model.Author.AvatarUrl" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
-                <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> @Model.Author.TotalMessagesCount</p>
+                <p class="small text-center"><i class="fas fa-comment-alt fa-sm"></i> @Model.Author.TotalMessagesCount</p>
                 <p class="text-center">
-                    <a href="/userprofile/@Model.Author.UserId" title="User profile"><span class="glyphicon glyphicon-user"></span></a>
+                    <a href="/userprofile/@Model.Author.UserId" title="User profile"><i class="fas fa-user"></i></a>
                     @if (Model.Author.WebsiteUrl != null)
                     {
-                        <a href="@Model.Author.WebsiteUrl" title="User website"><span class="glyphicon glyphicon-globe"></span></a>
+                        <a href="@Model.Author.WebsiteUrl" title="User website"><i class="fas fa-globe-americas"></i></a>
                     }
                     else
                     {
-                        <span class="glyphicon glyphicon-globe"></span>
+                        <i class="fas fa-globe-americas"></i>
                     }
                 </p>
             </div>
@@ -39,9 +39,9 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <p class="small text-left text-muted">
-                            <span class="glyphicon glyphicon-home gi-0p8x"></span> <a href="/categories/all">Home</a>
-                            <span class="glyphicon glyphicon-chevron-right gi-0p8x"></span> <a href="/category/@Model.Topic.CategoryId">@Model.Topic.CategoryName</a>
-                            <span class="glyphicon glyphicon-chevron-right gi-0p8x"></span> <a href="/topic/@Model.Topic.Id">@Model.Topic.Title</a>
+                            <i class="fas fa-home fa-sm"></i> <a href="/categories/all">Home</a>
+                            <i class="fas fa-chevron-right fa-sm"></i> <a href="/category/@Model.Topic.CategoryId">@Model.Topic.CategoryName</a>
+                            <i class="fas fa-chevron-right fa-sm"></i> <a href="/topic/@Model.Topic.Id">@Model.Topic.Title</a>
                         </p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
@@ -89,16 +89,16 @@
                     <div class="hidden-xs hidden-sm col-md-2 col-lg-2">
                         <p class="text-center"><a href="/userprofile/@reply.Author.UserId"><strong>@reply.Author.UserName</strong></a><br><small>@reply.Author.RoleTitle</small></p>
                         <p class="text-center"><img src="@reply.Author.AvatarUrl" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
-                        <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> @reply.Author.TotalMessagesCount</p>
+                        <p class="small text-center"><i class="fas fa-comment-alt fa-sm"></i> @reply.Author.TotalMessagesCount</p>
                         <p class="text-center">
-                            <a href="/userprofile/@reply.Author.UserId" title="User profile"><span class="glyphicon glyphicon-user"></span></a>
+                            <a href="/userprofile/@reply.Author.UserId" title="User profile"><i class="fas fa-user"></i></a>
                             @if (reply.Author.WebsiteUrl != null)
-                    {
-                                <a href="@reply.Author.WebsiteUrl" title="User website"><span class="glyphicon glyphicon-globe"></span></a>
+                            {
+                                <a href="@reply.Author.WebsiteUrl" title="User website"><i class="fas fa-globe-americas"></i></a>
                             }
                             else
                             {
-                                <span class="glyphicon glyphicon-globe"></span>
+                                <i class="fas fa-globe-americas"></i>
                             }
                         </p>
                     </div>
@@ -107,7 +107,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6">
                                 <p class="small text-left text-muted">
-                                    <span class="glyphicon glyphicon-link gi-0p8x"></span> <a href="#replyid-@reply.Reply.Id">Anchor Link</a>
+                                    <i class="fas fa-link fa-sm"></i> <a href="#replyid-@reply.Reply.Id">Anchor Link</a>
                                 </p>
                             </div>
                             <div class="col-xs-12 col-sm-6">

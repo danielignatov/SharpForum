@@ -16,15 +16,15 @@
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <p class="text-center"><a href="/userprofile/@Model.UserId"><strong>@Model.UserName</strong></a><br><small>@Model.RoleTitle</small></p>
                 <p class="text-center"><img src="@Model.AvatarUrl" alt="User avatar" class="img-thumbnail img-responsive center-block" style="width: 150px;"></p>
-                <p class="small text-center"><span class="glyphicon glyphicon-calendar gi-0p8x"></span> Registration date: @Model.DateOfRegistration.ToString("dd/MM/yyyy")</p>
-                <p class="small text-center"><span class="glyphicon glyphicon-comment gi-0p8x"></span> Forum messages: @Model.TotalMessagesCount</p>
+                <p class="small text-center"><i class="fas fa-calendar-alt fa-sm"></i> Registration date: @Model.DateOfRegistration.ToString("dd/MM/yyyy")</p>
+                <p class="small text-center"><i class="fas fa-comment-alt fa-sm"></i> Forum messages: @Model.TotalMessagesCount</p>
                 @if (Model.LivingLocation != null)
                 {
-                    <p class="small text-center"><span class="glyphicon glyphicon-map-marker gi-0p8x"></span> From: @Model.LivingLocation</p>
+                    <p class="small text-center"><i class="fas fa-map-marker-alt fa-sm"></i> From: @Model.LivingLocation</p>
                 }
                 @if (Model.WebsiteUrl != null)
                 {
-                    <p class="small text-center"><span class="glyphicon glyphicon-globe gi-0p8x"></span> User website: <a href="@Model.WebsiteUrl" title="User website">Link</a></p>
+                    <p class="small text-center"><i class="fas fa-globe-americas fa-sm"></i> User website: <a href="@Model.WebsiteUrl" title="User website">Link</a></p>
                 }
             </div>
             <!-- Topic content -->

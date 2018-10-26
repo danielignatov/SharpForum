@@ -1,3 +1,7 @@
 Background tile source: http://www.pixeden.com/graphic-web-backgrounds/subtle-light-tile-pattern-vol6
 
 Custom Bootstrap source: https://bootswatch.com/cosmo/
+
+Avatar photos source: https://pixabay.com/bg/users/Bess-Hamiti-909086/
+
+Font awesome source: https://fontawesome.com/

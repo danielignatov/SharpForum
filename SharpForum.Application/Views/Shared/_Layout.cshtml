@@ -12,25 +12,26 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    @Html.ActionLink("SharpForum", "All", "Category", null, new { @class = "navbar-brand" })
-                </div>
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "All", "Category")</li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topics<span class="caret"></span></a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-2">
+            @Html.ActionLink("SharpForum", "All", "Category", null, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "All", "Category", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Topics<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Search", "Search", "Topic")</li>
-                            <li>@Html.ActionLink("Latest", "Latest", "Topic")</li>
+                            <li>@Html.ActionLink("Search", "Search", "Topic", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Latest", "Latest", "Topic", null, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Search", "Search", "User")</li>
-                            <li>@Html.ActionLink("All", "All", "User")</li>
+                            <li>@Html.ActionLink("Search", "Search", "User", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("All", "All", "User", null, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
                     @Html.Partial("_UserMenuPartial")
@@ -42,12 +43,14 @@
     </div>
 
     <!-- Content Goes Here -->
-    <div class="container body-content">
+    <div class="container body-content my-2">
         @RenderBody()
 
-        <footer>
-            <p class="text-muted">Sharp<strong>Forum</strong> @DateTime.Now.Year<br /><small>Made by: Daniel<strong>Ignatov</strong></small></p>
-        </footer>
+        <div class="mt-2">
+            <footer>
+                <p class="text-muted">Sharp<strong>Forum</strong> @DateTime.Now.Year<br /><small>Made by: Daniel<strong>Ignatov</strong></small></p>
+            </footer>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

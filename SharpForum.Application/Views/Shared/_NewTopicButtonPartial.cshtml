@@ -2,7 +2,7 @@
 @model SharpForum.Models.ViewModels.CategoryTopicsViewModel
 @if (Request.IsAuthenticated)
 {
-<a href="/Topic/New/@Model.Category.Id" class="btn btn-success" role="button">New Topic</a>
-<br />
-<br />
+    <div class="my-2">
+        <a href="/Topic/New/@Model.Category.Id" class="btn btn-success" role="button">New Topic</a>
+    </div>
 }

@@ -23,16 +23,16 @@
                         <!-- If the topic is sticky and locked -->
                         @if (topic.IsSticky && topic.IsLocked)
                         {
-                            <span class="glyphicon glyphicon-pushpin gi-0p8x"></span> 
-                            <span class="glyphicon glyphicon-lock gi-0p8x"></span>
+                            <i class="fas fa-map-pin fa-sm"></i>
+                            <i class="fas fa-lock fa-sm"></i>
                         }
                         else if (topic.IsSticky)
                         {
-                            <span class="glyphicon glyphicon-pushpin gi-0p8x"></span>
+                            <i class="fas fa-map-pin fa-sm"></i>
                         }
                         else if (topic.IsLocked)
                         {
-                            <span class="glyphicon glyphicon-lock gi-0p8x"></span>
+                            <i class="fas fa-lock fa-sm"></i>
                         }
                         <strong>@topic.Title</strong>
                         <br>

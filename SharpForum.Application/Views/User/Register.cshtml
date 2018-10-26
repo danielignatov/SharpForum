@@ -10,7 +10,7 @@
     <!-- User Profile -->
     <div class="list-group-item">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <div class="col-xs-12 col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                 @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                        <div class="offset-md-2 col-md-10">
                             <input type="submit" class="btn btn-default" value="Register" />
                         </div>
                     </div>
