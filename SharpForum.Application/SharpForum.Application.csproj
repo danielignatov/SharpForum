@@ -256,8 +256,6 @@
     <Content Include="Content\style\bootstrap-grid.min.css" />
     <Content Include="Content\style\bootstrap-reboot.css" />
     <Content Include="Content\style\bootstrap-reboot.min.css" />
-    <Content Include="Content\style\bootstrap-theme.css" />
-    <Content Include="Content\style\bootstrap-theme.min.css" />
     <Content Include="Content\style\bootstrap.css" />
     <Content Include="Content\style\bootstrap.min.css" />
     <Content Include="Content\style\style.css" />
@@ -285,8 +283,6 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminCategoryMenu.cshtml" />
     <Content Include="Areas\Admin\Views\UserAdministration\EditProfile.cshtml" />
     <Content Include="Areas\Admin\Views\UserAdministration\SetRole.cshtml" />
-    <Content Include="Content\style\bootstrap-theme.min.css.map" />
-    <Content Include="Content\style\bootstrap-theme.css.map" />
     <Content Include="Content\style\bootstrap.min.css.map" />
     <Content Include="Content\style\bootstrap.css.map" />
     <Content Include="Content\style\bootstrap-reboot.min.css.map" />
@@ -306,14 +302,10 @@
     <Content Include="Content\webfonts\fa-brands-400.ttf" />
     <Content Include="Content\webfonts\fa-brands-400.eot" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bs\bootstrap.bundle.js" />
+    <Content Include="Scripts\bs\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bs\bootstrap.js" />
+    <Content Include="Scripts\bs\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -322,6 +314,10 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bs\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bs\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bs\bootstrap.js.map" />
+    <Content Include="Scripts\bs\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\fontawesome\all.min.js" />
