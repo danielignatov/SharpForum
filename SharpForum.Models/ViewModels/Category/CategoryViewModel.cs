@@ -20,8 +20,8 @@
         public int Priority { get; set; }
 
         [Required]
-        [Display(Name = "Supercategory")]
-        public bool IsSuperCategory { get; set; }
+        [Display(Name = "Category Placeholder")]
+        public bool IsCategoryPlaceholder { get; set; }
 
         // Custom view properties
         

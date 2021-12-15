@@ -22,7 +22,7 @@
 
         public int Priority { get; set; }
 
-        public bool IsSuperCategory { get; set; }
+        public bool IsCategoryPlaceholder { get; set; }
 
         public virtual ICollection<Topic> Topics { get; set; }
         #endregion

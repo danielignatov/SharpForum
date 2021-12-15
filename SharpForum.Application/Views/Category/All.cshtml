@@ -9,7 +9,7 @@
 <div class="list-group">
     @{ foreach (var category in Model)
         {
-            if (category.IsSuperCategory == false)
+            if (category.IsCategoryPlaceholder == false)
             {
                 <a href="/Category/@category.Id" class="list-group-item">
                     <div class="row">

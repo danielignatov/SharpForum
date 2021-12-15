@@ -4,7 +4,6 @@ namespace SharpForum.Data.Migrations
     using Microsoft.AspNet.Identity.EntityFramework;
     using SharpForum.Models.EntityModels;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -42,7 +41,7 @@ namespace SharpForum.Data.Migrations
                     Name = "Home",
                     Description = "Default home category",
                     Priority = 1,
-                    IsSuperCategory = true
+                    IsCategoryPlaceholder = true
                 };
 
                 Category newsCategory = new Category()
@@ -50,7 +49,7 @@ namespace SharpForum.Data.Migrations
                     Name = "News",
                     Description = "News about the forum",
                     Priority = 2,
-                    IsSuperCategory = false
+                    IsCategoryPlaceholder = false
                 };
 
                 Category introductionCategory = new Category()
@@ -58,7 +57,7 @@ namespace SharpForum.Data.Migrations
                     Name = "Introduction",
                     Description = "Tell us about yourself",
                     Priority = 3,
-                    IsSuperCategory = false
+                    IsCategoryPlaceholder = false
                 };
 
                 Category entertainmentCategory = new Category()
@@ -66,7 +65,7 @@ namespace SharpForum.Data.Migrations
                     Name = "Entertainment",
                     Description = "Default entertainment category",
                     Priority = 4,
-                    IsSuperCategory = true
+                    IsCategoryPlaceholder = true
                 };
 
                 Category moviesCategory = new Category()
@@ -74,7 +73,7 @@ namespace SharpForum.Data.Migrations
                     Name = "Movies",
                     Description = "Discuss movies here",
                     Priority = 5,
-                    IsSuperCategory = false
+                    IsCategoryPlaceholder = false
                 };
 
                 Category musicCategory = new Category()
@@ -82,7 +81,7 @@ namespace SharpForum.Data.Migrations
                     Name = "Music",
                     Description = "Discuss music here",
                     Priority = 6,
-                    IsSuperCategory = false
+                    IsCategoryPlaceholder = false
                 };
 
                 context.Categories.Add(homeCategory);

@@ -1,7 +1,6 @@
 ﻿namespace SharpForum.Models.ViewModels.User
 {
     using System.ComponentModel.DataAnnotations;
-    using System;
 
     public class RegisterViewModel
     {

@@ -7,7 +7,6 @@
     using SharpForum.Models.ViewModels.Topic;
     using SharpForum.Models.ViewModels.User;
     using System.Linq;
-    using System.Web.Http;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
@@ -19,7 +18,6 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
             this.RegisterMaps();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

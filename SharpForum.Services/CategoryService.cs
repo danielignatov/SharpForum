@@ -25,7 +25,7 @@
             Category category = this.Context.Categories.Find(id);
             List<Topic> allTopicsOrdered = category.Topics.OrderByDescending(st => st.IsSticky == true).ThenByDescending(pd => pd.PublishDate).ToList();
             
-            if ((category == null) || (category.IsSuperCategory))
+            if ((category == null) || (category.IsCategoryPlaceholder))
             {
                 // In controller check if it's null and throw error
                 return null;
@@ -92,7 +92,7 @@
             Category category = this.Context.Categories.Find(model.Id);
             category.Name = model.Name;
             category.Priority = model.Priority;
-            category.IsSuperCategory = model.IsSuperCategory;
+            category.IsCategoryPlaceholder = model.IsCategoryPlaceholder;
             category.Description = model.Description;
 
             this.Context.SaveChanges();

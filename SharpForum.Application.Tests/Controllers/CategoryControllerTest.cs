@@ -37,7 +37,7 @@
                     Id = 1,
                     Name = "NewsTest",
                     Description = null,
-                    IsSuperCategory = true,
+                    IsCategoryPlaceholder = true,
                     Priority = 1
                 },
                 new Category()
@@ -45,7 +45,7 @@
                     Id = 2,
                     Name = "CategoryTest",
                     Description = "Desc",
-                    IsSuperCategory = false,
+                    IsCategoryPlaceholder = false,
                     Priority = 2
                 }
             };
@@ -62,27 +62,6 @@
             controller.WithCallTo(c => c.All())
                 .ShouldRenderDefaultView()
                 .WithModel<IList<CategoryViewModel>>();
-        }
-
-        [TestMethod]
-        public void Category_ReturnViewResult_ShouldPass()
-        {
-            CategoryController controller = new CategoryController();
-
-            // todo
-
-            controller.WithCallTo(c => c.Category(1))
-                .ShouldRenderDefaultView()
-                .WithModel<CategoryTopicsViewModel>();
-        }
-
-        [TestMethod]
-        public void Category_NoSuchCategory_ShouldReturnNotFound()
-        {
-            CategoryController controller = new CategoryController();
-
-            controller.WithCallTo(c => c.Category(10))
-                .ShouldGiveHttpStatus(HttpStatusCode.NotFound);
         }
     }
 }

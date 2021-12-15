@@ -6,23 +6,29 @@
         {
             if (!Model.Topic.IsLocked)
             {
-                <p class="text-center">No replies on this topic. Be the first to reply.</p>
-                <div class="col-md-2 offset-md-5">
+                <div class="col-md-10 col-sm-12">
+                    <p class="text-left">No replies on this topic. Be the first to reply.</p>
+                </div>
+                <div class="col-md-2">
                     <a href="/Reply/New/@Model.Topic.Id" class="btn btn-primary btn-block" role="button">New Reply</a>
                 </div>
             }
             else
             {
-                <p class="text-center">This topic is locked.</p>
-                <div class="col-md-2 offset-md-5">
+                <div class="col-md-10 col-sm-12">
+                    <p class="text-left">This topic is locked.</p>
+                </div>
+                <div class="col-md-2">
                     <button type="button" class="btn btn-primary btn-block disabled"><i class="fas fa-lock fa-sm"></i> New Reply</button>
                 </div>
             }
         }
         else
         {
-            <p class="text-center">You must be logged in to post reply.</p>
-            <div class="col-md-2 offset-md-5">
+            <div class="col-md-10 col-sm-12">
+                <p class="text-left">You must be logged in to post reply.</p>
+            </div>
+            <div class="col-md-2">
                 <a href="/User/Login" class="btn btn-primary btn-block" role="button">Log in</a>
             </div>
         }

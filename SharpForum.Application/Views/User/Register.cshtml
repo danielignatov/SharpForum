@@ -18,61 +18,83 @@
                     <hr />
                     @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                            <label class="text-danger">*</label>
+                        </div>
+                        <div class="col-md-12">
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                            <label class="text-danger">*</label>
+                        </div>
+                        <div class="col-md-12">
                             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                            <label class="text-danger">*</label>
+                        </div>
+                        <div class="col-md-12">
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                            <label class="text-danger">*</label>
+                        </div>
+                        <div class="col-md-12">
                             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.AvatarUrl, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.AvatarUrl, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-12">
                             @Html.TextBoxFor(m => m.AvatarUrl, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.WebsiteUrl, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.WebsiteUrl, new { @class = "form-control" })
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.WebsiteUrl, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.WebsiteUrl, new { @class = "form-control", @placeholder = "https://example.com/" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.ForumSignature, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.ForumSignature, new { @class = "form-control" })
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.ForumSignature, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextAreaFor(m => m.ForumSignature, new { @class = "form-control", @rows = "2" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.AboutMe, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.AboutMe, new { @class = "form-control" })
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.AboutMe, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextAreaFor(m => m.AboutMe, new { @class = "form-control", @rows = "2" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.LivingLocation, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.LivingLocation, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-12">
                             @Html.TextBoxFor(m => m.LivingLocation, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="offset-md-2 col-md-10">
+                        <div class="col-md-12">
                             <input type="submit" class="btn btn-default" value="Register" />
                         </div>
                     </div>

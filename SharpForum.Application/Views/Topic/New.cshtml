@@ -20,20 +20,24 @@
                     <hr />
                     @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-12">
                             @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Content, new { @class = "form-control" })
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Content, new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @rows = "5" })
                         </div>
                     </div>
                     @Html.HiddenFor(m => m.CategoryId, new { @value = ViewContext.RouteData.Values.FirstOrDefault() })
                     <div class="form-group">
-                        <div class="offset-md-2 col-md-10">
+                        <div class="col-md-12">
                             <input type="submit" class="btn btn-default" value="Post" />
                         </div>
                     </div>
