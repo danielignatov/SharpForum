@@ -10,22 +10,39 @@
     using Microsoft.Owin.Security;
     using SharpForum.Models.EntityModels;
     using SharpForum.Data;
+    using System.Net.Mail;
+    using System.Configuration;
+    using System.Net;
 
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
-        }
-    }
+            try
+            {
+                MailMessage email = new MailMessage()
+                {
+                    From = new MailAddress(ConfigurationManager.AppSettings["EmailSender"]),
+                    Subject = message.Subject,
+                    IsBodyHtml = true,
+                    Body = message.Body
+                };
 
-    public class SmsService : IIdentityMessageService
-    {
-        public Task SendAsync(IdentityMessage message)
-        {
-            // Plug in your SMS service here to send a text message.
-            return Task.FromResult(0);
+                email.To.Add(message.Destination);
+
+                var smtpClient = new SmtpClient(ConfigurationManager.AppSettings["EmailServer"])
+                {
+                    Port = int.Parse(ConfigurationManager.AppSettings["EmailPort"]),
+                    Credentials = new NetworkCredential(ConfigurationManager.AppSettings["EmailAccountName"], ConfigurationManager.AppSettings["EmailAccountPass"]),
+                    EnableSsl = bool.Parse(ConfigurationManager.AppSettings["EmailEnableSsl"])
+                };
+
+                return smtpClient.SendMailAsync(email);
+            }
+            catch (Exception)
+            {
+                return Task.FromResult(0);
+            }
         }
     }
 
@@ -50,7 +67,7 @@
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 5,
                 RequireNonLetterOrDigit = false,
                 RequireDigit = false,
                 RequireLowercase = false,
@@ -64,17 +81,12 @@
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<User>
-            {
-                MessageFormat = "Your security code is {0}"
-            });
             manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<User>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
             });
             manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {

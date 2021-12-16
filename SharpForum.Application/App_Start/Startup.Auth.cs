@@ -3,11 +3,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
 using SharpForum.Models.EntityModels;
 using SharpForum.Data;
-using System.IO;
+using System.Configuration;
 
 namespace SharpForum.Application
 {
@@ -57,8 +56,8 @@ namespace SharpForum.Application
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "1595035863842427",
-               appSecret: "secret");
+               appId: ConfigurationManager.AppSettings["FacebookAppId"],
+               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

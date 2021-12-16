@@ -216,9 +216,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\avatars\avatar1.jpg" />
-    <Content Include="Content\avatars\avatar2.jpg" />
-    <Content Include="Content\avatars\avatar3.jpg" />
+    <Content Include="Content\avatars\avatar1.png" />
+    <Content Include="Content\avatars\avatar2.png" />
+    <Content Include="Content\avatars\avatar3.png" />
     <Content Include="Content\fontawesome\all.css" />
     <Content Include="Content\fontawesome\all.min.css" />
     <Content Include="Content\style\bootstrap.css" />
@@ -226,6 +226,9 @@
     <Content Include="Content\style\style.css" />
     <Content Include="Content\img\bg.png" />
     <Content Include="Content\img\defaultavatar.jpg" />
+    <Content Include="Content\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\webfonts\fa-solid-900.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -247,6 +250,18 @@
     <Content Include="Areas\Admin\Views\UserAdministration\SetRole.cshtml" />
     <Content Include="Content\style\bootstrap.min.css.map" />
     <Content Include="Content\style\bootstrap.css.map" />
+    <Content Include="Content\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bs\bootstrap.bundle.js" />
     <Content Include="Scripts\bs\bootstrap.bundle.min.js" />

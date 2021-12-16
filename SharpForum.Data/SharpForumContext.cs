@@ -9,6 +9,7 @@ namespace SharpForum.Data
         public SharpForumContext()
             : base("name=SharpForumContext", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new DatabaseInitializer());
         }
 
         public static SharpForumContext Create()
