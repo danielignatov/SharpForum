@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <input type="submit" value="Log in" class="btn btn-default" />
+                                        <input type="submit" id="loginBtn" value="Log in" class="btn btn-default" />
                                     </div>
                                 </div>
                                 <p>
@@ -71,6 +71,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var pwdField = document.getElementById("Password");
+        
+        pwdField.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                document.getElementById("loginBtn").click();
+            }
+        });
+    </script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
