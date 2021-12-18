@@ -1,16 +1,19 @@
-﻿using NSwag;
+﻿using Microsoft.EntityFrameworkCore;
+using NSwag;
 using NSwag.Generation.Processors.Security;
+using SharpForum.API.Extensions;
+using SharpForum.Persistence;
 
 namespace SharpForum.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        private readonly IConfiguration _config;
 
-        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration config)
+        {
+            _config = config;
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,6 +36,14 @@ namespace SharpForum.API
                     }
                 );
             });
+
+            services.AddDbContext<DataContext>(option =>
+            {
+                //option.UseSqlite(_config.GetConnectionString("SQLite"));
+                option.UseSqlServer(_config.GetConnectionString("MSSQL"));
+            });
+
+            services.AddIdentityServices(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +58,7 @@ namespace SharpForum.API
                 app.UseSwaggerUi3();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

@@ -4,3 +4,4 @@ packages
 bin/
 obj/
 appsettings.Development.json
+sharpforum.db*
