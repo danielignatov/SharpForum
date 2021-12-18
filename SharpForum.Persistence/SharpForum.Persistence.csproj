@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Domain\SharpForum.Domain.csproj" />
-    <ProjectReference Include="..\SharpForum.Persistence\SharpForum.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
