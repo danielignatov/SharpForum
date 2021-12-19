@@ -3,6 +3,8 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using SharpForum.API.Extensions;
 using SharpForum.Persistence;
+using SharpForum.Repository;
+using SharpForum.Repository.Interfaces;
 
 namespace SharpForum.API
 {
@@ -44,6 +46,9 @@ namespace SharpForum.API
             });
 
             services.AddIdentityServices(_config);
+
+            // Adding Unit of work to the DI container
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

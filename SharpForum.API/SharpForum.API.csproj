@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Application\SharpForum.Application.csproj" />
+    <ProjectReference Include="..\SharpForum.Repository\SharpForum.Repository.csproj" />
   </ItemGroup>
 
 </Project>
