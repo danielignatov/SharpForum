@@ -2,7 +2,7 @@
 
 namespace SharpForum.Repository.Interfaces
 {
-    public interface IUnitOfWork
+    public interface ISharpForumData
     {
         public ICategoryRepository Categories { get; }
 

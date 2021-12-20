@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SharpForum.Repository
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class SharpForumData : ISharpForumData, IDisposable
     {
         private readonly DataContext _context;
         private readonly ILogger _logger;
 
-        public UnitOfWork(DataContext context, ILoggerFactory loggerFactory)
+        public SharpForumData(DataContext context, ILoggerFactory loggerFactory)
         {
             _context = context;
             _logger = loggerFactory.CreateLogger("logs");

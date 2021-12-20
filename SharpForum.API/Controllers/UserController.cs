@@ -5,6 +5,7 @@ using SharpForum.API.DataTransferObjects.User;
 namespace SharpForum.API.Controllers
 {
     [ApiController]
+    [Route("api/user")]
     public class UserController : BaseController
     {
         /// <summary>
@@ -13,6 +14,8 @@ namespace SharpForum.API.Controllers
         /// <param name="id">User id</param>
         [AllowAnonymous]
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> User(string id)
         {
             throw new NotImplementedException();
@@ -22,7 +25,6 @@ namespace SharpForum.API.Controllers
         /// User login
         /// </summary>
         /// <param name="userLoginDto"></param>
-        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(UserLoginDto userLoginDto)

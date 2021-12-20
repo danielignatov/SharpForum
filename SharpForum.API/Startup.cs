@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using SharpForum.API.Extensions;
@@ -47,8 +48,10 @@ namespace SharpForum.API
 
             services.AddIdentityServices(_config);
 
+            services.AddMediatR(typeof(Application.Categories.List).Assembly);
+
             // Adding Unit of work to the DI container
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ISharpForumData, SharpForumData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

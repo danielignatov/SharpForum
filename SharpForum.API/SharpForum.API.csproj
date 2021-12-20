@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Application\SharpForum.Application.csproj" />
-    <ProjectReference Include="..\SharpForum.Repository\SharpForum.Repository.csproj" />
   </ItemGroup>
-
+	
 </Project>
