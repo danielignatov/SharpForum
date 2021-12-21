@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using SharpForum.Domain;
+using System.Threading.Tasks;
 
 namespace SharpForum.Repository.Interfaces
 {
@@ -6,6 +7,10 @@ namespace SharpForum.Repository.Interfaces
     {
         public ICategoryRepository Categories { get; }
 
-        public Task<bool> CompleteAsync();
+        public IGenericRepository<Topic> Topics { get; }
+
+        public IGenericRepository<Reply> Replies { get; }
+
+        public Task<bool> SaveAsync();
     }
 }

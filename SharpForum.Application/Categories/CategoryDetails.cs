@@ -1,10 +1,12 @@
 ﻿using MediatR;
-using SharpForum.Domain;
 using SharpForum.Repository.Interfaces;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SharpForum.Application.Categories
 {
-    public class Details
+    public class CategoryDetails
     {
         public class Query : IRequest<Category>
         {

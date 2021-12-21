@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharpForum.Application.Categories
+namespace SharpForum.Application.Users
 {
-    internal class Create
+    internal class UserDetails
     {
     }
 }

@@ -1,11 +1,17 @@
-﻿using MediatR;
+﻿using System.Linq;
+using SharpForum.API.Extensions;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using SharpForum.API.Extensions;
 using SharpForum.Persistence;
-using SharpForum.Repository;
 using SharpForum.Repository.Interfaces;
+using SharpForum.Repository;
 
 namespace SharpForum.API
 {
@@ -46,12 +52,12 @@ namespace SharpForum.API
                 option.UseSqlServer(_config.GetConnectionString("MSSQL"));
             });
 
-            services.AddIdentityServices(_config);
-
-            services.AddMediatR(typeof(Application.Categories.List).Assembly);
+            services.AddMediatR(typeof(Application.Categories.CategoryList).Assembly);
 
             // Adding Unit of work to the DI container
             services.AddScoped<ISharpForumData, SharpForumData>();
+
+            services.AddIdentityServices(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

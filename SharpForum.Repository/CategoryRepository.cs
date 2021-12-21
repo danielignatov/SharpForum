@@ -49,7 +49,7 @@ namespace SharpForum.Repository
             try
             {
                 var category = await GetByIdAsync(id);
-                return category.Topics.Count();
+                return category.Topics.Count;
             }
             catch (Exception exception)
             {

@@ -1,8 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SharpForum.API.Controllers
 {
+    [ApiController]
+    [Route("api")]
     public class BaseController : ControllerBase
     {
         private IMediator _mediator;
