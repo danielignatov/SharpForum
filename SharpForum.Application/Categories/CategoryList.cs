@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using SharpForum.Application.Core;
 using SharpForum.Repository.Interfaces;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,12 +9,12 @@ namespace SharpForum.Application.Categories
 {
     public class CategoryList
     {
-        public class Query : IRequest<IEnumerable<Category>> 
+        public class Query : IRequest<Result<IEnumerable<Category>>> 
         { 
             // Query parameters goes here
         }
 
-        public class Handler : IRequestHandler<Query, IEnumerable<Category>>
+        public class Handler : IRequestHandler<Query, Result<IEnumerable<Category>>>
         {
             private readonly ISharpForumData _data;
 
@@ -22,9 +23,9 @@ namespace SharpForum.Application.Categories
                 _data = sharpForumData;
             }
 
-            public async Task<IEnumerable<Category>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<IEnumerable<Category>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _data.Categories.GetAllAsync();
+                return Result<IEnumerable<Category>>.Success(await _data.Categories.GetAllAsync());
             }
         }
     }

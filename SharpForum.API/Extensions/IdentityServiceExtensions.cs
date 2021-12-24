@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using SharpForum.API.Services;
+using SharpForum.Service.Security;
 using SharpForum.Domain;
 using SharpForum.Persistence;
 using System.Text;

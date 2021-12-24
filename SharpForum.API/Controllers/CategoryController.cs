@@ -18,9 +18,9 @@ namespace SharpForum.API.Controllers
         [HttpGet("category/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<Category> Category(Guid id)
+        public async Task<IActionResult> Category(Guid id)
         {
-            return await Mediator.Send(new CategoryDetails.Query { Id = id });
+            return HandleResult(await Mediator.Send(new CategoryDetails.Query { Id = id }));
         }
 
         /// <summary>
@@ -29,9 +29,9 @@ namespace SharpForum.API.Controllers
         [AllowAnonymous]
         [HttpGet("categories")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IEnumerable<Category>> Categories()
+        public async Task<IActionResult> Categories()
         {
-            return await Mediator.Send(new CategoryList.Query());
+            return HandleResult(await Mediator.Send(new CategoryList.Query()));
         }
 
         //[Authorize(Roles = "Admin")]

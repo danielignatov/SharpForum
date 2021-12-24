@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharpForum.Application\SharpForum.Application.csproj" />
+    <ProjectReference Include="..\SharpForum.Service\SharpForum.Service.csproj" />
   </ItemGroup>
 	
 </Project>

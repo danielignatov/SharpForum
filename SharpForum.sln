@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.Persistence", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpForum.Website", "SharpForum.Website", "{72D09FEB-4D78-463E-B1E8-5656B0D7631F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Repository", "SharpForum.Repository\SharpForum.Repository.csproj", "{F926F939-3E89-46CD-84D2-B46D95918317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.Repository", "SharpForum.Repository\SharpForum.Repository.csproj", "{F926F939-3E89-46CD-84D2-B46D95918317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Service", "SharpForum.Service\SharpForum.Service.csproj", "{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{F926F939-3E89-46CD-84D2-B46D95918317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F926F939-3E89-46CD-84D2-B46D95918317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F926F939-3E89-46CD-84D2-B46D95918317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
