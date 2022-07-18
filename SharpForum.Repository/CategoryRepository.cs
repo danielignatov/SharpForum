@@ -13,8 +13,8 @@ namespace SharpForum.Repository
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {
         public CategoryRepository(
-            DataContext context,
-            ILogger logger) : base(context, logger)
+            IDbContextFactory<DataContext> dbContextFactory,
+            ILogger logger) : base(dbContextFactory, logger)
         {
         }
 
@@ -22,7 +22,10 @@ namespace SharpForum.Repository
         {
             try
             {
-                return await _dbSet.Include(x => x.Topics).ToListAsync();
+                await using DataContext dbContext =
+                    _dbContextFactory.CreateDbContext();
+
+                return await dbContext.Categories.Include(x => x.Topics).ToListAsync();
             }
             catch (Exception exception) 
             {
@@ -35,7 +38,10 @@ namespace SharpForum.Repository
         {
             try
             {
-                return await _dbSet.Include(x => x.Topics).FirstOrDefaultAsync(x => x.Id == id);
+                await using DataContext dbContext =
+                       _dbContextFactory.CreateDbContext();
+
+                return await dbContext.Categories.Include(x => x.Topics).FirstOrDefaultAsync(x => x.Id == id);
             }
             catch (Exception exception)
             {

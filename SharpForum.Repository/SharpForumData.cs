@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SharpForum.Domain;
 using SharpForum.Persistence;
 using SharpForum.Repository.Interfaces;
@@ -7,18 +8,20 @@ using System.Threading.Tasks;
 
 namespace SharpForum.Repository
 {
-    public class SharpForumData : ISharpForumData, IDisposable
+    public class SharpForumData : ISharpForumData
     {
-        private readonly DataContext _context;
+        private readonly IDbContextFactory<DataContext> _dbContextFactory;
         private readonly ILogger _logger;
 
-        public SharpForumData(DataContext context, ILoggerFactory loggerFactory)
+        public SharpForumData(
+            IDbContextFactory<DataContext> dbContextFactory,
+            ILoggerFactory loggerFactory)
         {
-            _context = context;
+            _dbContextFactory = dbContextFactory;
             _logger = loggerFactory.CreateLogger("logs");
-            Categories = new CategoryRepository(_context, _logger);
-            Topics = new GenericRepository<Topic>(_context, _logger);
-            Replies = new GenericRepository<Reply>(_context, _logger);
+            Categories = new CategoryRepository(_dbContextFactory, _logger);
+            Topics = new GenericRepository<Topic>(_dbContextFactory, _logger);
+            Replies = new GenericRepository<Reply>(_dbContextFactory, _logger);
         }
 
         public ICategoryRepository Categories { get; private set; }
@@ -29,18 +32,7 @@ namespace SharpForum.Repository
 
         public async Task<bool> SaveAsync()
         {
-            return await _context.SaveChangesAsync() > 0;
-        }
-
-        public async Task DisposeAsync()
-        {
-            await _context.DisposeAsync();
-        }
-
-        public void Dispose()
-        {
-            _context.Dispose();
-            GC.SuppressFinalize(this);
+            return true;
         }
     }
 }

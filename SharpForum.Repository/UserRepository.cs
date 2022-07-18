@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SharpForum.Domain;
 using SharpForum.Persistence;
 using SharpForum.Repository.Interfaces;
@@ -12,7 +13,7 @@ namespace SharpForum.Repository
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public UserRepository(DataContext context, ILogger logger) : base(context, logger)
+        public UserRepository(IDbContextFactory<DataContext> dbContextFactory, ILogger logger) : base(dbContextFactory, logger)
         {
         }
     }

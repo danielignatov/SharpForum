@@ -46,11 +46,12 @@ namespace SharpForum.API
                 );
             });
 
-            services.AddDbContext<DataContext>(option =>
+            services.AddDbContextFactory<DataContext>(opt => 
             {
                 //option.UseSqlite(_config.GetConnectionString("SQLite"));
-                option.UseSqlServer(_config.GetConnectionString("MSSQL"));
-            });
+                opt.UseSqlServer(_config.GetConnectionString("MSSQL"));
+                opt.EnableSensitiveDataLogging(true);
+            }, ServiceLifetime.Scoped);
 
             services.AddMediatR(typeof(Application.Categories.CategoryList).Assembly);
 
