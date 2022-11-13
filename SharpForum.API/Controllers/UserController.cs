@@ -4,11 +4,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using SharpForum.API.DataTransferObjects.User;
-using SharpForum.Application.Users;
-using SharpForum.Domain;
-using SharpForum.Service.Email;
-using SharpForum.Service.Security;
+using SharpForum.API.Models.DataTransferObjects.User;
+using SharpForum.API.Models.Domain;
+using SharpForum.API.Services.Email;
+using SharpForum.API.Services.Security;
 using System.Net.Http;
 
 namespace SharpForum.API.Controllers
@@ -22,16 +21,17 @@ namespace SharpForum.API.Controllers
         private readonly TokenService _tokenService;
         private readonly IConfiguration _config;
         private readonly HttpClient _httpClient;
-        private readonly EmailService _emailSender;
+        //private readonly EmailService _emailSender;
 
         public UserController(
             UserManager<User> userManager,
             SignInManager<User> signInManager, 
             TokenService tokenService,
-            IConfiguration config,
-            EmailService emailSender)
+            IConfiguration config//,
+            //EmailService emailSender
+            )
         {
-            _emailSender = emailSender;
+            //_emailSender = emailSender;
             _config = config;
             _tokenService = tokenService;
             _signInManager = signInManager;

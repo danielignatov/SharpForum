@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using SharpForum.Service.Security;
-using SharpForum.Domain;
-using SharpForum.Persistence;
 using System.Text;
+using SharpForum.API.Services.Security;
+using SharpForum.API.Models.Domain;
+using SharpForum.API.Data;
 
 namespace SharpForum.API.Extensions
 {

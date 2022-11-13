@@ -1,9 +1,7 @@
-﻿using SharpForum.Application.Categories;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SharpForum.Domain;
 using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
+using SharpForum.API.Models.Domain;
 
 namespace SharpForum.API.Controllers
 {
@@ -20,7 +18,7 @@ namespace SharpForum.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Category(Guid id)
         {
-            return HandleResult(await Mediator.Send(new CategoryDetails.Query { Id = id }));
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -31,14 +29,14 @@ namespace SharpForum.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Categories()
         {
-            return HandleResult(await Mediator.Send(new CategoryList.Query()));
+            throw new NotImplementedException();
         }
 
         //[Authorize(Roles = "Admin")]
         [HttpPost("category/create")]
         public async Task<IActionResult> CreateCategory(Category category)
         {
-            return Ok(await Mediator.Send(new CategoryCreate.Command { Category = category }));
+            throw new NotImplementedException();
         }
 
         //[Authorize(Roles = "Admin")]
@@ -46,14 +44,14 @@ namespace SharpForum.API.Controllers
         public async Task<IActionResult> EditCategory(Guid id, Category category)
         {
             category.Id = id;
-            return Ok(await Mediator.Send(new CategoryEdit.Command { Category = category }));
+            throw new NotImplementedException();
         }
 
         //[Authorize(Roles = "Admin")]
         [HttpDelete("category/{id}")]
         public async Task<IActionResult> DeleteActivity(Guid id)
         {
-            return Ok(await Mediator.Send(new CategoryDelete.Command { Id = id }));
+            throw new NotImplementedException();
         }
     }
 }

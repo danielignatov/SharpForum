@@ -5,18 +5,6 @@ VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.API", "SharpForum.API\SharpForum.API.csproj", "{29D07166-0C23-4186-9DCB-E853AFA8112C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.Application", "SharpForum.Application\SharpForum.Application.csproj", "{CDF71463-D32A-413F-A3E8-7A3C4A3EBBE4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.Domain", "SharpForum.Domain\SharpForum.Domain.csproj", "{07519C12-8640-4C9C-A99B-4C57796EB372}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.Persistence", "SharpForum.Persistence\SharpForum.Persistence.csproj", "{D77C68DD-C9B8-4CFC-978B-85ECDC34ED89}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpForum.Website", "SharpForum.Website", "{72D09FEB-4D78-463E-B1E8-5656B0D7631F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.Repository", "SharpForum.Repository\SharpForum.Repository.csproj", "{F926F939-3E89-46CD-84D2-B46D95918317}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpForum.Service", "SharpForum.Service\SharpForum.Service.csproj", "{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,26 +15,6 @@ Global
 		{29D07166-0C23-4186-9DCB-E853AFA8112C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29D07166-0C23-4186-9DCB-E853AFA8112C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29D07166-0C23-4186-9DCB-E853AFA8112C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDF71463-D32A-413F-A3E8-7A3C4A3EBBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDF71463-D32A-413F-A3E8-7A3C4A3EBBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDF71463-D32A-413F-A3E8-7A3C4A3EBBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDF71463-D32A-413F-A3E8-7A3C4A3EBBE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07519C12-8640-4C9C-A99B-4C57796EB372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07519C12-8640-4C9C-A99B-4C57796EB372}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07519C12-8640-4C9C-A99B-4C57796EB372}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07519C12-8640-4C9C-A99B-4C57796EB372}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D77C68DD-C9B8-4CFC-978B-85ECDC34ED89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D77C68DD-C9B8-4CFC-978B-85ECDC34ED89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D77C68DD-C9B8-4CFC-978B-85ECDC34ED89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D77C68DD-C9B8-4CFC-978B-85ECDC34ED89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F926F939-3E89-46CD-84D2-B46D95918317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F926F939-3E89-46CD-84D2-B46D95918317}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F926F939-3E89-46CD-84D2-B46D95918317}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F926F939-3E89-46CD-84D2-B46D95918317}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1DAEB66-3996-404E-A54D-F9A8791ED5B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

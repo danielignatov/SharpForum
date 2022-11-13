@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using SharpForum.API.Extensions;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using SharpForum.Persistence;
-using SharpForum.Repository.Interfaces;
-using SharpForum.Repository;
+using SharpForum.API.Data.Repository.Interfaces;
+using SharpForum.API.Data.Repository;
+using SharpForum.API.Data;
 
 namespace SharpForum.API
 {
@@ -48,12 +47,9 @@ namespace SharpForum.API
 
             services.AddDbContextFactory<DataContext>(opt => 
             {
-                //option.UseSqlite(_config.GetConnectionString("SQLite"));
                 opt.UseSqlServer(_config.GetConnectionString("MSSQL"));
                 opt.EnableSensitiveDataLogging(true);
             }, ServiceLifetime.Scoped);
-
-            services.AddMediatR(typeof(Application.Categories.CategoryList).Assembly);
 
             // Adding Unit of work to the DI container
             services.AddScoped<ISharpForumData, SharpForumData>();
