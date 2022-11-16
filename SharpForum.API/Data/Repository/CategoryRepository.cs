@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
+using SharpForum.API.Services.Caching;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,8 +11,9 @@ namespace SharpForum.API.Data.Repository
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {
         public CategoryRepository(
-            IDbContextFactory<DataContext> dbContextFactory,
-            ILogger logger) : base(dbContextFactory, logger)
+            IDbContextFactory<DataContext> dbContextFactory, 
+            ICacheManager cacheManager,
+            ILogger logger) : base(dbContextFactory, cacheManager, logger)
         {
         }
 

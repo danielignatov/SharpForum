@@ -1,60 +1,78 @@
-﻿using System.Linq;
-using SharpForum.API.Extensions;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NSwag;
-using NSwag.Generation.Processors.Security;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Data.Repository;
 using SharpForum.API.Data;
+using SharpForum.API.Services.Caching;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Authentication;
+using SharpForum.API.GraphQL.Categories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using SharpForum.API.GraphQL;
 
 namespace SharpForum.API
 {
     public class Startup
     {
-        private readonly IConfiguration _config;
-
         public Startup(IConfiguration config)
         {
-            _config = config;
+            Configuration = config;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        public IConfiguration Configuration { get; }
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-
-            // Register the Swagger services
-            services.AddSwaggerDocument(settings =>
-            {
-                settings.Title = "SharpForum API";
-                settings.SchemaType = NJsonSchema.SchemaType.OpenApi3;
-                settings.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT Token"));
-                settings.AddSecurity("JWT Token", Enumerable.Empty<string>(),
-                    new OpenApiSecurityScheme()
-                    {
-                        Type = OpenApiSecuritySchemeType.ApiKey,
-                        Name = "Authorization",
-                        In = OpenApiSecurityApiKeyLocation.Header,
-                        Description = "Copy this into the value field: Bearer {token}"
-                    }
-                );
+            services.TryAddSingleton<ISystemClock, SystemClock>();
+            
+            services.AddPooledDbContextFactory<DataContext>(opt => {
+                opt.UseSqlServer(Configuration.GetConnectionString("MSSQL"));
+                opt.EnableSensitiveDataLogging(true);
             });
 
-            services.AddDbContextFactory<DataContext>(opt => 
-            {
-                opt.UseSqlServer(_config.GetConnectionString("MSSQL"));
-                opt.EnableSensitiveDataLogging(true);
-            }, ServiceLifetime.Scoped);
+            services.AddAuthorization();
 
-            // Adding Unit of work to the DI container
+            services.AddMemoryCache();
+
+            var key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(Configuration["TokenKey"]));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opt =>
+                {
+                    opt.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = key,
+                        ValidateAudience = false,
+                        ValidateIssuer = false,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
+            services.AddSingleton<ICacheManager, CacheManager>();
+
             services.AddScoped<ISharpForumData, SharpForumData>();
 
-            services.AddIdentityServices(_config);
+            // GraphQL
+            services
+                .AddGraphQLServer()
+                .RegisterService<ISharpForumData>()
+                .AddQueryType<Query>()
+                .AddType<CategoryType>()
+                .AddProjections()
+                .AddFiltering()
+                .AddSorting()
+                .AddInMemorySubscriptions();
+
+            services.AddErrorFilter<GraphQLErrorFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,13 +81,9 @@ namespace SharpForum.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                // Register the Swagger generator and the Swagger UI middlewares
-                app.UseOpenApi();
-                app.UseSwaggerUi3();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -79,7 +93,7 @@ namespace SharpForum.API
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapGraphQL("/graphql");
             });
         }
     }

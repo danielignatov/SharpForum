@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SharpForum.API.Data.Repository.Interfaces;
+using SharpForum.API.Services.Caching;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,13 +11,16 @@ namespace SharpForum.API.Data.Repository
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly IDbContextFactory<DataContext> _dbContextFactory;
+        protected ICacheManager _cacheManager;
         protected ILogger _logger;
 
         public GenericRepository(
-            IDbContextFactory<DataContext> dbContextFactory,
+            IDbContextFactory<DataContext> dbContextFactory, 
+            ICacheManager cacheManager,
             ILogger logger)
         {
             _dbContextFactory = dbContextFactory;
+            _cacheManager = cacheManager;
             _logger = logger;
         }
 

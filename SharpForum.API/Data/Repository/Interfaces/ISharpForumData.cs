@@ -10,7 +10,5 @@ namespace SharpForum.API.Data.Repository.Interfaces
         public IGenericRepository<Topic> Topics { get; }
 
         public IGenericRepository<Reply> Replies { get; }
-
-        public Task<bool> SaveAsync();
     }
 }
