@@ -27,7 +27,7 @@ namespace SharpForum.API.Models.Domain
         /// <summary>
         /// Display order
         /// </summary>
-        public int Order { get; set; }
+        public int DisplayOrder { get; set; }
 
         /// <summary>
         /// Category act like placeholder, does not allow topic creation
@@ -37,6 +37,6 @@ namespace SharpForum.API.Models.Domain
         /// <summary>
         /// Topics in category
         /// </summary>
-        public ICollection<Topic> Topics { get; set; }
+        public virtual ICollection<Topic> Topics { get; set; }
     }
 }

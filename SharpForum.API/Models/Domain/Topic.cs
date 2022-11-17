@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SharpForum.API.Models.Domain
 {
@@ -35,13 +37,28 @@ namespace SharpForum.API.Models.Domain
         public bool Locked { get; set; }
 
         /// <summary>
+        /// Topic author identifier
+        /// </summary>
+        public Guid AuthorId { get; set; }
+
+        /// <summary>
         /// Topic author
         /// </summary>
-        public User Author { get; set; }
+        public virtual User Author { get; set; }
 
         /// <summary>
         /// Topic replies
         /// </summary>
-        public ICollection<Reply> Replies { get; set; }
+        public virtual ICollection<Reply> Replies { get; set; }
+
+        /// <summary>
+        /// Topic category identifier
+        /// </summary>
+        public Guid CategoryId { get; set; }
+
+        /// <summary>
+        /// Topic category
+        /// </summary>
+        public virtual Category Category { get; set; }
     }
 }

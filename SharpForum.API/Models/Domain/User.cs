@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SharpForum.API.Models.Domain
 {
     /// <summary>
     /// User
     /// </summary>
-    public class User : IdentityUser
+    public class User : Entity
     {
         public User()
         {
@@ -18,11 +17,6 @@ namespace SharpForum.API.Models.Domain
         /// Display name
         /// </summary>
         public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Text under display name
-        /// </summary>
-        public string Title { get; set; }
 
         /// <summary>
         /// Avatar image url
@@ -52,11 +46,31 @@ namespace SharpForum.API.Models.Domain
         /// <summary>
         /// User created topics
         /// </summary>
-        public ICollection<Topic> Topics { get; set; }
+        public virtual ICollection<Topic> Topics { get; set; }
 
         /// <summary>
         /// User created replies
         /// </summary>
-        public ICollection<Reply> Replies { get; set; }
+        public virtual ICollection<Reply> Replies { get; set; }
+
+        /// <summary>
+        /// User hashed password
+        /// </summary>
+        public string PasswordHash { get; set; }
+
+        /// <summary>
+        /// User email
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// User role identifier
+        /// </summary>
+        public Guid RoleId { get; set; }
+
+        /// <summary>
+        /// User role
+        /// </summary>
+        public virtual Role Role { get; set; }
     }
 }

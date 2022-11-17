@@ -10,5 +10,9 @@ namespace SharpForum.API.Data.Repository.Interfaces
         public IGenericRepository<Topic> Topics { get; }
 
         public IGenericRepository<Reply> Replies { get; }
+
+        public IGenericRepository<User> Users { get; }
+
+        public IGenericRepository<Role> Roles { get; }
     }
 }

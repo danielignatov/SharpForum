@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SharpForum.API.Models.Domain
 {
@@ -10,6 +11,7 @@ namespace SharpForum.API.Models.Domain
         /// <summary>
         /// Globally unique identifier
         /// </summary>
+        [Required]
         public virtual Guid Id { get; set; }
 
         /// <summary>

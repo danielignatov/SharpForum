@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -19,7 +20,8 @@ namespace SharpForum.API
 
             try
             {
-                var context = services.GetRequiredService<DataContext>();
+                var contextFactory = services.GetRequiredService<IDbContextFactory<DataContext>>();
+                await using DataContext context = contextFactory.CreateDbContext();
 
                 // Append pending migrations before starting the application
                 await context.Database.MigrateAsync();

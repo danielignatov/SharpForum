@@ -15,6 +15,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SharpForum.API.GraphQL;
+using SharpForum.API.GraphQL.Replies;
+using SharpForum.API.GraphQL.Topics;
+using SharpForum.API.GraphQL.Roles;
+using SharpForum.API.GraphQL.Users;
 
 namespace SharpForum.API
 {
@@ -67,6 +71,10 @@ namespace SharpForum.API
                 .RegisterService<ISharpForumData>()
                 .AddQueryType<Query>()
                 .AddType<CategoryType>()
+                .AddType<ReplyType>()
+                .AddType<RoleType>()
+                .AddType<TopicType>()
+                .AddType<UserType>()
                 .AddProjections()
                 .AddFiltering()
                 .AddSorting()
