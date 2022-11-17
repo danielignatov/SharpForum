@@ -1,6 +1,4 @@
 ﻿using SharpForum.API.Models.Domain;
-using System;
-using System.Threading.Tasks;
 
 namespace SharpForum.API.Data.Repository.Interfaces
 {

@@ -10,6 +10,8 @@ namespace SharpForum.API.Data.Repository
 {
     public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
     {
+        private const int AllCategoriesCacheTime = 1440;
+
         public CategoryRepository(
             IDbContextFactory<DataContext> dbContextFactory, 
             ICacheManager cacheManager,
@@ -24,11 +26,26 @@ namespace SharpForum.API.Data.Repository
                 await using DataContext dbContext =
                     _dbContextFactory.CreateDbContext();
 
-                return await dbContext.Categories.Include(x => x.Topics).ToListAsync();
+                return await dbContext.Categories.ToListAsync();
             }
             catch (Exception exception)
             {
                 _logger.LogError(exception, "GetAllAsync method error", typeof(CategoryRepository));
+
+                return Enumerable.Empty<Category>();
+            }
+        }
+
+        public override async Task<IEnumerable<Category>> GetAllCachedAsync()
+        {
+            try
+            {
+                return await _cacheManager.GetOrCreateAsync<IEnumerable<Category>>("categories", AllCategoriesCacheTime, async () => await this.GetAllAsync());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, "GetAllCachedAsync method error", typeof(CategoryRepository));
+
                 return Enumerable.Empty<Category>();
             }
         }
@@ -45,6 +62,7 @@ namespace SharpForum.API.Data.Repository
             catch (Exception exception)
             {
                 _logger.LogError(exception, "GetByIdAsync method error", typeof(CategoryRepository));
+
                 return null;
             }
         }

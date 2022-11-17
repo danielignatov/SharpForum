@@ -2,14 +2,13 @@
 using Microsoft.Extensions.Logging;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Services.Caching;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SharpForum.API.Data.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+        protected const int DefaultCacheTime = 5;
         protected readonly IDbContextFactory<DataContext> _dbContextFactory;
         protected ICacheManager _cacheManager;
         protected ILogger _logger;
@@ -44,6 +43,11 @@ namespace SharpForum.API.Data.Repository
                     _dbContextFactory.CreateDbContext();
 
             return await dbContext.Set<T>().ToListAsync();
+        }
+
+        public virtual async Task<IEnumerable<T>> GetAllCachedAsync()
+        {
+            return await _cacheManager.GetOrCreateAsync<IEnumerable<T>>(typeof(T).FullName, DefaultCacheTime, async () => await this.GetAllAsync());
         }
 
         public virtual async Task<bool> DeleteAsync(Guid id)

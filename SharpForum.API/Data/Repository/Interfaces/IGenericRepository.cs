@@ -13,6 +13,11 @@ namespace SharpForum.API.Data.Repository.Interfaces
         public Task<IEnumerable<T>> GetAllAsync();
 
         /// <summary>
+        /// Get all cached in memory
+        /// </summary>
+        public Task<IEnumerable<T>> GetAllCachedAsync();
+
+        /// <summary>
         /// Get by id
         /// </summary>
         /// <param name="id">Globally unique identifier</param>

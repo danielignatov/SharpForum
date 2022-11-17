@@ -16,7 +16,7 @@ namespace SharpForum.API.GraphQL
         [GraphQLDescription("Gets the queryable categories.")]
         public async Task<IEnumerable<Models.Domain.Category>> GetCategories([Service] ISharpForumData data)
         {
-            return await data.Categories.GetAllAsync();
+            return await data.Categories.GetAllCachedAsync();
         }
     }
 }
