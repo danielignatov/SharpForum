@@ -90,16 +90,12 @@ namespace SharpForum.API.GraphQL.Users
         {
             public async Task<IEnumerable<Topic>> GetTopics([Parent] User user, [Service] ISharpForumData data)
             {
-                var topics = await data.Topics.GetAllCachedAsync();
-
-                return topics.Where(x => x.AuthorId == user.Id);
+                return await data.Topics.GetByAuthorAsync(user.Id);
             }
 
             public async Task<IEnumerable<Reply>> GetReplies([Parent] User user, [Service] ISharpForumData data)
             {
-                var replies = await data.Replies.GetAllCachedAsync();
-
-                return replies.Where(x => x.AuthorId == user.Id);
+                return await data.Replies.GetByAuthorAsync(user.Id);
             }
 
             public async Task<Role> GetRole([Parent] User user, [Service] ISharpForumData data)

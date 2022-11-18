@@ -3,8 +3,6 @@ using HotChocolate.Types;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 
 namespace SharpForum.API.GraphQL.Categories
 {
@@ -59,9 +57,7 @@ namespace SharpForum.API.GraphQL.Categories
         {
             public async Task<IEnumerable<Topic>> GetTopics([Parent] Category category, [Service] ISharpForumData data)
             {
-                var topics = await data.Topics.GetAllCachedAsync();
-
-                return topics.Where(x => x.CategoryId == category.Id);
+                return await data.Topics.GetByCategoryAsync(category.Id);
             }
         }
     }

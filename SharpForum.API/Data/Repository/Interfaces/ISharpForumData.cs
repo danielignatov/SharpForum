@@ -1,5 +1,4 @@
 ﻿using SharpForum.API.Models.Domain;
-using System.Threading.Tasks;
 
 namespace SharpForum.API.Data.Repository.Interfaces
 {
@@ -7,11 +6,11 @@ namespace SharpForum.API.Data.Repository.Interfaces
     {
         public ICategoryRepository Categories { get; }
 
-        public IGenericRepository<Topic> Topics { get; }
+        public ITopicRepository Topics { get; }
 
-        public IGenericRepository<Reply> Replies { get; }
+        public IReplyRepository Replies { get; }
 
-        public IGenericRepository<User> Users { get; }
+        public IUserRepository Users { get; }
 
         public IGenericRepository<Role> Roles { get; }
     }

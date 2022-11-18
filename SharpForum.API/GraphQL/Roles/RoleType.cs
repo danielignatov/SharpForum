@@ -24,7 +24,6 @@ namespace SharpForum.API.GraphQL.Roles
 
             descriptor
                 .Field(x => x.Users)
-                //.Type<Users.UserType>()
                 .ResolveWith<Resolvers>(x => x.GetUsers(default!, default!))
                 .Description("List of users in role")
                 .UseFiltering()
@@ -35,9 +34,7 @@ namespace SharpForum.API.GraphQL.Roles
         {
             public async Task<IEnumerable<User>> GetUsers([Parent] Role role, [Service] ISharpForumData data)
             {
-                var users = await data.Users.GetAllCachedAsync();
-
-                return users.Where(x => x.RoleId == role.Id);
+                return await data.Users.GetByRoleAsync(role.Id);
             }
         }
     }

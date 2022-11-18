@@ -21,19 +21,19 @@ namespace SharpForum.API.Data.Repository
             _dbContextFactory = dbContextFactory;
             _logger = loggerFactory.CreateLogger("logs");
             Categories = new CategoryRepository(_dbContextFactory, _cacheManager, _logger);
-            Topics = new GenericRepository<Topic>(_dbContextFactory, _cacheManager, _logger);
-            Replies = new GenericRepository<Reply>(_dbContextFactory, _cacheManager, _logger);
-            Users = new GenericRepository<User>(_dbContextFactory, _cacheManager, _logger);
+            Topics = new TopicRepository(_dbContextFactory, _cacheManager, _logger);
+            Replies = new ReplyRepository(_dbContextFactory, _cacheManager, _logger);
+            Users = new UserRepository(_dbContextFactory, _cacheManager, _logger);
             Roles = new GenericRepository<Role>(_dbContextFactory, _cacheManager, _logger);
         }
 
         public ICategoryRepository Categories { get; private set; }
 
-        public IGenericRepository<Topic> Topics { get; private set; }
+        public ITopicRepository Topics { get; private set; }
 
-        public IGenericRepository<Reply> Replies { get; private set; }
+        public IReplyRepository Replies { get; private set; }
 
-        public IGenericRepository<User> Users { get; private set; }
+        public IUserRepository Users { get; private set; }
 
         public IGenericRepository<Role> Roles { get; private set; }
     }
