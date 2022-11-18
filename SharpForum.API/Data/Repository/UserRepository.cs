@@ -17,6 +17,22 @@ namespace SharpForum.API.Data.Repository
         {
         }
 
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            try
+            {
+                var allUsers = await this.GetAllAsync();
+
+                return allUsers.Where(x => x.Email == email).FirstOrDefault();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, "GetByEmailAsync method error", typeof(UserRepository));
+
+                return null;
+            }
+        }
+
         public async Task<IEnumerable<User>> GetByRoleAsync(Guid roleId)
         {
             try

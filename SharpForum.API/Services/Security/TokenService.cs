@@ -17,7 +17,7 @@ namespace SharpForum.API.Services.Security
             _config = config;
         }
 
-        public string CreateToken(User user)
+        public string CreateToken(User user, DateTime expiration)
         {
             var claims = new List<Claim>
             {
@@ -32,7 +32,7 @@ namespace SharpForum.API.Services.Security
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = expiration,
                 SigningCredentials = creds
             };
 

@@ -75,6 +75,8 @@ namespace SharpForum.API
                 .AddType<RoleType>()
                 .AddType<TopicType>()
                 .AddType<UserType>()
+                .AddMutationType<Mutation>()
+                .AddTypeExtension<AuthMutation>()
                 .AddProjections()
                 .AddFiltering()
                 .AddSorting()
