@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpForum.API", "SharpForum.API\SharpForum.API.csproj", "{29D07166-0C23-4186-9DCB-E853AFA8112C}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "sharpforum-web", "sharpforum-web\sharpforum-web.esproj", "{7E73BE26-65E4-48DE-AB73-F2C3AEFE0BB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{29D07166-0C23-4186-9DCB-E853AFA8112C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29D07166-0C23-4186-9DCB-E853AFA8112C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29D07166-0C23-4186-9DCB-E853AFA8112C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E73BE26-65E4-48DE-AB73-F2C3AEFE0BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E73BE26-65E4-48DE-AB73-F2C3AEFE0BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E73BE26-65E4-48DE-AB73-F2C3AEFE0BB9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7E73BE26-65E4-48DE-AB73-F2C3AEFE0BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E73BE26-65E4-48DE-AB73-F2C3AEFE0BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E73BE26-65E4-48DE-AB73-F2C3AEFE0BB9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
