@@ -24,6 +24,8 @@ namespace SharpForum.API
 {
     public class Startup
     {
+        private readonly string AllowedOrigin = "allowedOrigin";
+
         public Startup(IConfiguration config)
         {
             Configuration = config;
@@ -65,6 +67,12 @@ namespace SharpForum.API
 
             services.AddScoped<ISharpForumData, SharpForumData>();
 
+            services.AddCors(option => {
+                option.AddPolicy(AllowedOrigin,
+                    builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+                    );
+            });
+
             // GraphQL
             services
                 .AddGraphQLServer()
@@ -96,6 +104,8 @@ namespace SharpForum.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(AllowedOrigin);
 
             app.UseHttpsRedirection();
 
