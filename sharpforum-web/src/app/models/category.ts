@@ -6,3 +6,9 @@ export interface Category {
     isPlaceholder: boolean;
     //topics: Topic[]
 }
+
+export class Category implements Category {
+    constructor() {
+        Object.assign(this);
+    }
+}

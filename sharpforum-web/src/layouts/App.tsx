@@ -1,6 +1,11 @@
 import './App.css';
 import CategoryList from '../features/categories/CategoryList';
 import { gql, useQuery } from '@apollo/client';
+import { Fragment } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './Layout';
+import CategoryDetails from '../features/categories/CategoryDetails';
+import ErrorPage from './ErrorPage';
 
 const GetAllCategoriesQuery = gql`
     query {
@@ -23,8 +28,17 @@ function App() {
     //console.log('data', data);
 
     return (
-        <CategoryList categories={data.categories} />
-  );
+        <Fragment>
+            <Routes>
+                <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
+                    <Route index element={<CategoryList categories={data.categories} />} />
+                    <Route path="category/:categoryId" element={<CategoryDetails />} />
+                    <Route path="topic/:topicId" element={<CategoryDetails />} />
+                    <Route path="*" element={<CategoryDetails />} />
+                </Route>
+            </Routes>
+        </Fragment>
+    );
 }
 
 export default App;
