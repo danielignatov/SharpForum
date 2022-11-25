@@ -1,21 +1,19 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-import { Category } from '../../app/models/category';
 import { Topic } from '../../app/models/topic';
 import TopicListItem from './TopicListItem';
 
 interface Props {
-    category: Category,
     topics: Topic[]
 }
 
-export default function TopicList({ topics, category }: Props) {
+export default function TopicList({ topics }: Props) {
     
     return (
         <Table bordered>
             <thead>
                 <tr>
-                    <th>{category.name}</th>
+                    <th>Topics</th>
                 </tr>
             </thead>
             <tbody>

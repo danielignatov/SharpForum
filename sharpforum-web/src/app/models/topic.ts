@@ -1,3 +1,6 @@
+import { Category } from "./category";
+import { User } from "./user";
+
 export interface Topic {
     id: string;
     subject: string;
@@ -5,5 +8,8 @@ export interface Topic {
     sticky: boolean;
     locked: boolean;
     authorId: string;
+    author: User;
     categoryId: string;
+    category: Category;
+    createdOn: Date | null;
 }

@@ -9,13 +9,13 @@ interface Props {
 function TopicListItem({ topic }: Props) {
     return (
         <Fragment>
-            <tr className='placeholder-category'>
+            <tr>
                 <td>
                     <Row>
                         <strong>{topic.subject}</strong>
                     </Row>
                     <Row>
-                        <small>created on:</small>
+                        <small>by {topic.author.displayName}</small>
                     </Row>
                 </td>
             </tr>
