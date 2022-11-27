@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import queries from './queries';
 //import { Category } from "../models/category";
 //import { gql, useQuery } from '@apollo/client';
 //import { gql } from "react-query";
@@ -14,12 +15,6 @@ const endpoint = "http://localhost:5000/graphql/";
 const headers = {
     "content-type": "application/json",
     "Authorization": "<token>"
-};
-
-const getAllCategoriesQuery = {
-    "operationName": "getAllCategories",
-    "query": `query getAllCategories { categories { id, name, description, displayOrder, isPlaceholder } }`,
-    "variables": {}
 };
 
 //const response = axios({
@@ -56,11 +51,17 @@ const requests = {
 
 
 const Categories = {
-    all: () => requests.graphql(getAllCategoriesQuery)
+    all: () => requests.graphql(queries.getAllCategoriesQuery)
+}
+
+const Topics = {
+    all: () => requests.graphql(queries.getAllTopicsQuery),
+    byCategory: (categoryId: string) => requests.graphql(queries.getCategoryTopicsQuery(categoryId))
 }
 
 const agent = {
-    Categories
+    Categories,
+    Topics
 }
 
 export default agent;
