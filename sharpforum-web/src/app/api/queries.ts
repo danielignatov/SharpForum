@@ -17,7 +17,7 @@ const queries = {
     getAllTopicsQuery,
 
     getCategoryTopicsQuery(categoryId: string) {
-        return new Query("getCategoryTopicsQuery", `query getCategoryTopicsQuery($categoryId: UUID) { topics (where: {categoryId: {eq: $categoryId}} ) { id, subject, locked, authorId, author { displayName }, categoryId, category { name }, createdOn } }`, categoryId);
+        return new Query("getCategoryTopicsQuery", `query getCategoryTopicsQuery($categoryId: UUID) { topics (where: {categoryId: {eq: $categoryId}} ) { id, subject, locked, authorId, author { displayName }, categoryId, category { name }, createdOn } }`, { "categoryId": categoryId });
     }
 }
 

@@ -1,43 +1,30 @@
-import { gql, useQuery } from '@apollo/client';
-import React, { Fragment } from 'react';
+import { observer } from 'mobx-react';
+import React, { Fragment, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
 import Loading from '../../layouts/Loading';
 import TopicList from '../topics/TopicList';
+import { useStore } from '../../app/stores/store';
 
-const GetCategoryTopicsQuery = gql`
-    query GetCategoryTopicsQuery($categoryId: UUID) {
-        topics (where: {categoryId: {eq: $categoryId}} ) {
-          id,
-          subject,
-          locked,
-          authorId,
-          author {
-            displayName
-          },
-          categoryId,
-          category {
-            name
-          },
-          createdOn
-        }
-    }
-`;
-
-function CategoryDetails() {
+export default observer(function CategoryDetails() {
     const { categoryId } = useParams<{ categoryId: string }>();
+    const { topicStore } = useStore();
+    const { loading, topicsByCategory, loadTopicsByCategory } = topicStore;
 
-    const { loading, error, data } = useQuery(GetCategoryTopicsQuery, { variables: { categoryId } });
-
-    if (loading) return <Loading />;
-    if (error) return <pre>{error.message}</pre>
+    useEffect(() => {
+        loadTopicsByCategory(categoryId ?? '');
+    }, [categoryId, loadTopicsByCategory])
 
     return (
         <Fragment>
-            <Button variant='success' className='sf-mb-1'>Add Topic</Button>
-            <TopicList topics={data.topics} />
+            { loading ? (
+                <Loading />
+            ) : (
+                <Fragment>
+                    <Button variant='success' className='sf-mb-1'>Add Topic</Button>
+                    <TopicList topics={topicsByCategory} />
+                </Fragment>
+            )}
         </Fragment>
     );
-}
-
-export default CategoryDetails;
+});

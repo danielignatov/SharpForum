@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Topic } from '../../app/models/topic';
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 
 interface Props {
     topic: Topic
@@ -12,10 +13,12 @@ function TopicListItem({ topic }: Props) {
             <tr>
                 <td>
                     <Row>
-                        <strong>{topic.subject}</strong>
+                        <Link to={`/topic/${topic.id}`} className='sf-link'>
+                            <strong>{topic.subject}</strong>
+                        </Link>
                     </Row>
                     <Row>
-                        <small>by {topic.author.displayName}</small>
+                        <small>by <Link to={`/user/${topic.authorId}`} className='sf-link'>{topic.author.displayName}</Link></small>
                     </Row>
                 </td>
             </tr>

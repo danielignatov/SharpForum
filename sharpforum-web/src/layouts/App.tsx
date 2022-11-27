@@ -20,8 +20,8 @@ function App() {
                     <Route path="category/:categoryId" element={<CategoryDetails />} />
                     <Route path="topic/add" element={<TopicAddForm />} />
                     <Route path="topic/:topicId" element={<TopicDetails />} />
-                    <Route path="user/login" element={<UserLoginForm />} />
-                    <Route path="user/register" element={<UserRegisterForm />} />
+                    <Route path="login" element={<UserLoginForm />} />
+                    <Route path="register" element={<UserRegisterForm />} />
                     <Route path="user/:userId" element={<UserDetails />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
