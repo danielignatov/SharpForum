@@ -1,21 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import './index.scss';
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import App from './layouts/App';
-//import ErrorPage from './layouts/ErrorPage';
-//import { Category } from './app/models/category';
 import reportWebVitals from './reportWebVitals';
-//import { dataStore, DataStoreContext } from './app/data/dataStore';
+import { store, StoreContext } from './app/stores/store';
 import { BrowserRouter } from "react-router-dom";
-
-const client = new ApolloClient({
-    uri: 'http://localhost:5000/graphql/',
-    cache: new InMemoryCache()
-});
+import client from './app/api/client';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 
 //<DataStoreContext.Provider value={dataStore}>
@@ -24,9 +20,11 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <ApolloProvider client={client}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
+            <StoreContext.Provider value={store}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </StoreContext.Provider>,
         </ApolloProvider>
     </React.StrictMode>
 );
