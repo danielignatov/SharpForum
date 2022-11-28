@@ -19,6 +19,7 @@ using SharpForum.API.GraphQL.Replies;
 using SharpForum.API.GraphQL.Topics;
 using SharpForum.API.GraphQL.Roles;
 using SharpForum.API.GraphQL.Users;
+using SharpForum.API.Services.Security;
 
 namespace SharpForum.API
 {
@@ -66,6 +67,10 @@ namespace SharpForum.API
             services.AddSingleton<ICacheManager, CacheManager>();
 
             services.AddScoped<ISharpForumData, SharpForumData>();
+
+            services.AddScoped<IPasswordService, PasswordService>();
+
+            services.AddScoped<ITokenService, TokenService>();
 
             services.AddCors(option => {
                 option.AddPolicy(AllowedOrigin,

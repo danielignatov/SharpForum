@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SharpForum.API.Services.Security
 {
-    public class TokenService
+    public class TokenService : ITokenService
     {
         private readonly IConfiguration _config;
 

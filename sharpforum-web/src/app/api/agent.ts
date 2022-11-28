@@ -47,10 +47,15 @@ const Topics = {
     byId: (topicId: string) => requests.graphql(queries.getTopicQuery(topicId))
 }
 
+const Users = {
+    login: (displayName: string, password: string) => requests.graphql(queries.mutateLoginUserQuery(displayName, password))
+}
+
 const agent = {
     Categories,
     Topics,
-    Replies
+    Replies,
+    Users
 }
 
 export default agent;

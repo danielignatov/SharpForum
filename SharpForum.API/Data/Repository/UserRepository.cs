@@ -33,6 +33,22 @@ namespace SharpForum.API.Data.Repository
             }
         }
 
+        public async Task<User> GetByDisplayNameAsync(string displayName)
+        {
+            try
+            {
+                var allUsers = await this.GetAllAsync();
+
+                return allUsers.Where(x => x.DisplayName == displayName).FirstOrDefault();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, "GetByDisplayNameAsync method error", typeof(UserRepository));
+
+                return null;
+            }
+        }
+
         public async Task<IEnumerable<User>> GetByRoleAsync(Guid roleId)
         {
             try

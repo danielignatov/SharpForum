@@ -1,3 +1,5 @@
+import { Role } from "./role";
+
 export interface User {
     id: string;
     about: string;
@@ -5,7 +7,14 @@ export interface User {
     displayName: string;
     email: string;
     roleId: string;
+    role: Role;
     signature: string;
     location: string;
     website: string;
+    token: string;
+}
+
+export interface UserFormValues {
+    displayName: string;
+    password: string;
 }

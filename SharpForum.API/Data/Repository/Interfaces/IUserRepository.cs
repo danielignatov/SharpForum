@@ -8,5 +8,7 @@ namespace SharpForum.API.Data.Repository.Interfaces
         public Task<IEnumerable<User>> GetByRoleAsync(Guid roleId);
 
         public Task<User> GetByEmailAsync(string email);
+
+        public Task<User> GetByDisplayNameAsync(string displayName);
     }
 }

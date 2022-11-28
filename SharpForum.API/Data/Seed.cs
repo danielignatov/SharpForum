@@ -49,7 +49,7 @@ namespace SharpForum.API.Data
                         Email = "admin@sharpforum.com",
                         Id = adminId,
                         Location = "Sofia, Bulgaria",
-                        PasswordHash = "",
+                        PasswordHash = "FqyCpJLIo88=",
                         Removed = false,
                         RoleId = adminRoleId,
                         Signature = "Signature",

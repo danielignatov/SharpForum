@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SharpForum.API.Services.Security
 {
-    public class PasswordService
+    public class PasswordService : IPasswordService
     {
         private readonly IConfiguration _config;
 

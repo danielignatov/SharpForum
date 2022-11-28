@@ -13,11 +13,11 @@ namespace SharpForum.API.GraphQL
         public async Task<LoginUserPayload> LoginUserAsync(
             LoginUserInput input,
             [Service] ISharpForumData data,
-            [Service] PasswordService passwordService,
-            [Service] TokenService tokenService)
+            [Service] IPasswordService passwordService,
+            [Service] ITokenService tokenService)
         {
             var user =
-                await data.Users.GetByEmailAsync(input.Email);
+                await data.Users.GetByDisplayNameAsync(input.DisplayName);
 
             if (user == null)
                 throw new GraphQLException(new Error("User not found"));
