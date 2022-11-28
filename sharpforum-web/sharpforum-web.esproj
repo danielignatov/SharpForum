@@ -13,6 +13,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\api\" />
-    <Folder Include="src\features\replies\" />
   </ItemGroup>
 </Project>

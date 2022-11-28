@@ -1,14 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
 import queries from './queries';
-//import { Category } from "../models/category";
-//import { gql, useQuery } from '@apollo/client';
-//import { gql } from "react-query";
-
-//const sleep = (delay: number) => {
-//    return new Promise((resolve) => {
-//        setTimeout(resolve, delay)
-//    })
-//}
 
 const endpoint = "http://localhost:5000/graphql/";
 
@@ -16,13 +7,6 @@ const headers = {
     "content-type": "application/json",
     "Authorization": "<token>"
 };
-
-//const response = axios({
-//    url: endpoint,
-//    method: 'post',
-//    headers: headers,
-//    data: getAllCategoriesQuery
-//});
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -49,6 +33,9 @@ const requests = {
     }).then(responseBody)
 }
 
+const Replies = {
+    byTopicId: (topicId: string) => requests.graphql(queries.getTopicRepliesQuery(topicId))
+}
 
 const Categories = {
     all: () => requests.graphql(queries.getAllCategoriesQuery)
@@ -56,12 +43,14 @@ const Categories = {
 
 const Topics = {
     all: () => requests.graphql(queries.getAllTopicsQuery),
-    byCategory: (categoryId: string) => requests.graphql(queries.getCategoryTopicsQuery(categoryId))
+    byCategory: (categoryId: string) => requests.graphql(queries.getCategoryTopicsQuery(categoryId)),
+    byId: (topicId: string) => requests.graphql(queries.getTopicQuery(topicId))
 }
 
 const agent = {
     Categories,
-    Topics
+    Topics,
+    Replies
 }
 
 export default agent;

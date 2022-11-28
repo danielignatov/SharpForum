@@ -24,8 +24,10 @@ function CategoryListItem({ category }: Props) {
             ) : (
                 <tr>
                     <td>
-                            <Row>
-                                <Link to={`/category/${category.id}`} className='sf-link'><strong>{category.name}</strong></Link>
+                        <Row>
+                            <Link to={`/category/${category.id}`} className='sf-link'>
+                                <strong>{category.name}</strong>
+                            </Link>
                         </Row>
                         <Row>
                             <small>{category.description}</small>

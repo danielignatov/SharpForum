@@ -10,7 +10,7 @@ interface Props {
 export default function TopicList({ topics }: Props) {
     
     return (
-        <Table bordered>
+        <Table bordered bgcolor='white'>
             <thead>
                 <tr>
                     <th>Topics</th>

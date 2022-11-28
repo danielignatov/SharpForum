@@ -1,0 +1,14 @@
+.sf-footer-text {
+    color: white;
+    text-shadow: 1px 1px lightgray;
+}
+
+.sf-footer-link {
+    color: white;
+    text-shadow: 1px 1px lightgray;
+    text-decoration: none;
+
+    &:hover {
+        color: mediumpurple;
+    }
+}

@@ -4,37 +4,48 @@ import { Topic } from "../models/topic";
 //import { store } from "./store";
 
 export default class TopicStore {
-    topics: Topic[] = [];
-    topicsByCategory: Topic[] = [];
     selectedTopic: Topic | undefined = undefined;
+    topicsByCategory: Topic[] = [];
     loading = false;
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    loadTopics = async () => {
-        this.loading = true;
+    loadSelectedTopic = async (topicId: string) => {
+        this.setLoading(true);
         try {
-            const result = await agent.Topics.all();
-            this.topics = result.data.topics;
-            this.loading = false;
+            const result = await agent.Topics.byId(topicId);
+            this.setSelectedTopic(result.data.topics[0]);
+            this.setLoading(false);
         } catch (error) {
             console.log(error);
-            this.loading = false;
+            this.setLoading(false);
         }
     }
 
     loadTopicsByCategory = async (categoryId: string) => {
-        this.loading = true;
+        this.setLoading(true);
         try {
-            this.topicsByCategory = [];
+            this.setTopicsByCategory([]);
             const result = await agent.Topics.byCategory(categoryId);
-            this.topicsByCategory = result.data.topics;
-            this.loading = false;
+            this.setTopicsByCategory(result.data.topics);
+            this.setLoading(false);
         } catch (error) {
             console.log(error);
-            this.loading = false;
+            this.setLoading(false);
         }
+    }
+
+    setSelectedTopic = (topic: Topic) => {
+        this.selectedTopic = topic;
+    }
+
+    setTopicsByCategory = (topics: Topic[]) => {
+        this.topicsByCategory = topics;
+    }
+
+    setLoading = (loading: boolean) => {
+        this.loading = loading;
     }
 }

@@ -8,7 +8,7 @@ import { Fragment, useEffect } from 'react';
 //import { Placeholder } from 'react-bootstrap';
 import { observer } from 'mobx-react';
 
-export default observer( function CategoryList() {
+export default observer(function CategoryList() {
     const { categoryStore } = useStore();
     const { loading, categories, loadCategories } = categoryStore;
 
@@ -18,13 +18,13 @@ export default observer( function CategoryList() {
 
     return (
         <Fragment>
-            { loading ? (
+            {loading ? (
                 //<Placeholder as={Table}>
                 //    <Placeholder xs={4} animation='wave' />
                 //</Placeholder>
                 <Loading />
             ) : (
-                <Table bordered>
+                <Table bordered bgcolor='white'>
                     <thead>
                         <tr>
                             <th>Categories</th>

@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Outlet } from 'react-router-dom';
 import Navigation from './Navigation';
+import Footer from './Footer';
 
 function Layout() {
   return (
@@ -15,6 +16,11 @@ function Layout() {
           <Row>
               <Col>
                   <Outlet />
+              </Col>
+          </Row>
+          <Row>
+              <Col>
+                  <Footer />
               </Col>
           </Row>
       </Container>
