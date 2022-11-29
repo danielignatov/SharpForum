@@ -36,7 +36,7 @@ const queries = {
     mutateLoginUserQuery(displayName: string, password: string) {
         return new Query(
             "loginUser",
-            `mutation loginUser($displayName: String, $password: String) { loginUser(input: { displayName: $displayName, password: $password }) { token, expiration }}`,
+            `mutation loginUser($displayName: String, $password: String) { loginUser(input: { displayName: $displayName, password: $password }) { token, expiration, user { id, displayName, email, roleId, role { id, name }} }}`,
             { "displayName": displayName, "password": password });
     }
 }

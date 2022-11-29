@@ -34,7 +34,7 @@ namespace SharpForum.API.GraphQL
 
                 string token = tokenService.CreateToken(user, expiration);
 
-                return new LoginUserPayload(token, expiration);
+                return new LoginUserPayload(token, expiration, user);
             }
 
             throw new GraphQLException(new Error("Unauthorized"));

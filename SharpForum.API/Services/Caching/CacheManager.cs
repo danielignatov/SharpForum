@@ -40,5 +40,10 @@ namespace SharpForum.API.Services.Caching
 
             return cacheEntry;
         }
+
+        public void Remove(object key) 
+        {
+            _memoryCache.Remove(key);
+        }
     }
 }

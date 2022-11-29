@@ -40,7 +40,7 @@ namespace SharpForum.API.Data.Repository
         {
             try
             {
-                return await _cacheManager.GetOrCreateAsync<IEnumerable<Category>>("categories", AllCategoriesCacheTime, async () => await this.GetAllAsync());
+                return await _cacheManager.GetOrCreateAsync<IEnumerable<Category>>(typeof(Category).FullName, AllCategoriesCacheTime, async () => await this.GetAllAsync());
             }
             catch (Exception exception)
             {

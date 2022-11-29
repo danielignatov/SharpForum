@@ -34,6 +34,8 @@ namespace SharpForum.API.Data.Repository
 
             await dbContext.SaveChangesAsync();
 
+            _cacheManager.Remove(typeof(T).FullName);
+
             return true;
         }
 
@@ -63,6 +65,8 @@ namespace SharpForum.API.Data.Repository
 
             await dbContext.SaveChangesAsync();
 
+            _cacheManager.Remove(typeof(T).FullName);
+
             return true;
         }
 
@@ -86,6 +90,8 @@ namespace SharpForum.API.Data.Repository
             dbSet.Update(entity);
 
             dbContext.SaveChanges();
+
+            _cacheManager.Remove(typeof(T).FullName);
 
             return true;
         }

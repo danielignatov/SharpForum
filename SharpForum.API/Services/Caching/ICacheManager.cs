@@ -6,5 +6,8 @@
         /// <param name="duration">Duration in minutes</param>
         /// <param name="createItem">Function to create the record if not found in cache</param>
         Task<T> GetOrCreateAsync<T>(object key, int duration, Func<Task<T>> createItem);
+
+        /// <param name="key">Key for cache record retreval</param>
+        void Remove(object key);
     }
 }

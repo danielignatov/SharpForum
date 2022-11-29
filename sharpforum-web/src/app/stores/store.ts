@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 import CategoryStore from "./categoryStore";
 import TopicStore from "./topicStore";
 import ReplyStore from "./replyStore";
-import UserStore from "./replyStore";
+import UserStore from "./userStore";
 
 interface Store {
     categoryStore: CategoryStore;

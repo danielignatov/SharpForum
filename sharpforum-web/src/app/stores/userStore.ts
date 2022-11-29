@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { redirect } from "react-router-dom";
 import agent from "../api/agent";
 import { User, UserFormValues } from "../models/user";
 import { store } from "./store";
@@ -11,16 +12,16 @@ export default class UserStore {
     constructor() {
         makeAutoObservable(this);
 
-        reaction(
-            () => this.token,
-            token => {
-                if (token) {
-                    window.localStorage.setItem('jwt', token)
-                } else {
-                    window.localStorage.removeItem('jwt')
-                }
-            }
-        )
+        //reaction(
+        //    () => this.token,
+        //    token => {
+        //        if (token) {
+        //            window.localStorage.setItem('jwt', token)
+        //        } else {
+        //            window.localStorage.removeItem('jwt')
+        //        }
+        //    }
+        //)
     }
 
     setToken = (token: string | null) => {
@@ -33,11 +34,12 @@ export default class UserStore {
 
     login = async (creds: UserFormValues) => {
         try {
-            const user = await agent.Users.login(creds.displayName, creds.password);
-            this.setToken(user.token);
-            this.startRefreshTokenTimer(user);
-            runInAction(() => this.user = user);
+            const result = await agent.Users.login(creds.displayName, creds.password);
+            this.setToken(result.data.loginUser.token);
+            this.startRefreshTokenTimer(result.data.loginUser.token);
+            runInAction(() => this.user = result.data.loginUser.user);
         } catch (error) {
+            debugger;
             throw error;
         }
     }
@@ -122,8 +124,8 @@ export default class UserStore {
         //}
     }
     
-    private startRefreshTokenTimer(user: User) {
-        const jwtToken = JSON.parse(atob(user.token.split('.')[1]));
+    private startRefreshTokenTimer(token: string) {
+        const jwtToken = JSON.parse(atob(token.split('.')[1]));
         const expires = new Date(jwtToken.exp * 1000);
         const timeout = expires.getTime() - Date.now() - (60 * 1000);
         this.refreshTokenTimeout = setTimeout(this.refreshToken, timeout);
@@ -134,6 +136,6 @@ export default class UserStore {
     }
 }
 
-function reaction(arg0: () => string | null, arg1: (token: any) => void) {
-    throw new Error("Function not implemented.");
-}
+//function reaction(arg0: () => string | null, arg1: (token: any) => void) {
+//    throw new Error("Function not implemented.");
+//}
