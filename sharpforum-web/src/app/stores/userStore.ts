@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { redirect } from "react-router-dom";
+//import { redirect } from "react-router-dom";
 import agent from "../api/agent";
 import { User, UserFormValues } from "../models/user";
-import { store } from "./store";
+//import { store } from "./store";
 
 export default class UserStore {
     user: User | null = null;
@@ -61,16 +61,17 @@ export default class UserStore {
     //    }
     //}
     //
-    //register = async (creds: UserFormValues) => {
-    //    try {
-    //        await agent.Account.register(creds);
-    //        history.push(`/account/registerSuccess?email=${creds.email}`);
-    //        store.modalStore.closeModal();
-    //    } catch (error) {
-    //        throw error;
-    //    }
-    //}
-    //
+    register = async (creds: UserFormValues) => {
+        try {
+            const result = await agent.Users.register(creds.displayName, creds.password);
+            this.setToken(result.data.registerUser.token);
+            this.startRefreshTokenTimer(result.data.registerUser.token);
+            runInAction(() => this.user = result.data.registerUser.user);
+        } catch (error) {
+            throw error;
+        }
+    }
+    
     //setImage = (image: string) => {
     //    if (this.user) this.user.image = image;
     //}

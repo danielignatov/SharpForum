@@ -48,7 +48,8 @@ const Topics = {
 }
 
 const Users = {
-    login: (displayName: string, password: string) => requests.graphql(queries.mutateLoginUserQuery(displayName, password))
+    login: (displayName: string, password: string) => requests.graphql(queries.mutateLoginUserQuery(displayName, password)),
+    register: (displayName: string, password: string) => requests.graphql(queries.mutateRegisterUserQuery(displayName, password))
 }
 
 const agent = {

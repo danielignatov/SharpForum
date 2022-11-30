@@ -38,6 +38,12 @@ const queries = {
             "loginUser",
             `mutation loginUser($displayName: String, $password: String) { loginUser(input: { displayName: $displayName, password: $password }) { token, expiration, user { id, displayName, email, roleId, role { id, name }} }}`,
             { "displayName": displayName, "password": password });
+    },
+    mutateRegisterUserQuery(displayName: string, password: string) {
+        return new Query(
+            "registerUser",
+            `mutation registerUser($displayName: String, $password: String) { loginUser(input: { displayName: $displayName, password: $password }) { token, expiration, user { id, displayName, email, roleId, role { id, name }} }}`,
+            { "displayName": displayName, "password": password });
     }
 }
 
