@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { useStore } from '../app/stores/store';
 import { useTranslation } from 'react-i18next';
+import Language from './Language';
 
 //<Nav.Link as={Link} to={`/search`}>Search</Nav.Link>
 
@@ -24,6 +25,7 @@ export default observer(function Navigation() {
                 <Navbar.Brand as={Link} to={`/`}>SharpForum</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to={`/`}>{t('layout.nav.home')}</Nav.Link>
+                    <Language />
                 </Nav>
                 { isLoggedIn ? (
                     <Nav>

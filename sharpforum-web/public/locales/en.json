@@ -23,7 +23,10 @@
     "nav": {
       "home": "Home",
       "greet": "Hi",
-      "logout": "Logout"
+      "logout": "Logout",
+      "lang": "Language",
+      "en": "English",
+      "bg": "Български"
     }
   },
   "users": {
