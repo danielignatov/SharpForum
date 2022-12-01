@@ -31,6 +31,9 @@
       "name": "Име",
       "password": "Парола",
       "no-account-q": "Нямаш акаунт?"
+    },
+    "details": {
+      "role": "Роля"
     }
   }
 }

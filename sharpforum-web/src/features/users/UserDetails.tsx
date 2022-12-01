@@ -27,13 +27,13 @@ export default observer(function UserDetails() {
                 ) : (
                     <Container className='sf-container'>
                         <Row>
-                                <Col>
-                                    <Image thumbnail={true} src={selectedUser?.avatar || '/assets/user.png'} height={200} width={200} />
+                            <Col xs={2}>
+                                <Image thumbnail={true} src={selectedUser?.avatar || '/assets/user.png'} />
                             </Col>
-                            <Col>
+                            <Col xs={10}>
                                 <h1>{selectedUser?.displayName}</h1>
                                 <hr />
-                                <span>{selectedUser?.about}</span>
+                                <small>{t('users.details.role')}: {selectedUser?.role.name}</small>
                             </Col>
                         </Row>
                     </Container>

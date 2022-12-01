@@ -31,6 +31,9 @@
       "name": "Name",
       "password": "Password",
       "no-account-q": "Don't have an account?"
+    },
+    "details": {
+      "role": "Role"
     }
   }
 }

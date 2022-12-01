@@ -42,10 +42,11 @@ export default observer(function UserLoginForm() {
                         {t('users.loginform.no-account-q')} <Link to='/register' className='sf-link'>{t('common.register')}</Link>
                     </small>
                 </Row>
-
-                <Button variant="success" type="submit">
-                    {t('common.login')}
-                </Button>
+                <div className="d-grid gap-2 mt-2">
+                    <Button variant="success" type="submit">
+                        {t('common.login')}
+                    </Button>
+                </div>
             </Form>
         </Container>
     );
