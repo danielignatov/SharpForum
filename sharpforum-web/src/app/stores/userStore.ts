@@ -5,7 +5,9 @@ import { User, UserFormValues } from "../models/user";
 //import { store } from "./store";
 
 export default class UserStore {
-    user: User | null = null;
+    selectedUser: User | null = null;
+    loadingSelectedUser: boolean = false;
+    currentUser: User | null = null;
     token: string | null = window.localStorage.getItem('jwt');
     refreshTokenTimeout: any;
 
@@ -24,12 +26,32 @@ export default class UserStore {
         )
     }
 
+    loadSelectedUser = async (userId: string) => {
+        this.setLoadingSelectedUser(true);
+        try {
+            const result = await agent.Users.byId(userId);
+            this.setSelectedUser(result.data.users[0]);
+            this.setLoadingSelectedUser(false);
+        } catch (error) {
+            console.log(error);
+            this.setLoadingSelectedUser(false);
+        }
+    }
+
+    setSelectedUser = (user: User) => {
+        this.selectedUser = user;
+    }
+
+    setLoadingSelectedUser = (loading: boolean) => {
+        this.loadingSelectedUser = loading;
+    }
+
     setToken = (token: string | null) => {
         this.token = token;
     }
 
     get isLoggedIn() {
-        return !!this.user;
+        return !!this.currentUser;
     }
 
     login = async (creds: UserFormValues) => {
@@ -37,7 +59,7 @@ export default class UserStore {
             const result = await agent.Users.login(creds.displayName, creds.password);
             this.setToken(result.data.loginUser.token);
             this.startRefreshTokenTimer(result.data.loginUser.token);
-            runInAction(() => this.user = result.data.loginUser.user);
+            runInAction(() => this.currentUser = result.data.loginUser.user);
         } catch (error) {
             debugger;
             throw error;
@@ -47,7 +69,7 @@ export default class UserStore {
     logout = () => {
         this.setToken(null);
         window.localStorage.removeItem('jwt');
-        runInAction(() => this.user = null);
+        runInAction(() => this.currentUser = null);
     }
 
     //getUser = async () => {
@@ -66,7 +88,7 @@ export default class UserStore {
             const result = await agent.Users.register(creds.displayName, creds.password);
             this.setToken(result.data.registerUser.token);
             this.startRefreshTokenTimer(result.data.registerUser.token);
-            runInAction(() => this.user = result.data.registerUser.user);
+            runInAction(() => this.currentUser = result.data.registerUser.user);
         } catch (error) {
             throw error;
         }

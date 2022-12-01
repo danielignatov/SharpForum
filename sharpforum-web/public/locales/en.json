@@ -19,11 +19,11 @@
     "singular": "Reply",
     "add-reply": "Add reply"
   },
-  "layouts": {
-    "navigation": {
-      "home-link": "Home",
+  "layout": {
+    "nav": {
+      "home": "Home",
       "greet": "Hi",
-      "logout-link": "Logout"
+      "logout": "Logout"
     }
   },
   "users": {

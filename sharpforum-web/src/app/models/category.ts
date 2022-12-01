@@ -4,7 +4,6 @@ export interface Category {
     description: string;
     displayOrder: number;
     isPlaceholder: boolean;
-    //topics: Topic[]
 }
 
 export class Category implements Category {

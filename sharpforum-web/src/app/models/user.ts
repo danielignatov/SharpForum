@@ -11,6 +11,7 @@ export interface User {
     signature: string;
     location: string;
     website: string;
+    createdOn: Date | null;
 }
 
 export interface UserFormValues {

@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 export default observer(function Navigation() {
     const { t } = useTranslation();
     const { userStore } = useStore();
-    const { isLoggedIn, user, logout } = userStore;
+    const { isLoggedIn, currentUser, logout } = userStore;
 
     //useEffect(() => {
     //    if (categories.length <= 1) loadCategories();
@@ -23,17 +23,17 @@ export default observer(function Navigation() {
             <Container>
                 <Navbar.Brand as={Link} to={`/`}>SharpForum</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link as={Link} to={`/`}>{t('layouts.navigation.home-link')}</Nav.Link>
+                    <Nav.Link as={Link} to={`/`}>{t('layout.nav.home')}</Nav.Link>
                 </Nav>
-                {isLoggedIn ? (
+                { isLoggedIn ? (
                     <Nav>
-                        <Nav.Link as={Link} to={`/user/${user?.id}`}>{t('layouts.navigation.greet')}, {user?.displayName}</Nav.Link>
-                        <Nav.Link onClick={logout}>{t('layouts.navigation.logout-link')}</Nav.Link>
+                        <Nav.Link as={Link} to={`/user/${currentUser?.id}`}>{t('layout.nav.greet')}, {currentUser?.displayName}</Nav.Link>
+                        <Nav.Link onClick={logout}>{t('layout.nav.logout')}</Nav.Link>
                     </Nav>
                 ) : (
                     <Nav>
-                            <Nav.Link as={Link} to={`/login`}>{t('common.login')}</Nav.Link>
-                            <Nav.Link as={Link} to={`/register`}>{t('common.register')}</Nav.Link>
+                        <Nav.Link as={Link} to={`/login`}>{t('common.login')}</Nav.Link>
+                        <Nav.Link as={Link} to={`/register`}>{t('common.register')}</Nav.Link>
                     </Nav>
                 )}
             </Container>

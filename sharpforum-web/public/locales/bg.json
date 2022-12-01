@@ -19,11 +19,11 @@
     "singular": "Отговор",
     "add-reply": "Добави отговор"
   },
-  "layouts": {
-    "navigation": {
-      "home-link": "Начало",
+  "layout": {
+    "nav": {
+      "home": "Начало",
       "greet": "Здравей",
-      "logout-link": "Излез"
+      "logout": "Излез"
     }
   },
   "users": {

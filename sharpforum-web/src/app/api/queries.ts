@@ -33,6 +33,12 @@ const queries = {
             `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName }, createdOn } }`,
             { "topicId": topicId });
     },
+    getUserQuery(userId: string) {
+        return new Query(
+            "getUserQuery",
+            `query getUserQuery($userId: UUID) { users (where: {id: {eq: $userId}} ) { id, displayName, about, location, createdOn } }`,
+            { "userId": userId });
+    },
     mutateLoginUserQuery(displayName: string, password: string) {
         return new Query(
             "loginUser",
