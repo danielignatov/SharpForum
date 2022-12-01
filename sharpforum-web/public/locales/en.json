@@ -1,0 +1,36 @@
+{
+  "common": {
+    "register": "Register",
+    "login": "Login",
+    "by": "by",
+    "on": "on",
+    "edit": "edit"
+  },
+  "categories": {
+    "title": "Categories"
+  },
+  "topics": {
+    "title": "Topics",
+    "singular": "Topic",
+    "add-topic": "Add topic"
+  },
+  "replies": {
+    "title": "Replies",
+    "singular": "Reply",
+    "add-reply": "Add reply"
+  },
+  "layouts": {
+    "navigation": {
+      "home-link": "Home",
+      "greet": "Hi",
+      "logout-link": "Logout"
+    }
+  },
+  "users": {
+    "loginform": {
+      "name": "Name",
+      "password": "Password",
+      "no-account-q": "Don't have an account?"
+    }
+  }
+}

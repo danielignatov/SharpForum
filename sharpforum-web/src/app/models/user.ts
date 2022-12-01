@@ -11,7 +11,6 @@ export interface User {
     signature: string;
     location: string;
     website: string;
-    token: string;
 }
 
 export interface UserFormValues {

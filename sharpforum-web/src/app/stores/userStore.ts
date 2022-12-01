@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, runInAction, reaction } from "mobx";
 //import { redirect } from "react-router-dom";
 import agent from "../api/agent";
 import { User, UserFormValues } from "../models/user";
@@ -12,16 +12,16 @@ export default class UserStore {
     constructor() {
         makeAutoObservable(this);
 
-        //reaction(
-        //    () => this.token,
-        //    token => {
-        //        if (token) {
-        //            window.localStorage.setItem('jwt', token)
-        //        } else {
-        //            window.localStorage.removeItem('jwt')
-        //        }
-        //    }
-        //)
+        reaction(
+            () => this.token,
+            token => {
+                if (token) {
+                    window.localStorage.setItem('jwt', token)
+                } else {
+                    window.localStorage.removeItem('jwt')
+                }
+            }
+        )
     }
 
     setToken = (token: string | null) => {
@@ -136,7 +136,3 @@ export default class UserStore {
         clearTimeout(this.refreshTokenTimeout);
     }
 }
-
-//function reaction(arg0: () => string | null, arg1: (token: any) => void) {
-//    throw new Error("Function not implemented.");
-//}

@@ -7,8 +7,10 @@ import { useStore } from '../../app/stores/store';
 import { Fragment, useEffect } from 'react';
 //import { Placeholder } from 'react-bootstrap';
 import { observer } from 'mobx-react';
+import { useTranslation } from 'react-i18next';
 
 export default observer(function CategoryList() {
+    const { t } = useTranslation();
     const { categoryStore } = useStore();
     const { loading, categories, loadCategories } = categoryStore;
 
@@ -27,7 +29,7 @@ export default observer(function CategoryList() {
                 <Table bordered bgcolor='white'>
                     <thead>
                         <tr>
-                            <th>Categories</th>
+                            <th>{t('categories.title')}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,4 +41,4 @@ export default observer(function CategoryList() {
             )}
         </Fragment>
     );
-})
+});

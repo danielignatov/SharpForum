@@ -12,6 +12,8 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\build</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="public\locales\" />
     <Folder Include="src\app\api\" />
+    <Folder Include="src\app\utils\" />
   </ItemGroup>
 </Project>

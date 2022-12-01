@@ -9,6 +9,8 @@ import reportWebVitals from './reportWebVitals';
 import { store, StoreContext } from './app/stores/store';
 import { BrowserRouter } from "react-router-dom";
 import client from './app/api/client';
+//import dateFnsLocalizer from 'react-widgets-date-fns';
+import './app/utils/i18n';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

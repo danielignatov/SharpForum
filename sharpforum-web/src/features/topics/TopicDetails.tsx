@@ -7,8 +7,10 @@ import { useStore } from '../../app/stores/store';
 import Table from 'react-bootstrap/Table';
 import Row from 'react-bootstrap/Row';
 import ReplyList from '../replies/ReplyList';
+import { useTranslation } from 'react-i18next';
 
 export default observer(function TopicDetails() {
+    const { t } = useTranslation();
     const { topicId } = useParams<{ topicId: string }>();
     const { topicStore } = useStore();
     const { loading, selectedTopic, loadSelectedTopic } = topicStore;
@@ -23,11 +25,11 @@ export default observer(function TopicDetails() {
                 <Loading />
             ) : (
                 <Fragment>
-                    <Button variant='success' className='sf-mb-1'>Add Reply</Button>
+                        <Button variant='success' className='sf-mb-1'>{t('replies.add-reply')}</Button>
                     <Table bordered bgcolor='white'>
                         <thead>
                             <tr>
-                                <th>Topic</th>
+                                <th>{t('topics.singular')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,14 +42,14 @@ export default observer(function TopicDetails() {
                                         <small>{selectedTopic?.message}</small>
                                     </Row>
                                     <Row>
-                                        <small>by {selectedTopic?.author.displayName}</small>
+                                        <small>{t('common.by')} {selectedTopic?.author.displayName}</small>
                                     </Row>
                                 </td>
                             </tr>
                         </tbody>
                     </Table>
                     <ReplyList />
-                    <Button variant='success' className='sf-mb-1'>Add Reply</Button>
+                        <Button variant='success' className='sf-mb-1'>{t('replies.add-reply')}</Button>
                 </Fragment>
             )}
         </Fragment>

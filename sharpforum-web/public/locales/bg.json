@@ -1,0 +1,36 @@
+{
+  "common": {
+    "register": "Регистрация",
+    "login": "Вход",
+    "by": "от",
+    "on": "на",
+    "edit": "редактирай"
+  },
+  "categories": {
+    "title": "Категории"
+  },
+  "topics": {
+    "title": "Теми",
+    "singular": "Тема",
+    "add-topic": "Добави тема"
+  },
+  "replies": {
+    "title": "Отговори",
+    "singular": "Отговор",
+    "add-reply": "Добави отговор"
+  },
+  "layouts": {
+    "navigation": {
+      "home-link": "Начало",
+      "greet": "Здравей",
+      "logout-link": "Излез"
+    }
+  },
+  "users": {
+    "loginform": {
+      "name": "Име",
+      "password": "Парола",
+      "no-account-q": "Нямаш акаунт?"
+    }
+  }
+}

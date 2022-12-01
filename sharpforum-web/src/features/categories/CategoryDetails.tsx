@@ -5,8 +5,10 @@ import { useParams } from 'react-router-dom';
 import Loading from '../../layouts/Loading';
 import TopicList from '../topics/TopicList';
 import { useStore } from '../../app/stores/store';
+import { useTranslation } from 'react-i18next';
 
 export default observer(function CategoryDetails() {
+    const { t } = useTranslation();
     const { categoryId } = useParams<{ categoryId: string }>();
     const { topicStore } = useStore();
     const { loading, topicsByCategory, loadTopicsByCategory } = topicStore;
@@ -21,7 +23,7 @@ export default observer(function CategoryDetails() {
                 <Loading />
             ) : (
                 <Fragment>
-                    <Button variant='success' className='sf-mb-1'>Add Topic</Button>
+                        <Button variant='success' className='sf-mb-1'>{t('topics.add-topic')}</Button>
                     <TopicList topics={topicsByCategory} />
                 </Fragment>
             )}

@@ -5,8 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStore } from '../../app/stores/store';
+import { useTranslation } from 'react-i18next';
 
 export default observer(function UserLoginForm() {
+    const { t } = useTranslation();
     const { userStore } = useStore();
     const { login } = userStore;
     const navigate = useNavigate();
@@ -26,23 +28,23 @@ export default observer(function UserLoginForm() {
         <Container className='sf-container'>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formDisplayName">
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>{t('users.loginform.name')}</Form.Label>
                     <Form.Control type="text" placeholder="Enter display name" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>{t('users.loginform.password')}</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
 
                 <Row>
                     <small className="text-center">
-                        Don't have an account? <Link to='/register' className='sf-link'>Register</Link>
+                        {t('users.loginform.no-account-q')} <Link to='/register' className='sf-link'>{t('common.register')}</Link>
                     </small>
                 </Row>
 
                 <Button variant="success" type="submit">
-                    Login
+                    {t('common.login')}
                 </Button>
             </Form>
         </Container>
