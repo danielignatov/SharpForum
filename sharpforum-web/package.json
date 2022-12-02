@@ -13,6 +13,7 @@
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
     "date-fns": "^2.29.3",
+    "formik": "^2.2.9",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.0.2",
     "mobx-react": "^7.6.0",

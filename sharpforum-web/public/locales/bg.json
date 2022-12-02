@@ -33,10 +33,15 @@
     "loginform": {
       "name": "Име",
       "password": "Парола",
+      "name-placeholder": "Псевдоним видим от останалите потребители",
+      "pass-placeholder": "Въведете парола",
       "no-account-q": "Нямаш акаунт?"
     },
     "details": {
       "role": "Роля"
     }
+  },
+  "privacy": {
+    "title": "Политика за поверителност"
   }
 }

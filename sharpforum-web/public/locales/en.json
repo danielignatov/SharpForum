@@ -33,10 +33,15 @@
     "loginform": {
       "name": "Name",
       "password": "Password",
+      "name-placeholder": "Display name",
+      "pass-placeholder": "Enter password",
       "no-account-q": "Don't have an account?"
     },
     "details": {
       "role": "Role"
     }
+  },
+  "privacy": {
+    "title": "Privacy Policy"
   }
 }

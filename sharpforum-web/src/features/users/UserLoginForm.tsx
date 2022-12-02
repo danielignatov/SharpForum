@@ -12,6 +12,8 @@ export default observer(function UserLoginForm() {
     const { userStore } = useStore();
     const { login } = userStore;
     const navigate = useNavigate();
+    const namePlaceholder: string = t('users.loginform.name-placeholder');
+    const passPlaceholder: string = t('users.loginform.pass-placeholder');
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -29,12 +31,12 @@ export default observer(function UserLoginForm() {
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formDisplayName">
                     <Form.Label>{t('users.loginform.name')}</Form.Label>
-                    <Form.Control type="text" placeholder="Enter display name" />
+                    <Form.Control type="text" placeholder={namePlaceholder} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>{t('users.loginform.password')}</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder={passPlaceholder} />
                 </Form.Group>
 
                 <Row>

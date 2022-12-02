@@ -2,8 +2,7 @@ import { NavDropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 function Language() {
-    const { i18n } = useTranslation();
-    const { t } = useTranslation();
+    const { i18n, t } = useTranslation();
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);

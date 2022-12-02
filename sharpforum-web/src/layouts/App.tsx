@@ -10,6 +10,7 @@ import UserLoginForm from '../features/users/UserLoginForm';
 import UserRegisterForm from '../features/users/UserRegisterForm';
 import UserDetails from '../features/users/UserDetails';
 import NotFound from './NotFound';
+import PrivacyPolicy from './PrivacyPolicy';
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     <Route path="login" element={<UserLoginForm />} />
                     <Route path="register" element={<UserRegisterForm />} />
                     <Route path="user/:userId" element={<UserDetails />} />
+                    <Route path="privacy" element={<PrivacyPolicy />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
