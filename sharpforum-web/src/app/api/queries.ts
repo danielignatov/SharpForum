@@ -45,11 +45,11 @@ const queries = {
             `mutation loginUser($displayName: String, $password: String) { loginUser(input: { displayName: $displayName, password: $password }) { token, expiration, user { id, displayName, email, roleId, role { id, name }} }}`,
             { "displayName": displayName, "password": password });
     },
-    mutateRegisterUserQuery(displayName: string, password: string) {
+    mutateRegisterUserQuery(displayName: string, password: string, email: string) {
         return new Query(
             "registerUser",
-            `mutation registerUser($displayName: String, $password: String) { loginUser(input: { displayName: $displayName, password: $password }) { token, expiration, user { id, displayName, email, roleId, role { id, name }} }}`,
-            { "displayName": displayName, "password": password });
+            `mutation registerUser($displayName: String, $password: String, $email: String) { registerUser(input: { displayName: $displayName, password: $password, email: $email }) { token, expiration, user { id, displayName, email, roleId, role { id, name }} }}`,
+            { "displayName": displayName, "password": password, "email": email });
     }
 }
 

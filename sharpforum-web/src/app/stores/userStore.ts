@@ -1,8 +1,9 @@
 import { makeAutoObservable, runInAction, reaction } from "mobx";
 //import { redirect } from "react-router-dom";
 import agent from "../api/agent";
-import { User, UserFormValues } from "../models/user";
+import { User, LoginUserFormValues, RegisterUserFormValues } from "../models/user";
 //import { store } from "./store";
+//import { GetKitten } from ''
 
 export default class UserStore {
     selectedUser: User | null = null;
@@ -54,7 +55,7 @@ export default class UserStore {
         return !!this.currentUser;
     }
 
-    login = async (creds: UserFormValues) => {
+    login = async (creds: LoginUserFormValues) => {
         try {
             const result = await agent.Users.login(creds.displayName, creds.password);
             this.setToken(result.data.loginUser.token);
@@ -83,9 +84,9 @@ export default class UserStore {
     //    }
     //}
     //
-    register = async (creds: UserFormValues) => {
+    register = async (creds: RegisterUserFormValues) => {
         try {
-            const result = await agent.Users.register(creds.displayName, creds.password);
+            const result = await agent.Users.register(creds.displayName, creds.password, creds.email);
             this.setToken(result.data.registerUser.token);
             this.startRefreshTokenTimer(result.data.registerUser.token);
             runInAction(() => this.currentUser = result.data.registerUser.user);

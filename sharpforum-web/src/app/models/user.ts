@@ -14,7 +14,13 @@ export interface User {
     createdOn: Date | null;
 }
 
-export interface UserFormValues {
+export interface LoginUserFormValues {
     displayName: string;
     password: string;
+}
+
+export interface RegisterUserFormValues {
+    displayName: string;
+    password: string;
+    email: string;
 }

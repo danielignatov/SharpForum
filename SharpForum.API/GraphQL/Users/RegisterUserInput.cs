@@ -1,4 +1,4 @@
 ﻿namespace SharpForum.API.GraphQL.Users
 {
-    public record RegisterUserInput(string Email, string Password, string About, string Avatar, string DisplayName, string Location, string Signature, string Website);
+    public record RegisterUserInput(string DisplayName, string Password, string Email);
 }

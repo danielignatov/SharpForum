@@ -29,8 +29,8 @@ export default observer(function UserDetails() {
                 ) : (
                     <Container className='sf-container'>
                         <Row>
-                                <Col xs={2}>
-                                    <Image thumbnail={true} src={selectedUser?.avatar || GetKitten(selectedUser?.id || '') || '/assets/user.png'} />
+                            <Col xs={2}>
+                                <Image thumbnail={true} src={selectedUser?.avatar || GetKitten(selectedUser?.id || '') || '/assets/user.png'} />
                             </Col>
                             <Col xs={10}>
                                 <h1>{selectedUser?.displayName}</h1>

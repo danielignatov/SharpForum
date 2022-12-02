@@ -37,6 +37,15 @@
       "pass-placeholder": "Enter password",
       "no-account-q": "Don't have an account?"
     },
+    "registerform": {
+      "name": "Name",
+      "password": "Password",
+      "email": "Email",
+      "name-placeholder": "Display name visible to others",
+      "pass-placeholder": "Enter password",
+      "email-placeholder": "Optional: used for password reset or reply notification",
+      "privacy-policy-notice": "I understood and accept site"
+    },
     "details": {
       "role": "Role"
     }

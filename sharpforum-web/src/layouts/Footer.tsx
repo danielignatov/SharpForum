@@ -2,8 +2,8 @@ import './Footer.scss';
 import React, { Fragment } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import PrivacyPolicyLink from './PrivacyPolicyLink';
 
 function Footer() {
     const { t } = useTranslation();
@@ -13,7 +13,7 @@ function Footer() {
             <Row>
                 <Col>
                     <p className='sf-footer-text'>
-                        <Link to='/privacy' className='sf-footer-link'>{t("privacy.title")}</Link>
+                        <PrivacyPolicyLink className='sf-footer-link' />
                     </p>
                 </Col>
                 <Col>

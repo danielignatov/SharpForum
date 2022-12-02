@@ -25,18 +25,25 @@ namespace SharpForum.API.Data.Repository
 
         public virtual async Task<bool> AddAsync(T entity)
         {
-            await using DataContext dbContext =
+            try
+            {
+                await using DataContext dbContext =
                     _dbContextFactory.CreateDbContext();
 
-            var dbSet = dbContext.Set<T>();
+                var dbSet = dbContext.Set<T>();
 
-            await dbSet.AddAsync(entity);
+                await dbSet.AddAsync(entity);
 
-            await dbContext.SaveChangesAsync();
+                await dbContext.SaveChangesAsync();
 
-            _cacheManager.Remove(typeof(T).FullName);
+                _cacheManager.Remove(typeof(T).FullName);
 
-            return true;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public virtual async Task<IEnumerable<T>> GetAllAsync()

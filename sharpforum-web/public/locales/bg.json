@@ -37,6 +37,15 @@
       "pass-placeholder": "Въведете парола",
       "no-account-q": "Нямаш акаунт?"
     },
+    "registerform": {
+      "name": "Име",
+      "password": "Парола",
+      "email": "Електронна поща",
+      "name-placeholder": "Псевдоним видим от останалите потребители",
+      "pass-placeholder": "Въведете парола",
+      "email-placeholder": "Незадължително: използва се за подновяване на парола или известия при отговор",
+      "privacy-policy-notice": "Разбрах и приемам"
+    },
     "details": {
       "role": "Роля"
     }

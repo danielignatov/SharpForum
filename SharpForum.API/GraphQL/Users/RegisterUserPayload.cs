@@ -2,5 +2,5 @@
 
 namespace SharpForum.API.GraphQL.Users
 {
-    public record RegisterUserPayload(User user);
+    public record RegisterUserPayload(string Token, DateTime Expiration, User User);
 }
