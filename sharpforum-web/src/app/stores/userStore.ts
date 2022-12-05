@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction, reaction } from "mobx";
 //import { redirect } from "react-router-dom";
 import agent from "../api/agent";
-import { User, LoginUserFormValues, RegisterUserFormValues } from "../models/user";
+import { User, LoginUserFormValues, RegisterUserFormValues, RegisterUserResult } from "../models/user";
 //import { store } from "./store";
 //import { GetKitten } from ''
 
@@ -62,7 +62,6 @@ export default class UserStore {
             this.startRefreshTokenTimer(result.data.loginUser.token);
             runInAction(() => this.currentUser = result.data.loginUser.user);
         } catch (error) {
-            debugger;
             throw error;
         }
     }
@@ -87,9 +86,15 @@ export default class UserStore {
     register = async (creds: RegisterUserFormValues) => {
         try {
             const result = await agent.Users.register(creds.displayName, creds.password, creds.email);
-            this.setToken(result.data.registerUser.token);
-            this.startRefreshTokenTimer(result.data.registerUser.token);
-            runInAction(() => this.currentUser = result.data.registerUser.user);
+            if (result.data.registerUser) {
+                this.setToken(result.data.registerUser.token);
+                this.startRefreshTokenTimer(result.data.registerUser.token);
+                runInAction(() => this.currentUser = result.data.registerUser.user);
+                return new RegisterUserResult(true, []);
+            }
+            else {
+                return new RegisterUserResult(false, result.errors.map((x: any) => x.message));
+            }
         } catch (error) {
             throw error;
         }

@@ -60,7 +60,7 @@ namespace SharpForum.API.GraphQL
                     await data.Users.GetByEmailAsync(input.Email);
 
                 if (user != null)
-                    throw new GraphQLException(new Error("User already registered"));
+                    throw new GraphQLException(new Error("User email already registered"));
             }
 
             var passwordHash =

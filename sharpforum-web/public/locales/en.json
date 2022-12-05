@@ -4,7 +4,9 @@
     "login": "Login",
     "by": "by",
     "on": "on",
-    "edit": "edit"
+    "edit": "edit",
+    "req-field": "Field is required",
+    "err": "Error occured"
   },
   "categories": {
     "title": "Categories"
@@ -44,7 +46,11 @@
       "name-placeholder": "Display name visible to others",
       "pass-placeholder": "Enter password",
       "email-placeholder": "Optional: used for password reset or reply notification",
-      "privacy-policy-notice": "I understood and accept site"
+      "privacy-policy-notice": "I understood and accept site",
+      "privacy-policy-err": "Privacy policy must be accepted",
+      "email-invalid-err": "Must be a valid email address",
+      "email-taken-err": "Email address is already registered",
+      "name-taken-err": "Display name is already taken"
     },
     "details": {
       "role": "Role"
