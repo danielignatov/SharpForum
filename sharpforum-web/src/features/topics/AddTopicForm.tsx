@@ -1,9 +1,9 @@
 import React from 'react';
 
-function TopicAddForm() {
+function AddTopicForm() {
   return (
     <p>topic add form</p>
   );
 }
 
-export default TopicAddForm;
+export default AddTopicForm;

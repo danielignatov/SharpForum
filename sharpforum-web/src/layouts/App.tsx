@@ -4,13 +4,13 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import CategoryDetails from '../features/categories/CategoryDetails';
 import ErrorPage from './ErrorPage';
-import TopicAddForm from '../features/topics/TopicAddForm';
 import TopicDetails from '../features/topics/TopicDetails';
 import UserLoginForm from '../features/users/UserLoginForm';
 import UserRegisterForm from '../features/users/UserRegisterForm';
 import UserDetails from '../features/users/UserDetails';
 import NotFound from './NotFound';
 import PrivacyPolicy from './PrivacyPolicy';
+import AddTopicForm from '../features/topics/AddTopicForm';
 
 function App() {
     return (
@@ -18,8 +18,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
                     <Route index element={<CategoryList />} />
+                    <Route path="category/:categoryId/topic" element={<AddTopicForm />} />
                     <Route path="category/:categoryId" element={<CategoryDetails />} />
-                    <Route path="topic/add" element={<TopicAddForm />} />
                     <Route path="topic/:topicId" element={<TopicDetails />} />
                     <Route path="login" element={<UserLoginForm />} />
                     <Route path="register" element={<UserRegisterForm />} />

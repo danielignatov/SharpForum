@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table';
 import Row from 'react-bootstrap/Row';
 import ReplyList from '../replies/ReplyList';
 import { useTranslation } from 'react-i18next';
-import AddReplyBtn from '../../layouts/AddReplyBtn';
+import AddReplyForm from '../replies/AddReplyForm';
 
 export default observer(function TopicDetails() {
     const { t } = useTranslation();
@@ -25,7 +25,6 @@ export default observer(function TopicDetails() {
                 <Loading />
             ) : (
                 <Fragment>
-                    <AddReplyBtn />
                     <Table bordered bgcolor='white'>
                         <thead>
                             <tr>
@@ -49,7 +48,7 @@ export default observer(function TopicDetails() {
                         </tbody>
                     </Table>
                     <ReplyList />
-                    <AddReplyBtn />
+                    <AddReplyForm topicId={topicId ?? ''} />
                 </Fragment>
             )}
         </Fragment>
