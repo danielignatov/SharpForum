@@ -46,7 +46,7 @@ export default observer(function UserLoginForm() {
                 </Row>
 
                 <div className="d-grid gap-2 mt-2">
-                    <Button variant="success" type="submit">
+                    <Button variant="success" type="submit" className="text-white">
                         {t('common.login')}
                     </Button>
                 </div>

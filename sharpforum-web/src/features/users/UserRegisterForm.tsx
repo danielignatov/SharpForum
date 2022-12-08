@@ -10,13 +10,14 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PrivacyPolicyLink from '../../layouts/PrivacyPolicyLink';
 import Alert from 'react-bootstrap/Alert';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 export default observer(function UserRegisterForm() {
     const { t } = useTranslation();
     const { userStore } = useStore();
     const { register } = userStore;
     const navigate = useNavigate();
-    //const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [showDisplayNameTakenError, setDisplayNameTakenError] = useState(false);
     const [showEmailTakenError, setEmailTakenError] = useState(false);
     const [showGenericError, setGenericError] = useState(false);
@@ -36,9 +37,9 @@ export default observer(function UserRegisterForm() {
         acceptPrivacyPolicy: Yup.boolean().required(`${t('users.registerform.privacy-policy-err')}`).oneOf([true], `${t('users.registerform.privacy-policy-err')}`)
     });
 
-    //const handleShowPassword = () => {
-    //    setShowPassword((show) => !show);
-    //}
+    const handleShowPassword = () => {
+        setShowPassword((showPassword) => !showPassword);
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -52,9 +53,7 @@ export default observer(function UserRegisterForm() {
             var result = await register(values);
             if (result.success) {
                 navigate('/', { replace: true });
-            }
-            else {
-                debugger;
+            } else {
                 result.errors.forEach(error => {
                     switch (error) {
                         case 'User already registered':
@@ -72,7 +71,7 @@ export default observer(function UserRegisterForm() {
         }
     });
 
-    const { errors, touched, setSubmitting, handleSubmit, getFieldProps } = formik;
+    const { errors, touched, handleSubmit, getFieldProps } = formik;
 
     return (
         <Container className='sf-container'>
@@ -107,21 +106,17 @@ export default observer(function UserRegisterForm() {
 
                     <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>{t('users.registerform.password')}</Form.Label>
-                        <Form.Control
-                            //type={showPassword ? 'text' : 'password'}
-                            type='password'
-                            placeholder={passPlaceholder}
-                            //InputProps={{
-                            //    endAdornment: (
-                            //        <InputAdornment position="end">
-                            //            <IconButton onClick={handleShowPassword} edge="end">
-                            //                <Icon icon={showPassword ? VisibilityIcon : VisibilityOffIcon} />
-                            //            </IconButton>
-                            //        </InputAdornment>
-                            //    )
-                            //}}
-                            {...getFieldProps('password')}
-                        />
+                        <InputGroup>
+                            
+                            <Form.Control
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder={passPlaceholder}
+                                {...getFieldProps('password')}
+                            />
+                            <Button variant="outline-secondary" onClick={handleShowPassword}>
+                                { showPassword ? t('common.hide') : t('common.show') }
+                            </Button>
+                        </InputGroup>
                         {errors.password && touched.password && (
                             <p className="text-danger">{errors.password}</p>
                         )}
@@ -159,7 +154,7 @@ export default observer(function UserRegisterForm() {
                     </Form.Group>
 
                     <div className="d-grid gap-2">
-                        <Button variant="success" type="submit">
+                        <Button variant="success" type="submit" className="text-white">
                             {t('common.register')}
                         </Button>
                     </div>

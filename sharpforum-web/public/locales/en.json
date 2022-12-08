@@ -6,7 +6,9 @@
     "on": "on",
     "edit": "edit",
     "req-field": "Field is required",
-    "err": "Error occured"
+    "err": "Error occured",
+    "show": "Show",
+    "hide": "Hide"
   },
   "categories": {
     "title": "Categories"

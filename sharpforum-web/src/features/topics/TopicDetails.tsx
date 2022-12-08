@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react';
 import React, { Fragment, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
 import Loading from '../../layouts/Loading';
 import { useStore } from '../../app/stores/store';
@@ -8,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 import Row from 'react-bootstrap/Row';
 import ReplyList from '../replies/ReplyList';
 import { useTranslation } from 'react-i18next';
+import AddReplyBtn from '../../layouts/AddReplyBtn';
 
 export default observer(function TopicDetails() {
     const { t } = useTranslation();
@@ -25,7 +25,7 @@ export default observer(function TopicDetails() {
                 <Loading />
             ) : (
                 <Fragment>
-                        <Button variant='success' className='sf-mb-1'>{t('replies.add-reply')}</Button>
+                    <AddReplyBtn />
                     <Table bordered bgcolor='white'>
                         <thead>
                             <tr>
@@ -49,7 +49,7 @@ export default observer(function TopicDetails() {
                         </tbody>
                     </Table>
                     <ReplyList />
-                        <Button variant='success' className='sf-mb-1'>{t('replies.add-reply')}</Button>
+                    <AddReplyBtn />
                 </Fragment>
             )}
         </Fragment>
