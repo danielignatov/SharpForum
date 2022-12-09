@@ -41,8 +41,10 @@
   "users": {
     "loginform": {
       "name": "Name",
-      "password": "Password",
+      "name-err": "User not found",
       "name-placeholder": "Display name",
+      "password": "Password",
+      "pass-err": "Wrong password",
       "pass-placeholder": "Enter password",
       "no-account-q": "Don't have an account?"
     },

@@ -1,7 +1,8 @@
 import { makeAutoObservable, runInAction, reaction } from "mobx";
 //import { redirect } from "react-router-dom";
 import agent from "../api/agent";
-import { User, LoginUserFormValues, RegisterUserFormValues, RegisterUserResult } from "../models/user";
+import { Result } from "../models/result";
+import { User, LoginUserFormValues, RegisterUserFormValues } from "../models/user";
 //import { store } from "./store";
 //import { GetKitten } from ''
 
@@ -58,9 +59,14 @@ export default class UserStore {
     login = async (creds: LoginUserFormValues) => {
         try {
             const result = await agent.Users.login(creds.displayName, creds.password);
-            this.setToken(result.data.loginUser.token);
-            this.startRefreshTokenTimer(result.data.loginUser.token);
-            runInAction(() => this.currentUser = result.data.loginUser.user);
+            if (result.data.loginUser) {
+                this.setToken(result.data.loginUser.token);
+                this.startRefreshTokenTimer(result.data.loginUser.token);
+                runInAction(() => this.currentUser = result.data.loginUser.user);
+                return new Result(true, []);
+            } else {
+                return new Result(false, result.errors.map((x: any) => x.message));
+            }
         } catch (error) {
             throw error;
         }
@@ -90,10 +96,9 @@ export default class UserStore {
                 this.setToken(result.data.registerUser.token);
                 this.startRefreshTokenTimer(result.data.registerUser.token);
                 runInAction(() => this.currentUser = result.data.registerUser.user);
-                return new RegisterUserResult(true, []);
-            }
-            else {
-                return new RegisterUserResult(false, result.errors.map((x: any) => x.message));
+                return new Result(true, []);
+            } else {
+                return new Result(false, result.errors.map((x: any) => x.message));
             }
         } catch (error) {
             throw error;

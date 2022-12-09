@@ -24,15 +24,3 @@ export interface RegisterUserFormValues {
     password: string;
     email: string;
 }
-
-export interface RegisterUserResult {
-    success: boolean;
-    errors: string[];
-}
-
-export class RegisterUserResult implements RegisterUserResult {
-    constructor(success: boolean, errors: string[]) {
-        this.success = success;
-        this.errors = errors;
-    }
-}

@@ -41,8 +41,10 @@
   "users": {
     "loginform": {
       "name": "Име",
-      "password": "Парола",
+      "name-err": "Потребител с това име не е открит",
       "name-placeholder": "Псевдоним видим от останалите потребители",
+      "password": "Парола",
+      "pass-err": "Грешна парола",
       "pass-placeholder": "Въведете парола",
       "no-account-q": "Нямаш акаунт?"
     },
