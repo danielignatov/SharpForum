@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import agent from '../api/agent';
-import { Topic } from "../models/topic";
+import { TopicResult } from "../models/result";
+import { AddTopicFormValues, Topic } from "../models/topic";
 //import { store } from "./store";
 
 export default class TopicStore {
@@ -47,5 +48,20 @@ export default class TopicStore {
 
     setLoading = (loading: boolean) => {
         this.loading = loading;
+    }
+
+    add = async (v: AddTopicFormValues) => {
+        try {
+            const result = await agent.Topics.add(v.authorId, v.categoryId, v.subject, v.message, v.sticky, v.locked);
+            if (result.data.addTopic) {
+                debugger;
+                return new TopicResult(true, result.data.addTopic.topic.id, []);
+            } else {
+                debugger;
+                return new TopicResult(false, '', result.errors.map((x: any) => x.message));
+            }
+        } catch (error) {
+            throw error;
+        }
     }
 }

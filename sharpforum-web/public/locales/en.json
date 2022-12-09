@@ -8,7 +8,8 @@
     "req-field": "Field is required",
     "err": "Error occured",
     "show": "Show",
-    "hide": "Hide"
+    "hide": "Hide",
+    "publish": "Publish"
   },
   "categories": {
     "title": "Categories"
@@ -16,7 +17,13 @@
   "topics": {
     "title": "Topics",
     "singular": "Topic",
-    "add-topic": "Add topic"
+    "add-topic": "Add topic",
+    "add": {
+      "subject": "Subject",
+      "subject-placeholder": "Topic subject",
+      "message": "Message",
+      "msg-placeholder": "Topic message"
+    }
   },
   "replies": {
     "title": "Replies",

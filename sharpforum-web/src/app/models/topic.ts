@@ -13,3 +13,12 @@ export interface Topic {
     category: Category;
     createdOn: Date | null;
 }
+
+export interface AddTopicFormValues {
+    authorId: string;
+    categoryId: string;
+    subject: string;
+    message: string;
+    sticky: boolean;
+    locked: boolean;
+}

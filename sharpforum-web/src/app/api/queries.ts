@@ -27,11 +27,23 @@ const queries = {
             `query getTopicQuery($topicId: UUID) { topics (where: {id: {eq: $topicId}} ) { id, subject, message, locked, authorId, author { displayName }, categoryId, category { name }, createdOn } }`,
             { "topicId": topicId });
     },
+    addTopicQuery(authorId: string, categoryId: string, subject: string, message: string, sticky: boolean, locked: boolean) {
+        return new Query(
+            "addTopic",
+            `mutation addTopic($authorId: UUID!, $categoryId: UUID!, $subject: String, $message: String, $sticky: Boolean!, $locked: Boolean!) { addTopic(input: { authorId: $authorId, categoryId: $categoryId, subject: $subject, message: $message, sticky: $sticky, locked: $locked }) { topic { id, authorId, categoryId, subject, message, sticky, locked, createdOn, updatedOn } } }`,
+            { "authorId": authorId, "categoryId": categoryId, "subject": subject, "message": message, "sticky": sticky, "locked": locked });
+    },
     getTopicRepliesQuery(topicId: string) {
         return new Query(
             "getTopicRepliesQuery",
             `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName }, createdOn } }`,
             { "topicId": topicId });
+    },
+    addTopicReplyQuery(authorId: string, topicId: string, message: string) {
+        return new Query(
+            "addReply",
+            `mutation addReply($authorId: UUID!, $topicId: UUID!, $message: String) { addReply(input: { authorId: $authorId, topicId: $topicId, message: $message }) { reply { id, authorId, author { id, displayName, roleId, role { id, name } }, topicId, message, createdOn, updatedOn } } }`,
+            { "authorId": authorId, "topicId": topicId, "message": message });
     },
     getUserQuery(userId: string) {
         return new Query(

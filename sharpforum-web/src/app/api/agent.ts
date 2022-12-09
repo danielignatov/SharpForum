@@ -34,7 +34,8 @@ const requests = {
 }
 
 const Replies = {
-    byTopicId: (topicId: string) => requests.graphql(queries.getTopicRepliesQuery(topicId))
+    byTopicId: (topicId: string) => requests.graphql(queries.getTopicRepliesQuery(topicId)),
+    add: (authorId: string, topicId: string, message: string) => requests.graphql(queries.addTopicReplyQuery(authorId, topicId, message))
 }
 
 const Categories = {
@@ -44,7 +45,8 @@ const Categories = {
 const Topics = {
     all: () => requests.graphql(queries.getAllTopicsQuery),
     byCategory: (categoryId: string) => requests.graphql(queries.getCategoryTopicsQuery(categoryId)),
-    byId: (topicId: string) => requests.graphql(queries.getTopicQuery(topicId))
+    byId: (topicId: string) => requests.graphql(queries.getTopicQuery(topicId)),
+    add: (authorId: string, categoryId: string, subject: string, message: string, sticky: boolean, locked: boolean) => requests.graphql(queries.addTopicQuery(authorId, categoryId, subject, message, sticky, locked))
 }
 
 const Users = {

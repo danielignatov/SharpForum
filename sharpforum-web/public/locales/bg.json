@@ -8,7 +8,8 @@
     "req-field": "Полето е задължително",
     "err": "Възникна грешка",
     "show": "Покажи",
-    "hide": "Скрий"
+    "hide": "Скрий",
+    "publish": "Публикувай"
   },
   "categories": {
     "title": "Категории"
@@ -16,7 +17,13 @@
   "topics": {
     "title": "Теми",
     "singular": "Тема",
-    "add-topic": "Добави тема"
+    "add-topic": "Добави тема",
+    "add": {
+      "subject": "Заглавие",
+      "subject-placeholder": "Заглавие на темата",
+      "message": "Съобщение",
+      "msg-placeholder": "Съобщение на темата"
+    }
   },
   "replies": {
     "title": "Отговори",

@@ -1,4 +1,8 @@
 ﻿namespace SharpForum.API.GraphQL.Replies
 {
-    public record AddReplyInput(Guid AuthorId, string Message, Guid TopicId);
+    public record AddReplyInput(
+        Guid AuthorId, 
+        Guid TopicId,
+        string Message
+    );
 }
