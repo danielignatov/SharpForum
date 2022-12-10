@@ -22,7 +22,8 @@
       "subject": "Subject",
       "subject-placeholder": "Topic subject",
       "message": "Message",
-      "msg-placeholder": "Topic message"
+      "msg-placeholder": "Topic message",
+      "login-err": "To create a topic you must login first."
     }
   },
   "replies": {

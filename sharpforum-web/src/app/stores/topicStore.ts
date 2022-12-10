@@ -52,12 +52,12 @@ export default class TopicStore {
 
     add = async (v: AddTopicFormValues) => {
         try {
-            const result = await agent.Topics.add(v.authorId, v.categoryId, v.subject, v.message, v.sticky, v.locked);
+            const result = await agent.Topics.add(
+                v.authorId, v.categoryId, v.subject, v.message, v.sticky, v.locked);
+
             if (result.data.addTopic) {
-                debugger;
                 return new TopicResult(true, result.data.addTopic.topic.id, []);
             } else {
-                debugger;
                 return new TopicResult(false, '', result.errors.map((x: any) => x.message));
             }
         } catch (error) {

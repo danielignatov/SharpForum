@@ -22,7 +22,8 @@
       "subject": "Заглавие",
       "subject-placeholder": "Заглавие на темата",
       "message": "Съобщение",
-      "msg-placeholder": "Съобщение на темата"
+      "msg-placeholder": "Съобщение на темата",
+      "login-err": "За да създадете тема е нужно да се впишете."
     }
   },
   "replies": {
