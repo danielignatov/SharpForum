@@ -29,7 +29,12 @@
   "replies": {
     "title": "Replies",
     "singular": "Reply",
-    "add-reply": "Add reply"
+    "add-reply": "Add reply",
+    "add": {
+      "message": "Message",
+      "msg-placeholder": "Reply message",
+      "login-err": "To add a reply you must login first."
+    }
   },
   "layout": {
     "nav": {

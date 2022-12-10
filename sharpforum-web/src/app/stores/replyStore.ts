@@ -1,6 +1,7 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import agent from '../api/agent';
-import { Reply } from "../models/reply";
+import { AddReplyFormValues, Reply } from "../models/reply";
+import { Result } from "../models/result";
 
 export default class ReplyStore {
     selectedTopicReplies: Reply[] = [];
@@ -28,5 +29,22 @@ export default class ReplyStore {
 
     setLoading = (loading: boolean) => {
         this.loading = loading;
+    }
+
+    add = async (v: AddReplyFormValues) => {
+        try {
+            const result = await agent.Replies.add(
+                v.authorId, v.topicId, v.message);
+
+            if (result.data.addReply) {
+                runInAction(() => this.selectedTopicReplies.push(result.data.addReply.reply));
+
+                return new Result(true, []);
+            } else {
+                return new Result(false, result?.errors?.map((x: any) => x.message) ?? []);
+            }
+        } catch (error) {
+            throw error;
+        }
     }
 }

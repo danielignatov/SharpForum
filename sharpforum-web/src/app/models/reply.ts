@@ -10,3 +10,9 @@ export interface Reply {
     topic: Topic;
     createdOn: Date | null;
 }
+
+export interface AddReplyFormValues {
+    authorId: string;
+    topicId: string;
+    message: string;
+}

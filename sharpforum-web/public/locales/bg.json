@@ -29,7 +29,12 @@
   "replies": {
     "title": "Отговори",
     "singular": "Отговор",
-    "add-reply": "Добави отговор"
+    "add-reply": "Добави отговор",
+    "add": {
+      "message": "Отговор",
+      "msg-placeholder": "",
+      "login-err": "За да добавите отговор е нужно да се впишете."
+    }
   },
   "layout": {
     "nav": {
