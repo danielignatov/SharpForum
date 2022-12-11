@@ -12,9 +12,16 @@ const getAllTopicsQuery: Query = {
     "variables": {}
 };
 
+const getAllUsersQuery: Query = {
+    "operationName": "getAllUsers",
+    "query": `query getAllUsers { users { id, displayName, roleId, role { id, name }, createdOn, about, avatar } }`,
+    "variables": {}
+};
+
 const queries = {
     getAllCategoriesQuery,
     getAllTopicsQuery,
+    getAllUsersQuery,
     getCategoryTopicsQuery(categoryId: string) {
         return new Query(
             "getCategoryTopicsQuery",
@@ -24,7 +31,7 @@ const queries = {
     getTopicQuery(topicId: string) {
         return new Query(
             "getTopicQuery",
-            `query getTopicQuery($topicId: UUID) { topics (where: {id: {eq: $topicId}} ) { id, subject, message, locked, authorId, author { displayName }, categoryId, category { name }, createdOn } }`,
+            `query getTopicQuery($topicId: UUID) { topics (where: {id: {eq: $topicId}} ) { id, subject, message, locked, authorId, author { displayName, avatar }, categoryId, category { name }, createdOn } }`,
             { "topicId": topicId });
     },
     addTopicQuery(authorId: string, categoryId: string, subject: string, message: string, sticky: boolean, locked: boolean) {
@@ -36,7 +43,7 @@ const queries = {
     getTopicRepliesQuery(topicId: string) {
         return new Query(
             "getTopicRepliesQuery",
-            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName }, createdOn } }`,
+            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName, avatar }, createdOn } }`,
             { "topicId": topicId });
     },
     addTopicReplyQuery(authorId: string, topicId: string, message: string) {

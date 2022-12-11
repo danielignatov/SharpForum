@@ -9,7 +9,8 @@
     "err": "Error occured",
     "show": "Show",
     "hide": "Hide",
-    "publish": "Publish"
+    "publish": "Publish",
+    "profile": "Profile"
   },
   "categories": {
     "title": "Categories"
@@ -43,7 +44,8 @@
       "logout": "Logout",
       "lang": "Language",
       "en": "English",
-      "bg": "Български"
+      "bg": "Български",
+      "users": "Users"
     },
     "notfound": {
       "yikes": "Yikes!",

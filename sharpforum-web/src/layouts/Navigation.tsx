@@ -25,9 +25,10 @@ export default observer(function Navigation() {
                 <Navbar.Brand as={Link} to={`/`}>SharpForum</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to={`/`}>{t('layout.nav.home')}</Nav.Link>
+                    <Nav.Link as={Link} to={`/users`}>{t('layout.nav.users')}</Nav.Link>
                     <Language />
                 </Nav>
-                { isLoggedIn ? (
+                {isLoggedIn ? (
                     <Nav>
                         <Nav.Link as={Link} to={`/user/${currentUser?.id}`}>{t('layout.nav.greet')}, {currentUser?.displayName}</Nav.Link>
                         <Nav.Link onClick={logout}>{t('layout.nav.logout')}</Nav.Link>

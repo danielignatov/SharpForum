@@ -8,6 +8,8 @@ import Row from 'react-bootstrap/Row';
 import ReplyList from '../replies/ReplyList';
 import { useTranslation } from 'react-i18next';
 import AddReplyForm from '../replies/AddReplyForm';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 
 export default observer(function TopicDetails() {
     const { t } = useTranslation();
@@ -35,14 +37,22 @@ export default observer(function TopicDetails() {
                             <tr>
                                 <td>
                                     <Row>
-                                        <strong>{selectedTopic?.subject}</strong>
+                                        <Col xs={6} sm={2} md={2} lg={2}>
+                                            <Image thumbnail={true} src={selectedTopic?.author?.avatar || '/assets/user.png'} />
+                                        </Col>
+                                        <Col xs={6} sm={10} md={10} lg={10}>
+                                            <Row>
+                                                <strong>{selectedTopic?.subject}</strong>
+                                            </Row>
+                                            <Row>
+                                                <small>{selectedTopic?.message}</small>
+                                            </Row>
+                                            <Row>
+                                                <small>{t('common.by')} {selectedTopic?.author.displayName}</small>
+                                            </Row>
+                                        </Col>
                                     </Row>
-                                    <Row>
-                                        <small>{selectedTopic?.message}</small>
-                                    </Row>
-                                    <Row>
-                                        <small>{t('common.by')} {selectedTopic?.author.displayName}</small>
-                                    </Row>
+
                                 </td>
                             </tr>
                         </tbody>

@@ -4,6 +4,9 @@ import { Result } from "../models/result";
 import { User, LoginUserFormValues, RegisterUserFormValues } from "../models/user";
 
 export default class UserStore {
+    users: User[] = [];
+    loadingUsers: boolean = false;
+
     selectedUser: User | null = null;
     loadingSelectedUser: boolean = false;
     currentUser: User | null = null;
@@ -36,6 +39,26 @@ export default class UserStore {
             console.log(error);
             this.setLoadingSelectedUser(false);
         }
+    }
+
+    loadUsers = async () => {
+        this.setLoadingUsers(true);
+        try {
+            const result = await agent.Users.all();
+            this.setUsers(result.data.users);
+            this.setLoadingUsers(false);
+        } catch (error) {
+            console.log(error);
+            this.setLoadingUsers(false);
+        }
+    }
+
+    setUsers = (users: User[]) => {
+        this.users = users;
+    }
+
+    setLoadingUsers = (loading: boolean) => {
+        this.loadingUsers = loading;
     }
 
     setSelectedUser = (user: User) => {

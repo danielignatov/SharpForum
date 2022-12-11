@@ -13,6 +13,7 @@ import PrivacyPolicy from './PrivacyPolicy';
 import AddTopicForm from '../features/topics/AddTopicForm';
 import { useStore } from '../app/stores/store';
 import Loading from './Loading';
+import UserList from '../features/users/UserList';
 
 function App() {
     const { userStore } = useStore();
@@ -38,6 +39,7 @@ function App() {
                         <Route path="topic/:topicId" element={<TopicDetails />} />
                         <Route path="login" element={<UserLoginForm />} />
                         <Route path="register" element={<UserRegisterForm />} />
+                        <Route path="users" element={<UserList />} />
                         <Route path="user/:userId" element={<UserDetails />} />
                         <Route path="privacy" element={<PrivacyPolicy />} />
                         <Route path="*" element={<NotFound />} />
