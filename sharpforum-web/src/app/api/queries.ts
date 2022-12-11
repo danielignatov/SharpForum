@@ -51,6 +51,12 @@ const queries = {
             `query getUserQuery($userId: UUID) { users (where: {id: {eq: $userId}} ) { id, displayName, about, location, createdOn, roleId, role { id, name } } }`,
             { "userId": userId });
     },
+    getCurrentUserQuery() {
+        return new Query(
+            "currentUser",
+            `query currentUser { currentUser { id, displayName, about, avatar, location, createdOn, email, roleId, role { id, name } } }`,
+            { });
+    },
     mutateLoginUserQuery(displayName: string, password: string) {
         return new Query(
             "loginUser",

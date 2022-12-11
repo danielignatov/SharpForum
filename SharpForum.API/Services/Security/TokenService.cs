@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using SharpForum.API.Models.Domain;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -41,6 +42,22 @@ namespace SharpForum.API.Services.Security
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
+        }
+
+        public Dictionary<string, string> DecodeToken(string token) 
+        {
+            var result = new Dictionary<string, string>();
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(token);
+            var claims = jwtSecurityToken.Claims.ToList();
+
+            foreach (var claim in claims)
+            {
+                result.Add(claim.Type, claim.Value);
+            }
+
+            return result;
         }
     }
 }

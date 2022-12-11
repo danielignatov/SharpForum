@@ -1,15 +1,13 @@
 import { makeAutoObservable, runInAction, reaction } from "mobx";
-//import { redirect } from "react-router-dom";
 import agent from "../api/agent";
 import { Result } from "../models/result";
 import { User, LoginUserFormValues, RegisterUserFormValues } from "../models/user";
-//import { store } from "./store";
-//import { GetKitten } from ''
 
 export default class UserStore {
     selectedUser: User | null = null;
     loadingSelectedUser: boolean = false;
     currentUser: User | null = null;
+    loadingCurrentUser: boolean = false;
     token: string | null = window.localStorage.getItem('jwt');
     refreshTokenTimeout: any;
 
@@ -78,17 +76,19 @@ export default class UserStore {
         runInAction(() => this.currentUser = null);
     }
 
-    //getUser = async () => {
-    //    try {
-    //        const user = await agent.Account.current();
-    //        store.commonStore.setToken(user.token);
-    //        runInAction(() => this.user = user);
-    //        this.startRefreshTokenTimer(user);
-    //    } catch (error) {
-    //        console.log(error);
-    //    }
-    //}
-    //
+    loadCurrentUser = async () => {
+        try {
+            const result = await agent.Users.current();
+            
+            if (result.data.currentUser) {
+                runInAction(() => this.currentUser = result.data.currentUser);
+                //this.startRefreshTokenTimer(result.data.currentUser);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    
     register = async (creds: RegisterUserFormValues) => {
         try {
             const result = await agent.Users.register(creds.displayName, creds.password, creds.email);

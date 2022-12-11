@@ -42,15 +42,13 @@ export default observer(function AddReplyForm({ topicId }: Props) {
         onSubmit: async (values) => {
             var result = await add(values);
             if (result.success) {
-                //navigate(`/topic/${result.topicId}`, { replace: true });
                 setFormSubmitted(true);
             } else {
                 result.errors.forEach((error: string) => {
                     console.log(error);
                 });
-                //navigate('/', { replace: true });
+                
                 setFormSubmitted(true);
-
             }
         }
     });

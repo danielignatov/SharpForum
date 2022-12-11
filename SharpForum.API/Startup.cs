@@ -20,6 +20,7 @@ using SharpForum.API.GraphQL.Topics;
 using SharpForum.API.GraphQL.Roles;
 using SharpForum.API.GraphQL.Users;
 using SharpForum.API.Services.Security;
+using Microsoft.AspNetCore.Http;
 
 namespace SharpForum.API
 {
@@ -66,6 +67,8 @@ namespace SharpForum.API
 
             services.AddSingleton<ICacheManager, CacheManager>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped<ISharpForumData, SharpForumData>();
 
             services.AddScoped<IPasswordService, PasswordService>();
@@ -88,6 +91,7 @@ namespace SharpForum.API
                 .AddType<RoleType>()
                 .AddType<TopicType>()
                 .AddType<UserType>()
+                .AddAuthorization()
                 .AddMutationType<Mutation>()
                 .AddTypeExtension<AuthMutation>()
                 .AddTypeExtension<CategoryMutation>()

@@ -3,9 +3,11 @@ import queries from './queries';
 
 const endpoint = "http://localhost:5000/graphql/";
 
+const token = window.localStorage.getItem('jwt') || '';
+
 const headers = {
     "content-type": "application/json",
-    "Authorization": "<token>"
+    "Authorization": `Bearer ${token}`
 };
 
 axios.defaults.baseURL = 'http://localhost:5000';
@@ -52,7 +54,8 @@ const Topics = {
 const Users = {
     login: (displayName: string, password: string) => requests.graphql(queries.mutateLoginUserQuery(displayName, password)),
     register: (displayName: string, password: string, email: string) => requests.graphql(queries.mutateRegisterUserQuery(displayName, password, email)),
-    byId: (userId: string) => requests.graphql(queries.getUserQuery(userId))
+    byId: (userId: string) => requests.graphql(queries.getUserQuery(userId)),
+    current: () => requests.graphql(queries.getCurrentUserQuery())
 }
 
 const agent = {
