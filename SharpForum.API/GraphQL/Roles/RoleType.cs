@@ -3,7 +3,6 @@ using HotChocolate.Types;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SharpForum.API.GraphQL.Roles
 {

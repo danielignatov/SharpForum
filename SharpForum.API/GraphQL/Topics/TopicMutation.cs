@@ -4,6 +4,7 @@ using HotChocolate.Subscriptions;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
 using System.Threading;
+using HotChocolate.AspNetCore.Authorization;
 
 namespace SharpForum.API.GraphQL.Topics
 {
@@ -11,6 +12,7 @@ namespace SharpForum.API.GraphQL.Topics
     [GraphQLDescription("Topic mutations")]
     public class TopicMutation
     {
+        [Authorize]
         public async Task<AddTopicPayload> AddTopicAsync(
             AddTopicInput input,
             [Service] ISharpForumData data,
@@ -41,6 +43,7 @@ namespace SharpForum.API.GraphQL.Topics
             return new AddTopicPayload(topic);
         }
 
+        [Authorize]
         public async Task<EditTopicPayload> EditTopicAsync(
             EditTopicInput input,
             [Service] ISharpForumData data,
@@ -69,6 +72,7 @@ namespace SharpForum.API.GraphQL.Topics
             return new EditTopicPayload(topic);
         }
 
+        [Authorize]
         public async Task RemoveTopicAsync(
             RemoveTopicInput input,
             [Service] ISharpForumData data,

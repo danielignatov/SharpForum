@@ -2,6 +2,7 @@
 using HotChocolate;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
+using HotChocolate.AspNetCore.Authorization;
 
 namespace SharpForum.API.GraphQL.Categories
 {
@@ -9,6 +10,7 @@ namespace SharpForum.API.GraphQL.Categories
     [GraphQLDescription("Category mutations")]
     public class CategoryMutation
     {
+        [Authorize]
         public async Task<AddCategoryPayload> AddCategoryAsync(
             AddCategoryInput input,
             [Service] ISharpForumData data)
@@ -33,6 +35,7 @@ namespace SharpForum.API.GraphQL.Categories
             return new AddCategoryPayload(category);
         }
 
+        [Authorize]
         public async Task<EditCategoryPayload> EditCategoryAsync(
             EditCategoryInput input,
             [Service] ISharpForumData data)
@@ -56,6 +59,7 @@ namespace SharpForum.API.GraphQL.Categories
             return new EditCategoryPayload(category);
         }
 
+        [Authorize]
         public async Task RemoveCategoryAsync(
             RemoveCategoryInput input,
             [Service] ISharpForumData data)

@@ -3,6 +3,7 @@ using HotChocolate;
 using HotChocolate.Subscriptions;
 using SharpForum.API.Data.Repository.Interfaces;
 using System.Threading;
+using HotChocolate.AspNetCore.Authorization;
 
 namespace SharpForum.API.GraphQL.Users
 {
@@ -10,6 +11,7 @@ namespace SharpForum.API.GraphQL.Users
     [GraphQLDescription("User mutations")]
     public class UserMutation
     {
+        [Authorize]
         public async Task<EditUserPayload> EditUserAsync(
             EditUserInput input,
             [Service] ISharpForumData data,
@@ -40,6 +42,7 @@ namespace SharpForum.API.GraphQL.Users
             return new EditUserPayload(user);
         }
 
+        [Authorize]
         public async Task RemoveUserAsync(
             RemoveUserInput input,
             [Service] ISharpForumData data,

@@ -5,6 +5,7 @@ using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
 using System.Threading;
 using SharpForum.API.GraphQL.Categories;
+using HotChocolate.AspNetCore.Authorization;
 
 namespace SharpForum.API.GraphQL.Replies
 {
@@ -12,6 +13,7 @@ namespace SharpForum.API.GraphQL.Replies
     [GraphQLDescription("Reply mutations")]
     public class ReplyMutation
     {
+        [Authorize]
         public async Task<AddReplyPayload> AddReplyAsync(
             AddReplyInput input,
             [Service] ISharpForumData data,
@@ -39,6 +41,7 @@ namespace SharpForum.API.GraphQL.Replies
             return new AddReplyPayload(reply);
         }
 
+        [Authorize]
         public async Task<EditReplyPayload> EditReplyAsync(
             EditReplyInput input,
             [Service] ISharpForumData data,
@@ -63,6 +66,7 @@ namespace SharpForum.API.GraphQL.Replies
             return new EditReplyPayload(reply);
         }
 
+        [Authorize]
         public async Task RemoveReplyAsync(
             RemoveReplyInput input,
             [Service] ISharpForumData data,
