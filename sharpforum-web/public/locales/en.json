@@ -17,6 +17,7 @@
   },
   "topics": {
     "title": "Topics",
+    "title-l": "topics",
     "singular": "Topic",
     "add-topic": "Add topic",
     "add": {
@@ -29,6 +30,7 @@
   },
   "replies": {
     "title": "Replies",
+    "title-l": "replies",
     "singular": "Reply",
     "add-reply": "Add reply",
     "add": {

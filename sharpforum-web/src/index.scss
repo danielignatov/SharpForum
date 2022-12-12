@@ -7,6 +7,7 @@ $warning: #ffc107;
 $danger: tomato;
 $light: #f8f9fa;
 $dark: #212529;
+$purpleDragon: #C38EC7;
 
 $theme-colors: ( primary: $primary, secondary: $secondary, success: $success, info: $info, warning: $warning, danger: $danger, light: $light, dark: $dark);
 
@@ -21,6 +22,13 @@ $theme-colors: ( primary: $primary, secondary: $secondary, success: $success, in
     &:hover {
         color: mediumpurple;
     }
+}
+
+.sf-header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: $purpleDragon;
+    border: 1px solid mediumpurple;
 }
 
 .sf-container {

@@ -17,6 +17,7 @@
   },
   "topics": {
     "title": "Теми",
+    "title-l": "теми",
     "singular": "Тема",
     "add-topic": "Добави тема",
     "add": {
@@ -29,6 +30,7 @@
   },
   "replies": {
     "title": "Отговори",
+    "title-l": "отговори",
     "singular": "Отговор",
     "add-reply": "Добави отговор",
     "add": {

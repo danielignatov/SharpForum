@@ -49,7 +49,7 @@ const queries = {
     addTopicReplyQuery(authorId: string, topicId: string, message: string) {
         return new Query(
             "addReply",
-            `mutation addReply($authorId: UUID!, $topicId: UUID!, $message: String) { addReply(input: { authorId: $authorId, topicId: $topicId, message: $message }) { reply { id, authorId, author { id, displayName, roleId, role { id, name } }, topicId, message, createdOn, updatedOn } } }`,
+            `mutation addReply($authorId: UUID!, $topicId: UUID!, $message: String) { addReply(input: { authorId: $authorId, topicId: $topicId, message: $message }) { reply { id, authorId, author { id, displayName, roleId, avatar, role { id, name } }, topicId, message, createdOn, updatedOn } } }`,
             { "authorId": authorId, "topicId": topicId, "message": message });
     },
     getUserQuery(userId: string) {

@@ -1,5 +1,5 @@
 import Table from 'react-bootstrap/Table';
-import './CategoryList.css';
+import './CategoryList.scss';
 import { Category } from '../../app/models/category';
 import CategoryListItem from './CategoryListItem';
 import Loading from '../../layouts/Loading';

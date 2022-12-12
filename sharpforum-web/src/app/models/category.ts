@@ -4,6 +4,8 @@ export interface Category {
     description: string;
     displayOrder: number;
     isPlaceholder: boolean;
+    topicCount: number;
+    replyCount: number;
 }
 
 export class Category implements Category {

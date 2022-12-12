@@ -5,13 +5,26 @@ import { Category } from "../models/category";
 
 export default class CategoryStore {
     categories: Category[] = [];
-    selectedCategory: Category | undefined = undefined;
+    category: Category | undefined = undefined;
+    loadingCategory = false;
     loading = false;
 
     constructor() {
         makeAutoObservable(this);
 
         this.loadCategories();
+    }
+
+    loadCategory = async (categoryId: string) => {
+        this.setLoadingCategory(true);
+        try {
+            const category = this.categories.find(x => x.id === categoryId) || new Category;
+            this.setCategory(category);
+            this.setLoadingCategory(false);
+        } catch (error) {
+            console.log(error);
+            this.setLoadingCategory(false);
+        }
     }
 
     loadCategories = async () => {
@@ -30,7 +43,15 @@ export default class CategoryStore {
         this.categories = categories;
     }
 
+    setCategory = (category: Category) => {
+        this.category = category;
+    }
+
     setLoading = (loading: boolean) => {
         this.loading = loading;
+    }
+
+    setLoadingCategory = (loading: boolean) => {
+        this.loadingCategory = loading;
     }
 }
