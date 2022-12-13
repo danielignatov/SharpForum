@@ -2,13 +2,13 @@ import { Query } from "../models/query";
 
 const getAllCategoriesQuery: Query = {
     "operationName": "getAllCategories",
-    "query": `query getAllCategories { categories { id, name, description, displayOrder, isPlaceholder } }`,
+    "query": `query getAllCategories { categories { id, name, description, displayOrder, isPlaceholder, topicCount, replyCount } }`,
     "variables": {}
 };
 
 const getAllTopicsQuery: Query = {
     "operationName": "getAllTopicsQuery",
-    "query": `query getAllTopicsQuery { topics { id, subject, locked, authorId, author { displayName }, categoryId, category { name }, createdOn } }`,
+    "query": `query getAllTopicsQuery { topics { id, subject, locked, authorId, author { displayName }, categoryId, category { name }, createdOn, replyCount } }`,
     "variables": {}
 };
 
@@ -25,7 +25,7 @@ const queries = {
     getCategoryTopicsQuery(categoryId: string) {
         return new Query(
             "getCategoryTopicsQuery",
-            `query getCategoryTopicsQuery($categoryId: UUID) { topics (where: {categoryId: {eq: $categoryId}} ) { id, subject, locked, authorId, author { displayName }, categoryId, category { name }, createdOn } }`,
+            `query getCategoryTopicsQuery($categoryId: UUID) { topics (where: {categoryId: {eq: $categoryId}} ) { id, subject, locked, authorId, author { displayName }, categoryId, category { name }, createdOn, replyCount } }`,
             { "categoryId": categoryId });
     },
     getTopicQuery(topicId: string) {

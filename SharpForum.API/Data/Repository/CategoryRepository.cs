@@ -57,7 +57,7 @@ namespace SharpForum.API.Data.Repository
                 await using DataContext dbContext =
                        _dbContextFactory.CreateDbContext();
 
-                return await dbContext.Categories.Include(x => x.Topics).FirstOrDefaultAsync(x => x.Id == id);
+                return await dbContext.Categories.Include(x => x.Topics).ThenInclude(x => x.Replies).FirstOrDefaultAsync(x => x.Id == id);
             }
             catch (Exception exception)
             {
@@ -77,6 +77,20 @@ namespace SharpForum.API.Data.Repository
             catch (Exception exception)
             {
                 _logger.LogError(exception, "GetTopicCountAsync method error", typeof(CategoryRepository));
+                return 0;
+            }
+        }
+
+        public async Task<int> GetReplyCountAsync(Guid id)
+        {
+            try
+            {
+                var category = await GetByIdAsync(id);
+                return category.Topics.Sum(x => x.Replies.Count);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, "GetReplyCountAsync method error", typeof(CategoryRepository));
                 return 0;
             }
         }

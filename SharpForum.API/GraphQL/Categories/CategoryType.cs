@@ -43,7 +43,7 @@ namespace SharpForum.API.GraphQL.Categories
 
             descriptor
                 .Field(x => x.Topics)
-                .ResolveWith<Resolvers>(x => x.GetTopics(default!, default!))
+                .ResolveWith<Resolvers>(x => Resolvers.GetTopics(default!, default!))
                 .Description("List of topics in category")
                 .UseFiltering()
                 .UseSorting();
@@ -51,13 +51,33 @@ namespace SharpForum.API.GraphQL.Categories
             descriptor
                 .Field(x => x.UpdatedOn)
                 .Description("Last updated date and time (in UTC)");
+
+            descriptor
+                .Field("topicCount")
+                .ResolveWith<Resolvers>(x => Resolvers.GetTopicCount(default!, default!))
+                .Description("Total count of topics in category");
+
+            descriptor
+                .Field("replyCount")
+                .ResolveWith<Resolvers>(x => Resolvers.GetReplyCount(default!, default!))
+                .Description("Total count of topic replies in category");
         }
 
         private class Resolvers
         {
-            public async Task<IEnumerable<Topic>> GetTopics([Parent] Category category, [Service] ISharpForumData data)
+            public static async Task<IEnumerable<Topic>> GetTopics([Parent] Category category, [Service] ISharpForumData data)
             {
                 return await data.Topics.GetByCategoryAsync(category.Id);
+            }
+
+            public static async Task<int> GetTopicCount([Parent] Category category, [Service] ISharpForumData data)
+            {
+                return await data.Categories.GetTopicCountAsync(category.Id);
+            }
+
+            public static async Task<int> GetReplyCount([Parent] Category category, [Service] ISharpForumData data)
+            {
+                return await data.Categories.GetReplyCountAsync(category.Id);
             }
         }
     }

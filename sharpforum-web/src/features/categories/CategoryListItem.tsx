@@ -31,12 +31,17 @@ function CategoryListItem({ category }: Props) {
                                     <strong>{category.name}</strong>
                                 </Link>
                             </Col>
-                            <Col xs={0} sm={3} md={6} hidden={true}>
+                            <Col xs={0} sm={3} md={6}>
                                 <small>{category.topicCount} {t('topics.title-l')}</small>
                             </Col>
                         </Row>
                         <Row>
-                            <small>{category.description}</small>
+                            <Col xs={12} sm={9} md={6}>
+                                <small>{category.description}</small>
+                            </Col>
+                            <Col xs={0} sm={3} md={6}>
+                                <small>{category.replyCount} {t('replies.title-l')}</small>
+                            </Col>
                         </Row>
                     </td>
                 </tr>

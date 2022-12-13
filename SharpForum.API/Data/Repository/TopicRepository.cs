@@ -48,5 +48,19 @@ namespace SharpForum.API.Data.Repository
                 return Enumerable.Empty<Topic>();
             }
         }
+
+        public async Task<int> GetReplyCountAsync(Guid topicId)
+        {
+            try
+            {
+                var topic = await GetByIdAsync(topicId);
+                return topic.Replies.Count;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, "GetReplyCountAsync method error", typeof(TopicRepository));
+                return 0;
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ export interface Topic {
     categoryId: string;
     category: Category;
     createdOn: Date | null;
+    replyCount: number;
 }
 
 export interface AddTopicFormValues {

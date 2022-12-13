@@ -20,6 +20,7 @@
     "title-l": "topics",
     "singular": "Topic",
     "add-topic": "Add topic",
+    "published": "Published on",
     "add": {
       "subject": "Subject",
       "subject-placeholder": "Topic subject",

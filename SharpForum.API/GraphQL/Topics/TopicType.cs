@@ -67,6 +67,11 @@ namespace SharpForum.API.GraphQL.Topics
             descriptor
                 .Field(x => x.UpdatedOn)
                 .Description("Last updated date and time (in UTC)");
+
+            descriptor
+                .Field("replyCount")
+                .ResolveWith<Resolvers>(x => Resolvers.GetReplyCount(default!, default!))
+                .Description("Total count of topic replies");
         }
 
         private class Resolvers
@@ -84,6 +89,11 @@ namespace SharpForum.API.GraphQL.Topics
             public async Task<IEnumerable<Reply>> GetReplies([Parent] Topic topic, [Service] ISharpForumData data)
             {
                 return await data.Replies.GetByTopicAsync(topic.Id);
+            }
+
+            public static async Task<int> GetReplyCount([Parent] Topic topic, [Service] ISharpForumData data)
+            {
+                return await data.Topics.GetReplyCountAsync(topic.Id);
             }
         }
     }
