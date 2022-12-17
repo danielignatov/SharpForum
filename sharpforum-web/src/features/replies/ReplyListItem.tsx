@@ -2,9 +2,10 @@ import React, { Fragment } from 'react';
 import { Reply } from '../../app/models/reply';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import UserInfo from '../users/UserInfo';
+import { User } from '../../app/models/user';
 
 interface Props {
     reply: Reply
@@ -19,7 +20,7 @@ function ReplyListItem({ reply }: Props) {
                 <td>
                     <Row>
                         <Col xs={6} sm={2} md={2} lg={2}>
-                            <Image thumbnail={true} src={reply?.author?.avatar || '/assets/user.png'} />
+                            <UserInfo user={reply?.author ?? new User()} />
                         </Col>
                         <Col xs={6} sm={10} md={10} lg={10}>
                             <Row>

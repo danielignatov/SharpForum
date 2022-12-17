@@ -24,6 +24,15 @@ $theme-colors: ( primary: $primary, secondary: $secondary, success: $success, in
     }
 }
 
+.sf-link-no-underline {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        color: mediumpurple;
+    }
+}
+
 .sf-header {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;

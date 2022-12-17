@@ -16,4 +16,7 @@
     <Folder Include="src\app\api\" />
     <Folder Include="src\app\utils\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\features\topics\TopicDetails.tsx~RFb7e5964.TMP" />
+  </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@ import { Category } from '../../app/models/category';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
+import ReplyCount from '../replies/ReplyCount';
 
 interface Props {
     category: Category
@@ -40,7 +41,7 @@ function CategoryListItem({ category }: Props) {
                                 <small>{category.description}</small>
                             </Col>
                             <Col xs={0} sm={3} md={6}>
-                                <small>{category.replyCount} {t('replies.title-l')}</small>
+                                <ReplyCount value={category.replyCount} />
                             </Col>
                         </Row>
                     </td>

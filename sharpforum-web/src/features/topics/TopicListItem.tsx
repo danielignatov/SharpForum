@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Col from 'react-bootstrap/Col';
+import ReplyCount from '../replies/ReplyCount';
 
 interface Props {
     topic: Topic
@@ -11,7 +12,7 @@ interface Props {
 
 function TopicListItem({ topic }: Props) {
     const { t } = useTranslation();
-    const topicCreatedOn = new Date(topic?.createdOn ?? '').toLocaleDateString('en-US');
+    const topicCreated = new Date(topic?.createdOn ?? '');
 
     return (
         <Fragment>
@@ -24,7 +25,7 @@ function TopicListItem({ topic }: Props) {
                             </Link>
                         </Col>
                         <Col xs={0} sm={12} md={6}>
-                            <small>{t('topics.published')} {topicCreatedOn}</small>
+                            <small>{t('topics.published')} {t('topics.published-date', { date: topicCreated })}</small>
                         </Col>
                     </Row>
                     <Row>
@@ -32,7 +33,7 @@ function TopicListItem({ topic }: Props) {
                             <small>{t('common.by')} <Link to={`/user/${topic.authorId}`} className='sf-link'>{topic.author.displayName}</Link></small>
                         </Col>
                         <Col xs={0} sm={12} md={6}>
-                            <small>{topic.replyCount} {t('replies.title-l')}</small>
+                            <ReplyCount value={topic.replyCount} />
                         </Col>
                     </Row>
                 </td>

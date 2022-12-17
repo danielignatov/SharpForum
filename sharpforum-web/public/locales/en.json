@@ -20,7 +20,8 @@
     "title-l": "topics",
     "singular": "Topic",
     "add-topic": "Add topic",
-    "published": "Published on",
+    "published": "Published",
+    "published-date": "{{ date, eeee do MMMM }} at {{ date, h:mm a }}",
     "add": {
       "subject": "Subject",
       "subject-placeholder": "Topic subject",
@@ -33,6 +34,7 @@
     "title": "Replies",
     "title-l": "replies",
     "singular": "Reply",
+    "singular-l": "reply",
     "add-reply": "Add reply",
     "add": {
       "message": "Message",

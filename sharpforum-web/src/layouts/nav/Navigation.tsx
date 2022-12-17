@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { useStore } from '../app/stores/store';
+import { useStore } from '../../app/stores/store';
 import { useTranslation } from 'react-i18next';
 import Language from './Language';
 

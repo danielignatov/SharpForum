@@ -14,6 +14,22 @@ export interface User {
     createdOn: Date | null;
 }
 
+export class User implements User {
+    constructor() {
+        this.id = 'unknown';
+        this.about = '';
+        this.avatar = '';
+        this.displayName = 'unknown';
+        this.email = 'unknown@example.com';
+        this.roleId = 'unknown';
+        this.role = new Role();
+        this.signature = '';
+        this.location = '';
+        this.website = '';
+        this.createdOn = null;
+    }
+}
+
 export interface LoginUserFormValues {
     displayName: string;
     password: string;

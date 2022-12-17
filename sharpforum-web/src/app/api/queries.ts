@@ -31,19 +31,19 @@ const queries = {
     getTopicQuery(topicId: string) {
         return new Query(
             "getTopicQuery",
-            `query getTopicQuery($topicId: UUID) { topics (where: {id: {eq: $topicId}} ) { id, subject, message, locked, authorId, author { displayName, avatar }, categoryId, category { name }, createdOn } }`,
+            `query getTopicQuery($topicId: UUID) { topics (where: {id: {eq: $topicId}} ) { id, subject, message, locked, authorId, author { displayName, avatar, role { name } }, categoryId, category { name }, createdOn, replyCount } }`,
             { "topicId": topicId });
     },
     addTopicQuery(authorId: string, categoryId: string, subject: string, message: string, sticky: boolean, locked: boolean) {
         return new Query(
             "addTopic",
-            `mutation addTopic($authorId: UUID!, $categoryId: UUID!, $subject: String, $message: String, $sticky: Boolean!, $locked: Boolean!) { addTopic(input: { authorId: $authorId, categoryId: $categoryId, subject: $subject, message: $message, sticky: $sticky, locked: $locked }) { topic { id, authorId, categoryId, subject, message, sticky, locked, createdOn, updatedOn } } }`,
+            `mutation addTopic($authorId: UUID!, $categoryId: UUID!, $subject: String, $message: String, $sticky: Boolean!, $locked: Boolean!) { addTopic(input: { authorId: $authorId, categoryId: $categoryId, subject: $subject, message: $message, sticky: $sticky, locked: $locked }) { topic { id, authorId, categoryId, subject, message, sticky, locked, createdOn, updatedOn, replyCount } } }`,
             { "authorId": authorId, "categoryId": categoryId, "subject": subject, "message": message, "sticky": sticky, "locked": locked });
     },
     getTopicRepliesQuery(topicId: string) {
         return new Query(
             "getTopicRepliesQuery",
-            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName, avatar }, createdOn } }`,
+            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName, avatar, id, role { id, name } }, createdOn } }`,
             { "topicId": topicId });
     },
     addTopicReplyQuery(authorId: string, topicId: string, message: string) {

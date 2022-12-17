@@ -53,8 +53,10 @@ namespace SharpForum.API.Data.Repository
         {
             try
             {
-                var topic = await GetByIdAsync(topicId);
-                return topic.Replies.Count;
+                await using DataContext dbContext =
+                    _dbContextFactory.CreateDbContext();
+
+                return dbContext.Replies.Where(x => x.TopicId == topicId).Count();
             }
             catch (Exception exception)
             {

@@ -20,7 +20,8 @@
     "title-l": "теми",
     "singular": "Тема",
     "add-topic": "Добави тема",
-    "published": "Публикувана на",
+    "published": "Публикувана",
+    "published-date": "{{ date, eeee do MMMM }} в {{ date, HH:mm }} ч.",
     "add": {
       "subject": "Заглавие",
       "subject-placeholder": "Заглавие на темата",
@@ -33,6 +34,7 @@
     "title": "Отговори",
     "title-l": "отговора",
     "singular": "Отговор",
+    "singular-l": "отговор",
     "add-reply": "Добави отговор",
     "add": {
       "message": "Отговор",
