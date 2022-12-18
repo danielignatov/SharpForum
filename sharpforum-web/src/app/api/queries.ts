@@ -43,7 +43,7 @@ const queries = {
     getTopicRepliesQuery(topicId: string) {
         return new Query(
             "getTopicRepliesQuery",
-            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName, avatar, id, role { id, name }, postCount }, createdOn } }`,
+            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, topicId, authorId, author { displayName, avatar, id, role { id, name }, postCount }, createdOn } }`,
             { "topicId": topicId });
     },
     addTopicReplyQuery(authorId: string, topicId: string, message: string) {

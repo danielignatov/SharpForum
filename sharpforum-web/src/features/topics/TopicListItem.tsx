@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Topic } from '../../app/models/topic';
 import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
@@ -25,7 +25,7 @@ function TopicListItem({ topic }: Props) {
                             </Link>
                         </Col>
                         <Col xs={0} sm={12} md={6}>
-                            <small>{t('topics.published')} {t('topics.published-date', { date: topicCreated })}</small>
+                            <small>{t('topics.published')} {t('topics.published-date-time', { date: topicCreated })}</small>
                         </Col>
                     </Row>
                     <Row>

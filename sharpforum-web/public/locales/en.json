@@ -36,12 +36,14 @@
     "title-l": "replies",
     "singular": "Reply",
     "singular-l": "reply",
+    "replied": "Replied",
     "add-reply": "Add reply",
     "add": {
       "message": "Message",
       "msg-placeholder": "Reply message",
       "login-err": "To add a reply you must login first."
-    }
+    },
+    "anchor": "Anchor Link"
   },
   "layout": {
     "nav": {

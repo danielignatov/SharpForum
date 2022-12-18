@@ -36,12 +36,14 @@
     "title-l": "отговора",
     "singular": "Отговор",
     "singular-l": "отговор",
+    "replied": "Отговорено",
     "add-reply": "Добави отговор",
     "add": {
       "message": "Отговор",
       "msg-placeholder": "",
       "login-err": "За да добавите отговор е нужно да се впишете."
-    }
+    },
+    "anchor": "Линк котва"
   },
   "layout": {
     "nav": {

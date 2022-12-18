@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import { useStore } from '../../app/stores/store';
 import AddTopicBtn from '../topics/AddTopicBtn';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Placeholder from 'react-bootstrap/Placeholder';
 import CategoryTopics from './CategoryTopics';
+import Heading from '../../layouts/Heading';
 //import { useTranslation } from 'react-i18next';
 
 export default observer(function CategoryDetails() {
@@ -37,14 +37,7 @@ export default observer(function CategoryDetails() {
             ) : (
                 <Fragment>
                     <AddTopicBtn categoryId={categoryId ?? ''} />
-                    <Container className='sf-header'>
-                        <Row>
-                            <strong>{category?.name}</strong>
-                        </Row>
-                        <Row>
-                            <small>{category?.description}</small>
-                        </Row>
-                    </Container>
+                    <Heading title={category?.name ?? ''} subtitle={category?.description} />
                     <CategoryTopics categoryId={categoryId ?? ''} />
                 </Fragment>
             )}

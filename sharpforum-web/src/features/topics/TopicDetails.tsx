@@ -4,13 +4,12 @@ import { useParams } from 'react-router-dom';
 import Loading from '../../layouts/Loading';
 import { useStore } from '../../app/stores/store';
 import Table from 'react-bootstrap/Table';
-import Row from 'react-bootstrap/Row';
 import ReplyList from '../replies/ReplyList';
 import { useTranslation } from 'react-i18next';
 import AddReplyForm from '../replies/AddReplyForm';
-import Container from 'react-bootstrap/Container';
 import { Topic } from '../../app/models/topic';
 import TopicBody from './TopicBody';
+import Heading from '../../layouts/Heading';
 
 export default observer(function TopicDetails() {
     const { t } = useTranslation();
@@ -28,11 +27,7 @@ export default observer(function TopicDetails() {
                 <Loading />
             ) : (
                 <Fragment>
-                    <Container className='sf-header'>
-                        <Row>
-                            <strong>{t('topics.singular')}</strong>
-                        </Row>
-                    </Container>
+                    <Heading title={t('topics.singular')} />
                     <Table bordered bgcolor='white'>
                         <tbody>
                             <tr>

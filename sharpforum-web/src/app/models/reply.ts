@@ -8,7 +8,8 @@ export interface Reply {
     author: User;
     topicId: string;
     topic: Topic;
-    createdOn: Date | null;
+    createdOn: Date;
+    updatedOn: Date;
 }
 
 export interface AddReplyFormValues {
