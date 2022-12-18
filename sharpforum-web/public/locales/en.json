@@ -21,7 +21,8 @@
     "singular": "Topic",
     "add-topic": "Add topic",
     "published": "Published",
-    "published-date": "{{ date, eeee do MMMM }} at {{ date, h:mm a }}",
+    "published-date-time": "{{ date, eeee do MMMM }} at {{ date, h:mm a }}",
+    "published-date": "{{ date, eeee do MMMM }}",
     "add": {
       "subject": "Subject",
       "subject-placeholder": "Topic subject",

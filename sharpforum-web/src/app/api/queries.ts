@@ -14,7 +14,7 @@ const getAllTopicsQuery: Query = {
 
 const getAllUsersQuery: Query = {
     "operationName": "getAllUsers",
-    "query": `query getAllUsers { users { id, displayName, roleId, role { id, name }, createdOn, about, avatar } }`,
+    "query": `query getAllUsers { users { id, displayName, roleId, role { id, name }, createdOn, about, avatar, postCount } }`,
     "variables": {}
 };
 
@@ -31,7 +31,7 @@ const queries = {
     getTopicQuery(topicId: string) {
         return new Query(
             "getTopicQuery",
-            `query getTopicQuery($topicId: UUID) { topics (where: {id: {eq: $topicId}} ) { id, subject, message, locked, authorId, author { displayName, avatar, role { name } }, categoryId, category { name }, createdOn, replyCount } }`,
+            `query getTopicQuery($topicId: UUID) { topics (where: {id: {eq: $topicId}} ) { id, subject, message, locked, authorId, author { displayName, avatar, role { id, name }, postCount }, categoryId, category { name }, createdOn, replyCount } }`,
             { "topicId": topicId });
     },
     addTopicQuery(authorId: string, categoryId: string, subject: string, message: string, sticky: boolean, locked: boolean) {
@@ -43,7 +43,7 @@ const queries = {
     getTopicRepliesQuery(topicId: string) {
         return new Query(
             "getTopicRepliesQuery",
-            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName, avatar, id, role { id, name } }, createdOn } }`,
+            `query getTopicRepliesQuery($topicId: UUID) { replies (where: {topicId: {eq: $topicId}} ) { id, message, authorId, author { displayName, avatar, id, role { id, name }, postCount }, createdOn } }`,
             { "topicId": topicId });
     },
     addTopicReplyQuery(authorId: string, topicId: string, message: string) {
@@ -61,7 +61,7 @@ const queries = {
     getCurrentUserQuery() {
         return new Query(
             "currentUser",
-            `query currentUser { currentUser { id, displayName, about, avatar, location, createdOn, email, roleId, role { id, name } } }`,
+            `query currentUser { currentUser { id, displayName, about, avatar, location, createdOn, email, roleId, role { id, name }, postCount } }`,
             { });
     },
     mutateLoginUserQuery(displayName: string, password: string) {

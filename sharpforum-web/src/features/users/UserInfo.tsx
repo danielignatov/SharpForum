@@ -43,7 +43,7 @@ function UserInfo({ user }: Props) {
             <Row>
                 <Col>
                     <div className='text-center pb-1'>
-                        <FontAwesomeIcon icon={faCommentAlt} size="sm" className="mt-3" /> <small>1337</small>
+                        <FontAwesomeIcon icon={faCommentAlt} size="sm" className="mt-3" /> <small>{user.postCount}</small>
                     </div>
                 </Col>
             </Row>

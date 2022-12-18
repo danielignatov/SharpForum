@@ -64,5 +64,27 @@ namespace SharpForum.API.Data.Repository
                 return Enumerable.Empty<User>();
             }
         }
+
+        public async Task<int> GetPostCountAsync(Guid userId)
+        {
+            try
+            {
+                await using DataContext dbContext =
+                    _dbContextFactory.CreateDbContext();
+
+                var replyCount =
+                    dbContext.Replies.Where(x => x.AuthorId == userId).Count();
+
+                var topicCount =
+                    dbContext.Replies.Where(x => x.AuthorId == userId).Count();
+
+                return replyCount + topicCount;
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, "GetPostCountAsync method error", typeof(UserRepository));
+                return 0;
+            }
+        }
     }
 }

@@ -84,6 +84,11 @@ namespace SharpForum.API.GraphQL.Users
             descriptor
                 .Field(x => x.Website)
                 .Description("User website address");
+
+            descriptor
+                .Field("postCount")
+                .ResolveWith<Resolvers>(x => Resolvers.GetPostCount(default!, default!))
+                .Description("Total count of user created topics and replies");
         }
 
         private class Resolvers
@@ -101,6 +106,11 @@ namespace SharpForum.API.GraphQL.Users
             public async Task<Role> GetRole([Parent] User user, [Service] ISharpForumData data)
             {
                 return await data.Roles.GetByIdAsync(user.RoleId);
+            }
+
+            public static async Task<int> GetPostCount([Parent] User user, [Service] ISharpForumData data)
+            {
+                return await data.Users.GetPostCountAsync(user.Id);
             }
         }
     }

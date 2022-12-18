@@ -11,7 +11,9 @@ export interface User {
     signature: string;
     location: string;
     website: string;
-    createdOn: Date | null;
+    createdOn: Date;
+    updatedOn: Date;
+    postCount: number;
 }
 
 export class User implements User {
@@ -26,7 +28,9 @@ export class User implements User {
         this.signature = '';
         this.location = '';
         this.website = '';
-        this.createdOn = null;
+        this.createdOn = new Date();
+        this.updatedOn = new Date();
+        this.postCount = 0;
     }
 }
 

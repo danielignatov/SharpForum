@@ -5,7 +5,6 @@ export interface Role {
 
 export class Role implements Role {
     constructor() {
-        this.id = 'unknown';
-        this.name = 'unknown';
+        Object.assign(this);
     }
 }

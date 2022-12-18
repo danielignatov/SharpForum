@@ -21,7 +21,8 @@
     "singular": "Тема",
     "add-topic": "Добави тема",
     "published": "Публикувана",
-    "published-date": "{{ date, eeee do MMMM }} в {{ date, HH:mm }} ч.",
+    "published-date-time": "{{ date, eeee do MMMM }} в {{ date, HH:mm }} ч.",
+    "published-date": "{{ date, eeee do MMMM }}",
     "add": {
       "subject": "Заглавие",
       "subject-placeholder": "Заглавие на темата",

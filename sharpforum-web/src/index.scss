@@ -36,7 +36,8 @@ $theme-colors: ( primary: $primary, secondary: $secondary, success: $success, in
 .sf-header {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    background-color: $purpleDragon;
+    color: #552B58;
+    background-image: linear-gradient( 95.2deg, rgba(195, 142, 199, 1) 26.8%, rgba(215, 162, 219, 1) 64% );
     border: 1px solid mediumpurple;
 }
 
