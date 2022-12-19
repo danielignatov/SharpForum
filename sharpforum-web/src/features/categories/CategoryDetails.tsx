@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import React, { Fragment, useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 //import Loading from '../../layouts/Loading';
 import { useStore } from '../../app/stores/store';
@@ -18,14 +18,14 @@ export default observer(function CategoryDetails() {
 
     useEffect(() => {
         loadCategory(categoryId ?? '');
-    }, [categoryId, loadingCategory])
+    }, [categoryId, loadingCategory, loadCategory])
 
     return (
         <Fragment>
             {loadingCategory ? (
                 <Fragment>
                     <Placeholder.Button xs={4} aria-hidden="true" />
-                    <Container className='sf-header'>
+                    <Container className='sf-header-colored'>
                         <Placeholder as="p" animation="wave">
                             <Placeholder xs={4} />
                         </Placeholder>
@@ -37,7 +37,7 @@ export default observer(function CategoryDetails() {
             ) : (
                 <Fragment>
                     <AddTopicBtn categoryId={categoryId ?? ''} />
-                    <Heading title={category?.name ?? ''} subtitle={category?.description} />
+                        <Heading title={category?.name ?? ''} subtitle={category?.description} colored={true} />
                     <CategoryTopics categoryId={categoryId ?? ''} />
                 </Fragment>
             )}

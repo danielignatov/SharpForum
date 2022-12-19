@@ -4,12 +4,13 @@ import Row from 'react-bootstrap/Row';
 
 interface Props {
     title: string,
+    colored?: boolean,
     subtitle?: string
 }
 
-function Heading({ title, subtitle }: Props) {
+function Heading({ title, colored, subtitle }: Props) {
     return (
-        <Container className='sf-header'>
+        <Container className={colored ? 'sf-header-colored' : 'sf-header' }>
             <Row>
                 <Col>
                     <strong>{title}</strong>

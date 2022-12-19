@@ -15,6 +15,7 @@
     <Folder Include="public\locales\" />
     <Folder Include="src\app\api\" />
     <Folder Include="src\app\utils\" />
+    <Folder Include="src\features\admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="src\features\topics\TopicDetails.tsx~RFb7e5964.TMP" />

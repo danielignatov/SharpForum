@@ -7,13 +7,14 @@ import { observer } from 'mobx-react';
 import { useStore } from '../../app/stores/store';
 import { useTranslation } from 'react-i18next';
 import Language from './Language';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 //<Nav.Link as={Link} to={`/search`}>Search</Nav.Link>
 
 export default observer(function Navigation() {
     const { t } = useTranslation();
     const { userStore } = useStore();
-    const { isLoggedIn, currentUser, logout } = userStore;
+    const { isLoggedIn, isAdmin, currentUser, logout } = userStore;
 
     //useEffect(() => {
     //    if (categories.length <= 1) loadCategories();
@@ -30,8 +31,13 @@ export default observer(function Navigation() {
                 </Nav>
                 {isLoggedIn ? (
                     <Nav>
-                        <Nav.Link as={Link} to={`/user/${currentUser?.id}`}>{t('layout.nav.greet')}, {currentUser?.displayName}</Nav.Link>
-                        <Nav.Link onClick={logout}>{t('layout.nav.logout')}</Nav.Link>
+                        <NavDropdown title={`${t('layout.nav.greet')}, ${currentUser?.displayName}`}>
+                            <NavDropdown.Item as={Link} to={`/user/${currentUser?.id}`}>{t('common.profile')}</NavDropdown.Item>
+                            {isAdmin && 
+                                <NavDropdown.Item as={Link} to={`/admin`}>{t('admin.dash')}</NavDropdown.Item>
+                            }
+                            <NavDropdown.Item onClick={logout}>{t('layout.nav.logout')}</NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                 ) : (
                     <Nav>

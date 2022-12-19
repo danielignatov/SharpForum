@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import ReplyCount from '../replies/ReplyCount';
+import { Container } from 'react-bootstrap';
+import Heading from '../../layouts/Heading';
 
 interface Props {
     category: Category
@@ -16,21 +18,13 @@ function CategoryListItem({ category }: Props) {
     return (
         <Fragment>
             {category.isPlaceholder ? (
-                <tr className='placeholder-category'>
-                    <td>
-                        <Row className="pt-1 pb-1">
-                            <strong>{category.name}</strong>
-                        </Row>
-                    </td>
-                </tr>
+                <Heading title={category.name} colored={true} />
             ) : (
-                <tr>
-                    <td>
+                <Link to={`/category/${category.id}`} className='sf-link-no-underline'>
+                    <Container className='sf-header'>
                         <Row>
                             <Col xs={12} sm={9} md={6}>
-                                <Link to={`/category/${category.id}`} className='sf-link'>
-                                    <strong>{category.name}</strong>
-                                </Link>
+                                <strong>{category.name}</strong>
                             </Col>
                             <Col xs={0} sm={3} md={6}>
                                 <small>{category.topicCount} {t('topics.title-l')}</small>
@@ -44,8 +38,8 @@ function CategoryListItem({ category }: Props) {
                                 <ReplyCount value={category.replyCount} />
                             </Col>
                         </Row>
-                    </td>
-                </tr>
+                    </Container>
+                </Link>
             )}
 
         </Fragment>

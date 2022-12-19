@@ -12,6 +12,10 @@
     "publish": "Publish",
     "profile": "Profile"
   },
+  "admin": {
+    "dash": "Administration",
+    "dash-desc": "From here you can tweak your message board"
+  },
   "categories": {
     "title": "Categories"
   },

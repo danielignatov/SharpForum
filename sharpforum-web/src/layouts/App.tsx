@@ -14,6 +14,7 @@ import AddTopicForm from '../features/topics/AddTopicForm';
 import { useStore } from '../app/stores/store';
 import Loading from './Loading';
 import UserList from '../features/users/UserList';
+import AdminDashboard from '../features/admin/AdminDashboard';
 
 function App() {
     const { userStore } = useStore();
@@ -34,6 +35,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
                         <Route index element={<CategoryList />} />
+                        <Route path="admin" element={<AdminDashboard />} />
                         <Route path="category/:categoryId/topic" element={<AddTopicForm />} />
                         <Route path="category/:categoryId" element={<CategoryDetails />} />
                         <Route path="topic/:topicId" element={<TopicDetails />} />

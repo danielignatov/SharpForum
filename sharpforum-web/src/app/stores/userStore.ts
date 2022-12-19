@@ -77,6 +77,20 @@ export default class UserStore {
         return !!this.currentUser;
     }
 
+    get isAdmin() {
+        if (this.currentUser?.role?.name === 'Admin')
+            return true;
+
+        return false;
+    }
+
+    get isModerator() {
+        if (this.currentUser?.role?.name === 'Moderator')
+            return true;
+
+        return false;
+    }
+
     login = async (creds: LoginUserFormValues) => {
         try {
             const result = await agent.Users.login(creds.displayName, creds.password);
@@ -102,7 +116,7 @@ export default class UserStore {
     loadCurrentUser = async () => {
         try {
             const result = await agent.Users.current();
-            
+
             if (result.data.currentUser) {
                 runInAction(() => this.currentUser = result.data.currentUser);
                 //this.startRefreshTokenTimer(result.data.currentUser);
@@ -111,7 +125,7 @@ export default class UserStore {
             console.log(error);
         }
     }
-    
+
     register = async (creds: RegisterUserFormValues) => {
         try {
             const result = await agent.Users.register(creds.displayName, creds.password, creds.email);
@@ -127,7 +141,7 @@ export default class UserStore {
             throw error;
         }
     }
-    
+
     //setImage = (image: string) => {
     //    if (this.user) this.user.image = image;
     //}
@@ -180,14 +194,14 @@ export default class UserStore {
         //    console.log(error);
         //}
     }
-    
+
     private startRefreshTokenTimer(token: string) {
         const jwtToken = JSON.parse(atob(token.split('.')[1]));
         const expires = new Date(jwtToken.exp * 1000);
         const timeout = expires.getTime() - Date.now() - (60 * 1000);
         this.refreshTokenTimeout = setTimeout(this.refreshToken, timeout);
     }
-    
+
     private stopRefreshTokenTimer() {
         clearTimeout(this.refreshTokenTimeout);
     }

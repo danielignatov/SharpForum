@@ -27,7 +27,7 @@ export default observer(function TopicDetails() {
                 <Loading />
             ) : (
                 <Fragment>
-                    <Heading title={t('topics.singular')} />
+                    <Heading title={t('topics.singular')} colored={true} />
                     <Table bordered bgcolor='white'>
                         <tbody>
                             <tr>
