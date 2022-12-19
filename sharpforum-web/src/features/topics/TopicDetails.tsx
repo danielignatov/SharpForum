@@ -3,13 +3,13 @@ import { Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../../layouts/Loading';
 import { useStore } from '../../app/stores/store';
-import Table from 'react-bootstrap/Table';
 import ReplyList from '../replies/ReplyList';
 import { useTranslation } from 'react-i18next';
 import AddReplyForm from '../replies/AddReplyForm';
 import { Topic } from '../../app/models/topic';
 import TopicBody from './TopicBody';
 import Heading from '../../layouts/Heading';
+import Container from 'react-bootstrap/Container';
 
 export default observer(function TopicDetails() {
     const { t } = useTranslation();
@@ -28,15 +28,11 @@ export default observer(function TopicDetails() {
             ) : (
                 <Fragment>
                     <Heading title={t('topics.singular')} colored={true} />
-                    <Table bordered bgcolor='white'>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <TopicBody topic={selectedTopic ?? new Topic()} />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Table>
+                    <div className='pb-3'>
+                        <Container className='sf-header'>
+                            <TopicBody topic={selectedTopic ?? new Topic()} />
+                        </Container>
+                    </div>
                     <ReplyList />
                     <AddReplyForm topicId={topicId ?? ''} />
                 </Fragment>

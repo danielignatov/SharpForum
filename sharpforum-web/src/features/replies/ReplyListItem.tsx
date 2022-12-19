@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import Container from 'react-bootstrap/Container';
 import { Reply } from '../../app/models/reply';
 import ReplyBody from './ReplyBody';
 
@@ -8,13 +8,9 @@ interface Props {
 
 function ReplyListItem({ reply }: Props) {
     return (
-        <Fragment>
-            <tr>
-                <td>
-                    <ReplyBody reply={reply} />
-                </td>
-            </tr>
-        </Fragment>
+        <Container className='sf-header'>
+            <ReplyBody reply={reply} />
+        </Container>
     );
 }
 

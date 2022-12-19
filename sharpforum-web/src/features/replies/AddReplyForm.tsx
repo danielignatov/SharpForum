@@ -47,7 +47,7 @@ export default observer(function AddReplyForm({ topicId }: Props) {
                 result.errors.forEach((error: string) => {
                     console.log(error);
                 });
-                
+
                 setFormSubmitted(true);
             }
         }

@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Reply } from '../../app/models/reply';
@@ -11,29 +10,27 @@ interface Props {
 
 function ReplyBody({ reply }: Props) {
     return (
-        <Fragment>
-            <Row>
-                <Col xs={4} sm={2} md={2} lg={2}>
-                    <UserInfo user={reply.author} />
-                </Col>
-                <Col xs={8} sm={10} md={10} lg={10}>
-                    <ReplyNavigation reply={reply} />
+        <Row>
+            <Col xs={4} sm={2} md={2} lg={2}>
+                <UserInfo user={reply.author} />
+            </Col>
+            <Col xs={8} sm={10} md={10} lg={10}>
+                <ReplyNavigation reply={reply} />
+                <Row>
+                    <Col>
+                        <p>{reply.message}</p>
+                    </Col>
+                </Row>
+                {reply.author?.signature &&
                     <Row>
                         <Col>
-                            <p>{reply.message}</p>
+                            <hr />
+                            <span>{reply.author?.signature}</span>
                         </Col>
                     </Row>
-                    {reply.author?.signature &&
-                        <Row>
-                            <Col>
-                                <hr />
-                                <span>{reply.author?.signature}</span>
-                            </Col>
-                        </Row>
-                    }
-                </Col>
-            </Row>
-        </Fragment>
+                }
+            </Col>
+        </Row>
     );
 }
 

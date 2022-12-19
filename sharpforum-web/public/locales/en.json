@@ -47,7 +47,8 @@
       "msg-placeholder": "Reply message",
       "login-err": "To add a reply you must login first."
     },
-    "anchor": "Anchor Link"
+    "anchor": "Anchor Link",
+    "none": "Topic has no answers, add the first"
   },
   "layout": {
     "nav": {
