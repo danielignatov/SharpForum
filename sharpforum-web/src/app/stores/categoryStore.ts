@@ -1,6 +1,7 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import agent from '../api/agent';
-import { Category } from "../models/category";
+import { AddCategoryFormValues, Category } from "../models/category";
+import { Result } from "../models/result";
 //import { store } from "./store";
 
 export default class CategoryStore {
@@ -18,7 +19,7 @@ export default class CategoryStore {
     loadCategory = async (categoryId: string) => {
         this.setLoadingCategory(true);
         try {
-            const category = this.categories.find(x => x.id === categoryId) || new Category;
+            const category = this.categories.find(x => x.id === categoryId) || new Category();
             this.setCategory(category);
             this.setLoadingCategory(false);
         } catch (error) {
@@ -53,5 +54,22 @@ export default class CategoryStore {
 
     setLoadingCategory = (loading: boolean) => {
         this.loadingCategory = loading;
+    }
+
+    add = async (v: AddCategoryFormValues) => {
+        try {
+            const result = await agent.Categories.add(
+                v.name, v.description, v.displayOrder, v.isPlaceholder);
+
+            if (result.data.addCategory) {
+                runInAction(() => this.categories.push(result.data.addCategory.category));
+
+                return new Result(true, []);
+            } else {
+                return new Result(false, result?.errors?.map((x: any) => x.message) ?? []);
+            }
+        } catch (error) {
+            throw error;
+        }
     }
 }

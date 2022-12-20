@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { useTranslation } from 'react-i18next';
-//import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../app/stores/store';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -22,7 +21,6 @@ export default observer(function AddReplyForm({ topicId }: Props) {
     const { add } = replyStore;
     const [formSubmitted, setFormSubmitted] = useState(false);
     const { currentUser, isLoggedIn } = userStore;
-    //const navigate = useNavigate();
 
     const messagePlaceholder: string = t('replies.add.msg-placeholder');
 

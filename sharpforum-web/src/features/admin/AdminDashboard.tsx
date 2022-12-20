@@ -18,7 +18,9 @@ function AdminDashboard() {
     return (
         <Fragment>
             <Heading title={t('admin.dash')} subtitle={t('admin.dash-desc') ?? ''} colored={true} />
-            <AdminCategoryList />
+            <div className='mt-3'>
+                <AdminCategoryList />
+            </div>
         </Fragment>
     );
 }

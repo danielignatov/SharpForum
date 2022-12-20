@@ -28,6 +28,12 @@ const queries = {
             `query getCategoryTopicsQuery($categoryId: UUID) { topics (where: {categoryId: {eq: $categoryId}} ) { id, subject, locked, authorId, author { displayName }, categoryId, category { name }, createdOn, replyCount } }`,
             { "categoryId": categoryId });
     },
+    addCategoryQuery(name: string, description: string, displayOrder: number, isPlaceholder: boolean) {
+        return new Query(
+            "addCategory",
+            `mutation addCategory($name: String, $description: String, $displayOrder: Int!, $isPlaceholder: Boolean!) { addCategory(input: { name: $name, description: $description, displayOrder: $displayOrder, isPlaceholder: $isPlaceholder }) { category { id, name, description, displayOrder, isPlaceholder, topicCount, replyCount } } }`,
+            { "name": name, "description": description, "displayOrder": displayOrder, "isPlaceholder": isPlaceholder });
+    },
     getTopicQuery(topicId: string) {
         return new Query(
             "getTopicQuery",

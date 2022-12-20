@@ -1,13 +1,15 @@
-import Table from 'react-bootstrap/Table';
-//import './CategoryList.scss';
 import { Category } from '../../app/models/category';
 //import CategoryListItem from './CategoryListItem';
-import Loading from '../../layouts/Loading';
 import { useStore } from '../../app/stores/store';
 import { Fragment, useEffect } from 'react';
 //import { Placeholder } from 'react-bootstrap';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
+import Heading from '../../layouts/Heading';
+import CategoryListPlaceholder from '../placeholders/CategoryListPlaceholder';
+import AdminCategoryListItem from './AdminCategoryListItem';
+import { Container } from 'react-bootstrap';
+import AddCategoryForm from '../categories/AddCategoryForm';
 
 export default observer(function AdminCategoryList() {
     const { t } = useTranslation();
@@ -15,31 +17,24 @@ export default observer(function AdminCategoryList() {
     const { loading, categories, loadCategories } = categoryStore;
 
     useEffect(() => {
-        if (categories.length <= 1) loadCategories();
+        if (categories.length < 1) loadCategories();
     }, [categories.length, loadCategories])
 
     return (
         <Fragment>
-            {loading ? (
-                //<Placeholder as={Table}>
-                //    <Placeholder xs={4} animation='wave' />
-                //</Placeholder>
-                <Loading />
-            ) : (
-                <Table bordered bgcolor='white'>
-                    <thead>
-                        <tr>
-                            <th>{t('categories.title')}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {categories.map((category: Category) => (
-                                <Fragment></Fragment>
-                            /*<CategoryListItem key={category.id} category={category} />*/
+            <Heading title={t('admin.categories.edit')} colored={true} />
+            <Container className='sf-container'>
+                {loading ? (
+                    <CategoryListPlaceholder />
+                ) : (
+                    <div className='pb-3'>
+                        {categories.map((category: Category) => (
+                            <AdminCategoryListItem key={category.id} category={category} />
                         ))}
-                    </tbody>
-                </Table>
-            )}
+                    </div>
+                )}
+                <AddCategoryForm />
+            </Container>
         </Fragment>
     );
 });

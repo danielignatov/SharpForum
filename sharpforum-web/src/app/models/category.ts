@@ -13,3 +13,10 @@ export class Category implements Category {
         Object.assign(this);
     }
 }
+
+export interface AddCategoryFormValues {
+    name: string;
+    description: string;
+    displayOrder: number;
+    isPlaceholder: boolean;
+}

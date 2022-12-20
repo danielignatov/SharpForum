@@ -4,7 +4,7 @@
     "login": "Login",
     "by": "by",
     "on": "on",
-    "edit": "edit",
+    "edit": "Edit",
     "req-field": "Field is required",
     "err": "Error occured",
     "show": "Show",
@@ -14,7 +14,17 @@
   },
   "admin": {
     "dash": "Administration",
-    "dash-desc": "From here you can tweak your message board"
+    "dash-desc": "From here you can tweak your message board",
+    "categories": {
+      "add": "Add category",
+      "name": "Name",
+      "name-ph": "Category name",
+      "desc": "Description",
+      "desc-ph": "Category description",
+      "placeholder": "Display as placeholder",
+      "edit": "Edit categories",
+      "displayOrder": "Display order"
+    }
   },
   "categories": {
     "title": "Categories"

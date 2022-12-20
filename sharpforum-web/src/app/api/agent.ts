@@ -41,7 +41,8 @@ const Replies = {
 }
 
 const Categories = {
-    all: () => requests.graphql(queries.getAllCategoriesQuery)
+    all: () => requests.graphql(queries.getAllCategoriesQuery),
+    add: (name: string, description: string, displayOrder: number, isPlaceholder: boolean) => requests.graphql(queries.addCategoryQuery(name, description, displayOrder, isPlaceholder))
 }
 
 const Topics = {

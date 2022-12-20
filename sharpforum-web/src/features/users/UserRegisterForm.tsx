@@ -107,14 +107,13 @@ export default observer(function UserRegisterForm() {
                     <Form.Group className="mb-3" controlId="formPassword">
                         <Form.Label>{t('users.registerform.password')}</Form.Label>
                         <InputGroup>
-                            
                             <Form.Control
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder={passPlaceholder}
                                 {...getFieldProps('password')}
                             />
                             <Button variant="outline-secondary" onClick={handleShowPassword}>
-                                { showPassword ? t('common.hide') : t('common.show') }
+                                {showPassword ? t('common.hide') : t('common.show')}
                             </Button>
                         </InputGroup>
                         {errors.password && touched.password && (
