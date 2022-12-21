@@ -42,7 +42,9 @@ const Replies = {
 
 const Categories = {
     all: () => requests.graphql(queries.getAllCategoriesQuery),
-    add: (name: string, description: string, displayOrder: number, isPlaceholder: boolean) => requests.graphql(queries.addCategoryQuery(name, description, displayOrder, isPlaceholder))
+    add: (name: string, description: string, displayOrder: number, isPlaceholder: boolean) => requests.graphql(queries.addCategoryQuery(name, description, displayOrder, isPlaceholder)),
+    edit: (categoryId: string, name: string, description: string, displayOrder: number, isPlaceholder: boolean) => requests.graphql(queries.editCategoryQuery(categoryId, name, description, displayOrder, isPlaceholder)),
+    remove: (categoryId: string) => requests.graphql(queries.removeCategoryQuery(categoryId))
 }
 
 const Topics = {

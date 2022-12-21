@@ -10,7 +10,10 @@
     "show": "Show",
     "hide": "Hide",
     "publish": "Publish",
-    "profile": "Profile"
+    "publishing": "Publishing...",
+    "profile": "Profile",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   },
   "admin": {
     "dash": "Administration",
@@ -23,7 +26,10 @@
       "desc-ph": "Category description",
       "placeholder": "Display as placeholder",
       "edit": "Edit categories",
-      "displayOrder": "Display order"
+      "displayOrder": "Display order",
+      "delete-modal-title": "Delete category",
+      "delete-modal-text-p1": "You are about to delete",
+      "delete-modal-text-p2": "category"
     }
   },
   "categories": {

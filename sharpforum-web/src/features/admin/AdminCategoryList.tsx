@@ -1,18 +1,14 @@
 import { Category } from '../../app/models/category';
-//import CategoryListItem from './CategoryListItem';
 import { useStore } from '../../app/stores/store';
 import { Fragment, useEffect } from 'react';
-//import { Placeholder } from 'react-bootstrap';
 import { observer } from 'mobx-react';
-import { useTranslation } from 'react-i18next';
-import Heading from '../../layouts/Heading';
-import CategoryListPlaceholder from '../placeholders/CategoryListPlaceholder';
 import AdminCategoryListItem from './AdminCategoryListItem';
 import { Container } from 'react-bootstrap';
 import AddCategoryForm from '../categories/AddCategoryForm';
+import AdminCategoryListHeader from './AdminCategoryListHeader';
+import AdminCategoryListPlaceholder from '../placeholders/AdminCategoryListPlaceholder';
 
 export default observer(function AdminCategoryList() {
-    const { t } = useTranslation();
     const { categoryStore } = useStore();
     const { loading, categories, loadCategories } = categoryStore;
 
@@ -22,17 +18,19 @@ export default observer(function AdminCategoryList() {
 
     return (
         <Fragment>
-            <Heading title={t('admin.categories.edit')} colored={true} />
+            <AdminCategoryListHeader />
             <Container className='sf-container'>
-                {loading ? (
-                    <CategoryListPlaceholder />
-                ) : (
-                    <div className='pb-3'>
-                        {categories.map((category: Category) => (
-                            <AdminCategoryListItem key={category.id} category={category} />
-                        ))}
-                    </div>
-                )}
+                <div className='pb-3'>
+                    {loading ? (
+                        <AdminCategoryListPlaceholder />
+                    ) : (
+                        <Fragment>
+                            {categories.map((category: Category) => (
+                                <AdminCategoryListItem key={category.id} category={category} />
+                            ))}
+                        </Fragment>
+                    )}
+                </div>
                 <AddCategoryForm />
             </Container>
         </Fragment>

@@ -2,7 +2,7 @@ import { Query } from "../models/query";
 
 const getAllCategoriesQuery: Query = {
     "operationName": "getAllCategories",
-    "query": `query getAllCategories { categories { id, name, description, displayOrder, isPlaceholder, topicCount, replyCount } }`,
+    "query": `query getAllCategories { categories (order: { displayOrder: ASC }, where: { removed: { eq: false } }) { id, name, description, displayOrder, isPlaceholder, topicCount, replyCount } }`,
     "variables": {}
 };
 
@@ -33,6 +33,18 @@ const queries = {
             "addCategory",
             `mutation addCategory($name: String, $description: String, $displayOrder: Int!, $isPlaceholder: Boolean!) { addCategory(input: { name: $name, description: $description, displayOrder: $displayOrder, isPlaceholder: $isPlaceholder }) { category { id, name, description, displayOrder, isPlaceholder, topicCount, replyCount } } }`,
             { "name": name, "description": description, "displayOrder": displayOrder, "isPlaceholder": isPlaceholder });
+    },
+    editCategoryQuery(categoryId: string, name: string, description: string, displayOrder: number, isPlaceholder: boolean) {
+        return new Query(
+            "editCategory",
+            `mutation editCategory($categoryId: UUID!, $name: String, $description: String, $displayOrder: Int!, $isPlaceholder: Boolean!) { editCategory(input: { categoryId: $categoryId, name: $name, description: $description, displayOrder: $displayOrder, isPlaceholder: $isPlaceholder }) { category { id, name, description, displayOrder, isPlaceholder, topicCount, replyCount } } }`,
+            { "categoryId": categoryId, "name": name, "description": description, "displayOrder": displayOrder, "isPlaceholder": isPlaceholder });
+    },
+    removeCategoryQuery(categoryId: string) {
+        return new Query(
+            "removeCategory",
+            `mutation removeCategory($categoryId: UUID!) { removeCategory(input: { categoryId: $categoryId }) { success } }`,
+            { "categoryId": categoryId });
     },
     getTopicQuery(topicId: string) {
         return new Query(

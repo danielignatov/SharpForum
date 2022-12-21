@@ -10,7 +10,10 @@
     "show": "Покажи",
     "hide": "Скрий",
     "publish": "Публикувай",
-    "profile": "Профил"
+    "publishing": "Публикува се...",
+    "profile": "Профил",
+    "cancel": "Отмяна",
+    "confirm": "Потвърждение"
   },
   "admin": {
     "dash": "Администрация",
@@ -23,7 +26,10 @@
       "desc-ph": "Описание на категорията",
       "placeholder": "Използвай като заглавие",
       "edit": "Редакция на категории",
-      "displayOrder": "Ред на показване"
+      "displayOrder": "Ред на показване",
+      "delete-modal-title": "Изтрий категория",
+      "delete-modal-text-p1": "На път сте да изтриете",
+      "delete-modal-text-p2": "категория"
     }
   },
   "categories": {

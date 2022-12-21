@@ -72,4 +72,20 @@ export default class CategoryStore {
             throw error;
         }
     }
+
+    remove = async (categoryId: string) => {
+        try {
+            const result = await agent.Categories.remove(categoryId);
+
+            if (result?.errors) {
+                return new Result(false, result?.errors?.map((x: any) => x.message) ?? []);
+            } else {
+                runInAction(() => this.loadCategories());
+
+                return new Result(true, []);
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
 }

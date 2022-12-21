@@ -60,7 +60,7 @@ namespace SharpForum.API.GraphQL.Categories
         }
 
         [Authorize]
-        public async Task RemoveCategoryAsync(
+        public async Task<RemoveCategoryPayload> RemoveCategoryAsync(
             RemoveCategoryInput input,
             [Service] ISharpForumData data)
         {
@@ -76,6 +76,8 @@ namespace SharpForum.API.GraphQL.Categories
 
             if (!success)
                 throw new GraphQLException(new Error("Problem removing category."));
+
+            return new RemoveCategoryPayload(success);
         }
     }
 }
