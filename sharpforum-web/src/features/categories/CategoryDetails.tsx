@@ -3,7 +3,7 @@ import { Fragment, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 //import Loading from '../../layouts/Loading';
 import { useStore } from '../../app/stores/store';
-import AddTopicBtn from '../topics/AddTopicBtn';
+import AddTopicBtn from '../topics/TopicAddBtn';
 import Container from 'react-bootstrap/Container';
 import Placeholder from 'react-bootstrap/Placeholder';
 import CategoryTopics from './CategoryTopics';

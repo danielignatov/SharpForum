@@ -13,7 +13,9 @@
     "publishing": "Публикува се...",
     "profile": "Профил",
     "cancel": "Отмяна",
-    "confirm": "Потвърждение"
+    "confirm": "Потвърждение",
+    "save": "Запази",
+    "saving": "Запазване..."
   },
   "admin": {
     "dash": "Администрация",
@@ -29,7 +31,8 @@
       "displayOrder": "Ред на показване",
       "delete-modal-title": "Изтрий категория",
       "delete-modal-text-p1": "На път сте да изтриете",
-      "delete-modal-text-p2": "категория"
+      "delete-modal-text-p2": "категория",
+      "edit-modal-title": "Редактирай категория"
     }
   },
   "categories": {

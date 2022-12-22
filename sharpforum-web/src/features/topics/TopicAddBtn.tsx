@@ -6,7 +6,7 @@ interface Props {
     categoryId: string
 }
 
-function AddTopicBtn({ categoryId }: Props) {
+function TopicAddBtn({ categoryId }: Props) {
     const { t } = useTranslation();
 
     return (
@@ -22,4 +22,4 @@ function AddTopicBtn({ categoryId }: Props) {
     );
 }
 
-export default AddTopicBtn;
+export default TopicAddBtn;

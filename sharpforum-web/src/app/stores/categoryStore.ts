@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from '../api/agent';
-import { AddCategoryFormValues, Category } from "../models/category";
+import { AddCategoryFormValues, Category, EditCategoryFormValues } from "../models/category";
 import { Result } from "../models/result";
 //import { store } from "./store";
 
@@ -62,7 +62,24 @@ export default class CategoryStore {
                 v.name, v.description, v.displayOrder, v.isPlaceholder);
 
             if (result.data.addCategory) {
-                runInAction(() => this.categories.push(result.data.addCategory.category));
+                runInAction(() => this.loadCategories());
+
+                return new Result(true, []);
+            } else {
+                return new Result(false, result?.errors?.map((x: any) => x.message) ?? []);
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    edit = async (v: EditCategoryFormValues) => {
+        try {
+            const result = await agent.Categories.edit(
+                v.id, v.name, v.description, v.displayOrder, v.isPlaceholder);
+
+            if (result.data.editCategory) {
+                runInAction(() => this.loadCategories());
 
                 return new Result(true, []);
             } else {
@@ -77,12 +94,12 @@ export default class CategoryStore {
         try {
             const result = await agent.Categories.remove(categoryId);
 
-            if (result?.errors) {
-                return new Result(false, result?.errors?.map((x: any) => x.message) ?? []);
-            } else {
+            if (result.data.removeCategory) {
                 runInAction(() => this.loadCategories());
 
                 return new Result(true, []);
+            } else {
+                return new Result(false, result?.errors?.map((x: any) => x.message) ?? []);
             }
         } catch (error) {
             throw error;

@@ -1,23 +1,37 @@
-import { faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { observer } from 'mobx-react';
 import { FormikProvider, useFormik } from 'formik';
-import * as Yup from 'yup';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-import { useTranslation } from 'react-i18next';
-import { useStore } from '../../app/stores/store';
+import { Fragment, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { Fragment } from 'react';
-import LoginBtn from '../users/LoginBtn';
+import Modal from 'react-bootstrap/Modal';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { Category } from '../../app/models/category';
+import { useStore } from '../../app/stores/store';
 
-export default observer(function AddCategoryForm() {
+interface Props {
+    category: Category
+}
+
+function CategoryEditBtn({ category }: Props) {
     const { t } = useTranslation();
     const { categoryStore, userStore } = useStore();
-    const { add } = categoryStore;
+    const { edit } = categoryStore;
     const { isAdmin } = userStore;
+    const navigate = useNavigate();
+
+    if (!isAdmin) {
+        navigate(`/login`);
+    }
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const namePlaceholder: string = t('admin.categories.name-ph');
     const descPlaceholder: string = t('admin.categories.desc-ph');
@@ -27,6 +41,7 @@ export default observer(function AddCategoryForm() {
     }
 
     const CategorySchema = Yup.object().shape({
+        id: Yup.string().required(),
         name: Yup.string().required(`${t('common.req-field')}`),
         description: Yup.string().default(''),
         displayOrder: Yup.number().default(0),
@@ -35,14 +50,15 @@ export default observer(function AddCategoryForm() {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
-            description: '',
-            displayOrder: 0,
-            isPlaceholder: false
+            id: category.id,
+            name: category.name,
+            description: category.description,
+            displayOrder: category.displayOrder,
+            isPlaceholder: category.isPlaceholder
         },
         validationSchema: CategorySchema,
         onSubmit: async (values, { resetForm }) => {
-            var result = await add(values);
+            var result = await edit(values);
             if (!result.success) {
                 result.errors.forEach((error: string) => {
                     console.log(error);
@@ -57,11 +73,17 @@ export default observer(function AddCategoryForm() {
 
     return (
         <Fragment>
-            <Container className='sf-header sf-bg-colored sf-border-colored sf-text-colored'>
-                <FontAwesomeIcon icon={faWandMagicSparkles} /> <strong>{t('admin.categories.add')}</strong>
-            </Container>
-            <Container className='sf-container-light mb-0'>
-                {isAdmin ? (
+            <div className="d-grid gap-2 mt-2">
+                <Button variant="secondary" onClick={handleShow} className="text-white">
+                    <FontAwesomeIcon icon={faEdit} /> {t('common.edit')}
+                </Button>
+            </div>
+
+            <Modal show={show} onHide={handleClose} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title><FontAwesomeIcon icon={faEdit} /> {t('admin.categories.edit-modal-title')}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <FormikProvider value={formik} >
                         <Form onSubmit={handleSubmit}>
                             <Row>
@@ -121,35 +143,33 @@ export default observer(function AddCategoryForm() {
                                     <p className="text-danger">{errors.isPlaceholder}</p>
                                 )}
                             </Form.Group>
-                            <div className="d-grid gap-2">
-                                <Button
-                                    variant="success"
-                                    type="submit"
-                                    className="text-white"
-                                    disabled={isSubmitting}
-                                >
-                                    {isSubmitting ? t('common.publishing') : t('common.publish')}
-                                </Button>
-                            </div>
+                            <Row>
+                                <Col>
+                                    <div className="d-grid gap-2">
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            {t('common.cancel')}
+                                        </Button>
+                                    </div>
+                                </Col>
+                                <Col>
+                                    <div className="d-grid gap-2">
+                                        <Button
+                                            variant="success"
+                                            type="submit"
+                                            className="text-white"
+                                            disabled={isSubmitting}
+                                        >
+                                            {isSubmitting ? t('common.saving') : t('common.save')}
+                                        </Button>
+                                    </div>
+                                </Col>
+                            </Row>
                         </Form>
                     </FormikProvider>
-                ) : (
-                    <Fragment>
-                        <Row>
-                            <Col>
-                                <p className='text-center'>{t('replies.add.login-err')}</p>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <div className="d-grid gap-2 mt-2">
-                                    <LoginBtn />
-                                </div>
-                            </Col>
-                        </Row>
-                    </Fragment>
-                )}
-            </Container >
+                </Modal.Body>
+            </Modal>
         </Fragment>
     );
-});
+}
+
+export default CategoryEditBtn;

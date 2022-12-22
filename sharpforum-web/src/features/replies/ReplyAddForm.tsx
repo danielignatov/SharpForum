@@ -15,7 +15,7 @@ interface Props {
     topicId: string
 }
 
-export default observer(function AddReplyForm({ topicId }: Props) {
+export default observer(function ReplyAddForm({ topicId }: Props) {
     const { t } = useTranslation();
     const { replyStore, userStore } = useStore();
     const { add } = replyStore;

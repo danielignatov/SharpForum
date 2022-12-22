@@ -20,3 +20,11 @@ export interface AddCategoryFormValues {
     displayOrder: number;
     isPlaceholder: boolean;
 }
+
+export interface EditCategoryFormValues {
+    id: string;
+    name: string;
+    description: string;
+    displayOrder: number;
+    isPlaceholder: boolean;
+}

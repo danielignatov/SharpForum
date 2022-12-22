@@ -13,7 +13,9 @@
     "publishing": "Publishing...",
     "profile": "Profile",
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "save": "Save",
+    "saving": "Saving..."
   },
   "admin": {
     "dash": "Administration",
@@ -29,7 +31,8 @@
       "displayOrder": "Display order",
       "delete-modal-title": "Delete category",
       "delete-modal-text-p1": "You are about to delete",
-      "delete-modal-text-p2": "category"
+      "delete-modal-text-p2": "category",
+      "edit-modal-title": "Edit category"
     }
   },
   "categories": {

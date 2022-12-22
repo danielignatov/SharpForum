@@ -10,11 +10,12 @@ import UserRegisterForm from '../features/users/UserRegisterForm';
 import UserDetails from '../features/users/UserDetails';
 import NotFound from './NotFound';
 import PrivacyPolicy from './PrivacyPolicy';
-import AddTopicForm from '../features/topics/AddTopicForm';
+import TopicAddForm from '../features/topics/TopicAddForm';
 import { useStore } from '../app/stores/store';
 import Loading from './Loading';
 import UserList from '../features/users/UserList';
 import AdminDashboard from '../features/admin/AdminDashboard';
+import CategoryEditForm from '../features/categories/CategoryEditForm';
 
 function App() {
     const { userStore } = useStore();
@@ -36,7 +37,7 @@ function App() {
                     <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
                         <Route index element={<CategoryList />} />
                         <Route path="admin" element={<AdminDashboard />} />
-                        <Route path="category/:categoryId/topic" element={<AddTopicForm />} />
+                        <Route path="category/:categoryId/topic" element={<TopicAddForm />} />
                         <Route path="category/:categoryId" element={<CategoryDetails />} />
                         <Route path="topic/:topicId" element={<TopicDetails />} />
                         <Route path="login" element={<UserLoginForm />} />

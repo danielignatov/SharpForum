@@ -12,7 +12,7 @@ import Row from 'react-bootstrap/Row';
 import { Fragment } from 'react';
 import LoginBtn from '../users/LoginBtn';
 
-export default observer(function AddTopicForm() {
+export default observer(function TopicAddForm() {
     const { t } = useTranslation();
     const { categoryId } = useParams<{ categoryId: string }>();
     const { topicStore, userStore } = useStore();

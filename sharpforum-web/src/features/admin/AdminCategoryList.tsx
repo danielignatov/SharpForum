@@ -4,7 +4,7 @@ import { Fragment, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import AdminCategoryListItem from './AdminCategoryListItem';
 import { Container } from 'react-bootstrap';
-import AddCategoryForm from '../categories/AddCategoryForm';
+import CategoryAddForm from '../categories/CategoryAddForm';
 import AdminCategoryListHeader from './AdminCategoryListHeader';
 import AdminCategoryListPlaceholder from '../placeholders/AdminCategoryListPlaceholder';
 
@@ -31,7 +31,7 @@ export default observer(function AdminCategoryList() {
                         </Fragment>
                     )}
                 </div>
-                <AddCategoryForm />
+                <CategoryAddForm />
             </Container>
         </Fragment>
     );

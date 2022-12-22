@@ -5,7 +5,7 @@ import Loading from '../../layouts/Loading';
 import { useStore } from '../../app/stores/store';
 import ReplyList from '../replies/ReplyList';
 import { useTranslation } from 'react-i18next';
-import AddReplyForm from '../replies/AddReplyForm';
+import AddReplyForm from '../replies/ReplyAddForm';
 import { Topic } from '../../app/models/topic';
 import TopicBody from './TopicBody';
 import Heading from '../../layouts/Heading';
