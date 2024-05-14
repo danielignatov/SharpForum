@@ -38,9 +38,11 @@ namespace SharpForum.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.TryAddSingleton<ISystemClock, SystemClock>();
-            
+
+            var connString = Configuration.GetConnectionString("MySQL");
+
             services.AddPooledDbContextFactory<DataContext>(opt => {
-                opt.UseSqlServer(Configuration.GetConnectionString("MSSQL"));
+                opt.UseMySql(connString, ServerVersion.AutoDetect(connString));
                 opt.EnableSensitiveDataLogging(true);
             });
 

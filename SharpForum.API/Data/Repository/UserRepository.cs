@@ -27,7 +27,7 @@ namespace SharpForum.API.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "GetByEmailAsync method error", typeof(UserRepository));
+                _logger.LogError(exception, "GetByEmailAsync method error");
 
                 return null;
             }
@@ -43,7 +43,7 @@ namespace SharpForum.API.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "GetByDisplayNameAsync method error", typeof(UserRepository));
+                _logger.LogError(exception, "GetByDisplayNameAsync method error");
 
                 return null;
             }
@@ -59,7 +59,7 @@ namespace SharpForum.API.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "GetByRoleAsync method error", typeof(UserRepository));
+                _logger.LogError(exception, "GetByRoleAsync method error");
 
                 return Enumerable.Empty<User>();
             }
@@ -82,7 +82,7 @@ namespace SharpForum.API.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "GetPostCountAsync method error", typeof(UserRepository));
+                _logger.LogError(exception, "GetPostCountAsync method error");
                 return 0;
             }
         }

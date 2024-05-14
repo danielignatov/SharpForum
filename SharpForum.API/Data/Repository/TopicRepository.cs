@@ -27,7 +27,7 @@ namespace SharpForum.API.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "GetByCategoryAsync method error", typeof(TopicRepository));
+                _logger.LogError(exception, "GetByCategoryAsync method error");
 
                 return Enumerable.Empty<Topic>();
             }
@@ -43,7 +43,7 @@ namespace SharpForum.API.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "GetByAuthorAsync method error", typeof(TopicRepository));
+                _logger.LogError(exception, "GetByAuthorAsync method error");
 
                 return Enumerable.Empty<Topic>();
             }
@@ -60,7 +60,7 @@ namespace SharpForum.API.Data.Repository
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "GetReplyCountAsync method error", typeof(TopicRepository));
+                _logger.LogError(exception, "GetReplyCountAsync method error");
                 return 0;
             }
         }
