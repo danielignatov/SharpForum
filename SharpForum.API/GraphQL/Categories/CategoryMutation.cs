@@ -2,7 +2,7 @@
 using HotChocolate;
 using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
-using HotChocolate.AspNetCore.Authorization;
+using HotChocolate.Authorization;
 
 namespace SharpForum.API.GraphQL.Categories
 {

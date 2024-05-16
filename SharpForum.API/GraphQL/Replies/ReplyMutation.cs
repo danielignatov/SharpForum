@@ -5,7 +5,7 @@ using SharpForum.API.Data.Repository.Interfaces;
 using SharpForum.API.Models.Domain;
 using System.Threading;
 using SharpForum.API.GraphQL.Categories;
-using HotChocolate.AspNetCore.Authorization;
+using HotChocolate.Authorization;
 
 namespace SharpForum.API.GraphQL.Replies
 {

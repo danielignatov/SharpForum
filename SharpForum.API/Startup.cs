@@ -37,7 +37,7 @@ namespace SharpForum.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.TryAddSingleton<ISystemClock, SystemClock>();
+            //services.TryAddSingleton<ISystemClock, SystemClock>();
 
             var connString = Configuration.GetConnectionString("MySQL");
 

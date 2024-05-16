@@ -1,5 +1,5 @@
 ﻿using HotChocolate;
-using HotChocolate.AspNetCore.Authorization;
+using HotChocolate.Authorization;
 using HotChocolate.Data;
 using Microsoft.AspNetCore.Http;
 using SharpForum.API.Data.Repository.Interfaces;
