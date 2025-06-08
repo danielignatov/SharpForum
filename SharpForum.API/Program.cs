@@ -31,7 +31,7 @@ namespace SharpForum.API
             catch (Exception exception)
             {
                 var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(exception, "Error occured during migration");
+                logger.LogError(exception, "Error occurred during migration");
             }
 
             await host.RunAsync();

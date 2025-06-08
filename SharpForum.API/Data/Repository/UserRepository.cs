@@ -76,7 +76,7 @@ namespace SharpForum.API.Data.Repository
                     dbContext.Replies.Where(x => x.AuthorId == userId).Count();
 
                 var topicCount =
-                    dbContext.Replies.Where(x => x.AuthorId == userId).Count();
+                    dbContext.Topics.Where(x => x.AuthorId == userId).Count();
 
                 return replyCount + topicCount;
             }
