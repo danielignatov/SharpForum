@@ -27,7 +27,7 @@ namespace SharpForum.API.GraphQL.Categories
 
             descriptor
                 .Field(x => x.IsPlaceholder)
-                .Description("Category act like placeholder, does not allow topic creation");
+                .Description("Category acts like a placeholder, does not allow topic creation");
 
             descriptor
                 .Field(x => x.Name)
